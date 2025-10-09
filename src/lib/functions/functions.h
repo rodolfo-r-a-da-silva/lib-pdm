@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "common/pdm_errno.h"
+
 typedef uint32_t FunctionInstance_t;
 
 typedef enum {
