@@ -18,7 +18,7 @@ int32_t function_init(FunctionInstance_t instance) {
 }
 
 int32_t function_deinit(FunctionInstance_t instance) {
-    function_ctx.type = kFunctionTypeNone;
+    function_ctx.initialized = false;
 
     return 0;
 }
