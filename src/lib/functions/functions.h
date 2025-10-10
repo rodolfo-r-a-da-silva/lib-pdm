@@ -6,8 +6,6 @@
 
 #include "common/pdm_errno.h"
 
-typedef uint32_t FunctionInstance_t;
-
 typedef enum {
     kFunctionTypeNone = 0U,
     kFunctionTypeAND,
@@ -25,10 +23,16 @@ typedef enum {
     kFunctionInputEdgeMax
 } FunctionInputEdge_t;
 
-int32_t function_init(FunctionInstance_t instance);
-int32_t function_deinit(FunctionInstance_t instance);
-int32_t function_get_result(FunctionInstance_t instance, int32_t* result);
-int32_t function_get_type(FunctionInstance_t instance, FunctionType_t* type);
-int32_t function_set_type(FunctionInstance_t instance, FunctionType_t type);
+typedef struct {
+    int32_t output;
+    FunctionType_t type;
+    bool initialized;
+} FunctionHandle_t;
+
+int32_t function_init(FunctionHandle_t* instance);
+int32_t function_deinit(FunctionHandle_t* instance);
+int32_t function_get_result(FunctionHandle_t* instance, int32_t* result);
+int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type);
+int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type);
 
 #endif  // LIB_FUNCTIONS_FUNCTIONS_H_

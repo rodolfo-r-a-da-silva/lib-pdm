@@ -3,64 +3,67 @@
 #include "functions.h"
 
 void setUp(void) {}
-void tearDown(void) {
-    function_deinit(0U);
-    function_set_type(0U, kFunctionTypeNone);
-}
+void tearDown(void) {}
 
 void test_GetAndSetType_ReturnsNoErrorWhenNotInit(void) {
+    FunctionHandle_t hFunction = { 0 };
     FunctionType_t type = kFunctionTypeNone;
 
-    function_set_type(0U, kFunctionTypeAND);
-    function_get_type(0U, &type);
+    function_set_type(&hFunction, kFunctionTypeAND);
+    function_get_type(&hFunction, &type);
 
     TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
 }
 
 void test_InitWhenTypeIsNotNone_ReturnsNoError(void) {
+    FunctionHandle_t hFunction = { 0 };
     int32_t ret = 0;
 
-    function_set_type(0U, kFunctionTypeAND);
-    ret = function_init(0U);
+    function_set_type(&hFunction, kFunctionTypeAND);
+    ret = function_init(&hFunction);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
 
 void test_InitWhenTypeIsNone_ReturnsTypeError(void) {
-    int32_t ret = function_init(0U);
+    FunctionHandle_t hFunction = { 0 };
+    int32_t ret = function_init(&hFunction);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INIT_TYPE, ret);
 }
 
 void test_InitDoesNotChangeChangeType(void) {
+    FunctionHandle_t hFunction = { 0 };
     FunctionType_t type = kFunctionTypeNone;
 
-    function_set_type(0U, kFunctionTypeAND);
-    function_init(0U);
-    function_get_type(0U, &type);
+    function_set_type(&hFunction, kFunctionTypeAND);
+    function_init(&hFunction);
+    function_get_type(&hFunction, &type);
 
     TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
 }
 
 void test_DeinitDoesNotChangeType(void) {
+    FunctionHandle_t hFunction = { 0 };
     FunctionType_t type = kFunctionTypeAND;
 
-    function_set_type(0U, kFunctionTypeAND);
-    function_init(0U);
-    function_deinit(0U);
-    function_get_type(0U, &type);
+    function_set_type(&hFunction, kFunctionTypeAND);
+    function_init(&hFunction);
+    function_deinit(&hFunction);
+    function_get_type(&hFunction, &type);
 
     TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
 }
 
 void test_ChangeTypeWhenInitialized_ReturnsErrorAndKeepsType(void) {
+    FunctionHandle_t hFunction = { 0 };
     FunctionType_t type = kFunctionTypeAND;
     int32_t ret = 0;
 
-    function_set_type(0U, kFunctionTypeOR);
-    function_init(0U);
-    ret = function_set_type(0U, type);
-    function_get_type(0U, &type);
+    function_set_type(&hFunction, kFunctionTypeOR);
+    function_init(&hFunction);
+    ret = function_set_type(&hFunction, type);
+    function_get_type(&hFunction, &type);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
     TEST_ASSERT_EQUAL(kFunctionTypeOR, type);
