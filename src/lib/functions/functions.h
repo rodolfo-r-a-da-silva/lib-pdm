@@ -26,11 +26,12 @@ typedef enum {
 typedef struct {
     int32_t output;
     FunctionType_t type;
-    bool initialized;
+    bool is_init;
 } FunctionHandle_t;
 
 int32_t function_init(FunctionHandle_t* instance);
 int32_t function_deinit(FunctionHandle_t* instance);
+bool function_is_init(FunctionHandle_t* instance);
 int32_t function_get_result(FunctionHandle_t* instance, int32_t* result);
 int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type);
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type);

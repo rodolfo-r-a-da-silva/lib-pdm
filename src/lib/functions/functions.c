@@ -6,15 +6,19 @@ int32_t function_init(FunctionHandle_t* instance) {
     }
 
     instance->output = 0;
-    instance->initialized = true;
+    instance->is_init = true;
 
     return LIB_PDM_ERROR_NONE;
 }
 
 int32_t function_deinit(FunctionHandle_t* instance) {
-    instance->initialized = false;
+    instance->is_init = false;
 
     return 0;
+}
+
+bool function_is_init(FunctionHandle_t* instance) {
+    return instance->is_init;
 }
 
 int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
@@ -30,7 +34,7 @@ int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
 }
 
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
-    if (instance->initialized) {
+    if (instance->is_init) {
         return LIB_PDM_ERROR_INITIALIZED;
     }
 

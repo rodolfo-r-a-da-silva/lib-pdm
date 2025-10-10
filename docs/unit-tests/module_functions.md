@@ -3,6 +3,8 @@
 - Function type is not changed on initialization - test_InitDoesNotChangeChangeType
 - Function type is not changed on on deinitialization - test_DeinitDoesNotChangeType
 - Can only change function type when not initialized - test_ChangeTypeWhenInitialized_ReturnsErrorAndKeepsType
+- Initialization sets the initialized state to true - test_InitSetsStateToInitialized
+- Denitialization sets the initialized state to false - test_DeinitSetsStateToNotInitialized
 - Initialization sets output to zero
 - Denitialization sets output to zero
 

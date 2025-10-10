@@ -71,3 +71,24 @@ void test_ChangeTypeWhenInitialized_ReturnsErrorAndKeepsType(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
     TEST_ASSERT_EQUAL(kFunctionTypeOR, type);
 }
+
+void test_InitSetsStateToInitialized(void) {
+    bool initialized = false;
+
+    function_set_type(&h_function, kFunctionTypeAND);
+    function_init(&h_function);
+    initialized = function_is_init(&h_function);
+
+    TEST_ASSERT_EQUAL(true, initialized);
+}
+
+void test_DeinitSetsStateToNotInitialized(void) {
+    bool initialized = true;
+
+    function_set_type(&h_function, kFunctionTypeAND);
+    function_init(&h_function);
+    function_deinit(&h_function);
+    initialized = function_is_init(&h_function);
+
+    TEST_ASSERT_EQUAL(false, initialized);
+}
