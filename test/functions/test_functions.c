@@ -17,16 +17,16 @@ void tearDown(void) {
 void test_GetAndSetType_ReturnsNoErrorWhenNotInit(void) {
     FunctionType_t type = kFunctionTypeNone;
 
-    function_set_type(&h_function, kFunctionTypeAND);
+    function_set_type(&h_function, kFunctionTypeNOT);
     function_get_type(&h_function, &type);
 
-    TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
+    TEST_ASSERT_EQUAL(kFunctionTypeNOT, type);
 }
 
 void test_InitWhenTypeIsNotNone_ReturnsNoError(void) {
     int32_t ret = 0;
 
-    function_set_type(&h_function, kFunctionTypeAND);
+    function_set_type(&h_function, kFunctionTypeNOT);
     ret = function_init(&h_function);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
@@ -41,26 +41,26 @@ void test_InitWhenTypeIsNone_ReturnsTypeError(void) {
 void test_InitDoesNotChangeChangeType(void) {
     FunctionType_t type = kFunctionTypeNone;
 
-    function_set_type(&h_function, kFunctionTypeAND);
+    function_set_type(&h_function, kFunctionTypeNOT);
     function_init(&h_function);
     function_get_type(&h_function, &type);
 
-    TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
+    TEST_ASSERT_EQUAL(kFunctionTypeNOT, type);
 }
 
 void test_DeinitDoesNotChangeType(void) {
-    FunctionType_t type = kFunctionTypeAND;
+    FunctionType_t type = kFunctionTypeNOT;
 
-    function_set_type(&h_function, kFunctionTypeAND);
+    function_set_type(&h_function, kFunctionTypeNOT);
     function_init(&h_function);
     function_deinit(&h_function);
     function_get_type(&h_function, &type);
 
-    TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
+    TEST_ASSERT_EQUAL(kFunctionTypeNOT, type);
 }
 
 void test_ChangeTypeWhenInitialized_ReturnsErrorAndKeepsType(void) {
-    FunctionType_t type = kFunctionTypeAND;
+    FunctionType_t type = kFunctionTypeNOT;
     int32_t ret = 0;
 
     function_set_type(&h_function, kFunctionTypeOR);
@@ -75,7 +75,7 @@ void test_ChangeTypeWhenInitialized_ReturnsErrorAndKeepsType(void) {
 void test_InitSetsStateToInitialized(void) {
     bool initialized = false;
 
-    function_set_type(&h_function, kFunctionTypeAND);
+    function_set_type(&h_function, kFunctionTypeNOT);
     function_init(&h_function);
     initialized = function_is_init(&h_function);
 
@@ -85,7 +85,7 @@ void test_InitSetsStateToInitialized(void) {
 void test_DeinitSetsStateToNotInitialized(void) {
     bool initialized = true;
 
-    function_set_type(&h_function, kFunctionTypeAND);
+    function_set_type(&h_function, kFunctionTypeNOT);
     function_init(&h_function);
     function_deinit(&h_function);
     initialized = function_is_init(&h_function);

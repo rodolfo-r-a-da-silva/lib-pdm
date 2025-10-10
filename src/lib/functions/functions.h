@@ -8,8 +8,22 @@
 
 typedef enum {
     kFunctionTypeNone = 0U,
+    kFunctionTypeNOT,
     kFunctionTypeAND,
     kFunctionTypeOR,
+    kFunctionTypeXOR,
+    kFunctionTypeBitwiseAND,
+    kFunctionTypeEquals,
+    kFunctionTypeLess,
+    kFunctionTypeMore,
+    kFunctionTypeSum,
+    kFunctionTypeHysteresis,
+    kFunctionTypeBlink,
+    kFunctionTypePulse,
+    kFunctionTypeSet,
+    kFunctionTypeReset,
+    kFunctionTypeToggle,
+    kFunctionTypeCounter,
 
     kFunctionTypeMax
 } FunctionType_t;

@@ -45,9 +45,6 @@
 ### "Sum" functions tests
 - [ ] Only initializes with two inputs
 
-### "Subtraction" functions tests
-- [ ] Only initializes with two inputs
-
 ### "Hysteresis" functions tests
 - [ ] Only initializes with one input
 
