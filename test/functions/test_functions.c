@@ -8,7 +8,7 @@ void tearDown(void) {
     function_set_type(0U, kFunctionTypeNone);
 }
 
-void test_Function_SetAndGetType(void) {
+void test_GetAndSetType_ReturnsNoErrorWhenNotInit(void) {
     FunctionType_t type = kFunctionTypeNone;
 
     function_set_type(0U, kFunctionTypeAND);
@@ -17,7 +17,7 @@ void test_Function_SetAndGetType(void) {
     TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
 }
 
-void test_Function_InitWhenTypeIsNotNone(void) {
+void test_InitWhenTypeIsNotNone_ReturnsNoError(void) {
     int32_t ret = 0;
 
     function_set_type(0U, kFunctionTypeAND);
@@ -26,13 +26,13 @@ void test_Function_InitWhenTypeIsNotNone(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
 
-void test_Function_InitReturnErrorWhenTypeIsNone(void) {
+void test_InitWhenTypeIsNone_ReturnsTypeError(void) {
     int32_t ret = function_init(0U);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INIT_TYPE, ret);
 }
 
-void test_Function_InitDoesNotChangeType(void) {
+void test_InitDoesNotChangeChangeType(void) {
     FunctionType_t type = kFunctionTypeNone;
 
     function_set_type(0U, kFunctionTypeAND);
@@ -42,7 +42,7 @@ void test_Function_InitDoesNotChangeType(void) {
     TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
 }
 
-void test_Function_DeinitDoesNotChangeType(void) {
+void test_DeinitDoesNotChangeType(void) {
     FunctionType_t type = kFunctionTypeAND;
 
     function_set_type(0U, kFunctionTypeAND);
@@ -53,7 +53,7 @@ void test_Function_DeinitDoesNotChangeType(void) {
     TEST_ASSERT_EQUAL(kFunctionTypeAND, type);
 }
 
-void test_Funtion_ChangingTypeWhenInitializedReturnsErrorAndKeepsType(void) {
+void test_ChangeTypeWhenInitialized_ReturnsErrorAndKeepsType(void) {
     FunctionType_t type = kFunctionTypeAND;
     int32_t ret = 0;
 

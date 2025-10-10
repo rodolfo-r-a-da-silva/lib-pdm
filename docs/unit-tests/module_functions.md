@@ -1,8 +1,8 @@
-- Can set and get the instance's function type - test_Function_SetAndGetType
-- Only initialize when type is different from "None" - test_Function_InitWhenTypeIsNotNone / test_Function_InitReturnErrorWhenTypeIsNone
-- Function type is not changed on initialization - test_Function_InitDoesNotChangeType
-- Function type is not changed on on deinitialization
-- Can only change function type when not initialized - test_Funtion_ChangingTypeWhenInitializedReturnsErrorAndKeepsType
+- Can set and get the instance's function type - test_GetAndSetType_ReturnsNoErrorWhenNotInit
+- Only initialize when type is different from "None" - test_InitWhenTypeIsNotNone_ReturnsNoError / test_InitWhenTypeIsNone_ReturnsTypeError
+- Function type is not changed on initialization - test_InitDoesNotChangeChangeType
+- Function type is not changed on on deinitialization - test_DeinitDoesNotChangeType
+- Can only change function type when not initialized - test_ChangeTypeWhenInitialized_ReturnsErrorAndKeepsType
 - Initialization sets output to zero
 - Denitialization sets output to zero
 
