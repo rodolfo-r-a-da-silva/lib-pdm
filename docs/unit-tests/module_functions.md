@@ -10,8 +10,14 @@
 - [ ] Initialization sets output to zero
 - [ ] Denitialization sets output to zero
 
+### Boolean from integers
+
+### Debounced output tests
+
 ### "NOT" function tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 1 or higher
+    - [ ] Sets input 0
     - [ ] Initializes with one input
     - [ ] Does not initialize without inputs
 - [ ] Function logic
@@ -20,20 +26,24 @@
 
 ### "AND" function tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
-    - [ ] Initializes with number of inputs from "define"
 - [ ] Function logic
     - [ ] One "0" and one "1" input results in false
     - [ ] Two "1" inputs results in true
 
 ### "OR" function tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
-    - [ ] Initializes with number of inputs from "define"
 - [ ] Function logic
     - [ ] Single "0" input results in false
     - [ ] Single "1" input results in true
@@ -42,6 +52,9 @@
 
 ### "XOR" function tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
@@ -52,6 +65,9 @@
 
 ### "Bitwise AND" function tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
@@ -59,85 +75,108 @@
 
 ### "Equals to" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
 - [ ] Function logic
-    - [ ] Input 1 lesser than input 2 results in false
-    - [ ] Input 1 greater than input 2 results in false
-    - [ ] Input 1 equals to input 2 results in true
+    - [ ] Input 0 lesser than input 1 results in false
+    - [ ] Input 0 greater than input 1 results in false
+    - [ ] Input 0 equals to input 1 results in true
 
 ### "Less than" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
 - [ ] Function logic
-    - [ ] Input 1 lesser than input 2 results in true
-    - [ ] Input 1 greater than input 2 results in false
-    - [ ] Input 1 equals to input 2 results in false
+    - [ ] Input 0 lesser than input 1 results in true
+    - [ ] Input 0 greater than input 1 results in false
+    - [ ] Input 0 equals to input 1 results in false
 
 ### "More than" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
 - [ ] Function logic
-    - [ ] Input 1 lesser than input 2 results in false
-    - [ ] Input 1 greater than input 2 results in true
-    - [ ] Input 1 equals to input 2 results in false
+    - [ ] Input 0 lesser than input 1 results in false
+    - [ ] Input 0 greater than input 1 results in true
+    - [ ] Input 0 equals to input 1 results in false
 
 ### "Sum" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 2 or higher
+    - [ ] Sets input 0
+    - [ ] Sets input 1
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
     - [ ] Initializes with two inputs
 - [ ] Function logic
-    - [ ] Result in the sum of input 1 and input 2
+    - [ ] Result is the sum of input 1 and input 2
 
 ### "Hysteresis" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 1 or higher
+    - [ ] Sets input 0
     - [ ] Does not initialize without inputs
-    - [ ] Does not initialize with only one input
-    - [ ] Initializes with two inputs
+    - [ ] Initializes with only one input
 - [ ] Function logic
 
 ### "Blink" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 1 or higher
+    - [ ] Sets input 0
     - [ ] Does not initialize without inputs
-    - [ ] Initializes with only one input
+    - [ ] Does not initialize without input edge configured
+    - [ ] Initializes with only one input and edge configured
 - [ ] Function logic
 
 ### "Pulse" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Does not set input 1 or higher
+    - [ ] Sets input 0
     - [ ] Does not initialize without inputs
-    - [ ] Initializes with only one input
+    - [ ] Does not initialize without input edge configured
+    - [ ] Initializes with only one input and edge configured
 - [ ] Function logic
 
 ### "Set" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
-    - [ ] Initializes with two inputs
+    - [ ] Does not initialize without input edges configured
+    - [ ] Initializes with two inputs and edges configured
 - [ ] Function logic
 
 ### "Reset" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
-    - [ ] Initializes with two inputs
+    - [ ] Does not initialize without input edges configured
+    - [ ] Initializes with two inputs and edges configured
 - [ ] Function logic
 
 ### "Toggle" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
-    - [ ] Initializes with two inputs
+    - [ ] Does not initialize without input edges configured
+    - [ ] Initializes with two inputs and edges configured
 - [ ] Function logic
 
 ### "Counter" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Does not initialize without inputs
     - [ ] Does not initialize with only one input
-    - [ ] Initializes with four inputs
+    - [ ] Does not initialize without input edges configured
+    - [ ] Initializes with four inputs and edges configured
 - [ ] Function logic
