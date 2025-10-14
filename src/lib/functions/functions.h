@@ -37,6 +37,8 @@ typedef enum {
     kFunctionInputEdgeMax
 } FunctionInputEdge_t;
 
+typedef uint8_t FunctionInputNbr_t;
+
 typedef struct {
     int32_t output;
     FunctionType_t type;
@@ -49,5 +51,7 @@ bool function_is_init(FunctionHandle_t* instance);
 int32_t function_get_result(FunctionHandle_t* instance, int32_t* result);
 int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type);
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type);
+int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input);
+int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input);
 
 #endif  // LIB_FUNCTIONS_FUNCTIONS_H_
