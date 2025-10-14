@@ -36,9 +36,9 @@
 - [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnWrongParamError
 - [x] Can't set input edges - test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError
 - [x] Can't get input edges - test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError
-- [ ] Can't initialize
-- [ ] Can't deinitialize 
-- [ ] Can't run
+- [x] Can't initialize - test_whenNoneFunctionInit_thenReturnTypeError
+- [x] Can't deinitialize - test_whenNoneFunctionDeinit_thenReturnTypeError
+- [x] Can't run - test_whenNoneFunctionRun_thenReturnTypeError
 
 ### "NOT" function tests
 - [ ] Initialization with correct parameters

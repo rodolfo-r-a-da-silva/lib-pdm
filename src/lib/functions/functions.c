@@ -6,7 +6,7 @@ static bool valid_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr
 
 int32_t function_init(FunctionHandle_t* instance) {
     if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_INIT_TYPE;
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
     }
 
     instance->output = 0;
@@ -16,19 +16,31 @@ int32_t function_init(FunctionHandle_t* instance) {
 }
 
 int32_t function_deinit(FunctionHandle_t* instance) {
+    if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    }
+
     instance->is_init = false;
 
-    return 0;
+    return LIB_PDM_ERROR_NONE;
 }
 
 bool function_is_init(FunctionHandle_t* instance) {
     return instance->is_init;
 }
 
+int32_t function_run(FunctionHandle_t* instance) {
+    if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    }
+
+    return LIB_PDM_ERROR_NONE;
+}
+
 int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
     *result = instance->output;
 
-    return 0;
+    return LIB_PDM_ERROR_NONE;
 }
 
 int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
