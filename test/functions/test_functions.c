@@ -54,7 +54,7 @@ void test_whenNoneFunctionSetInput0_thenReturnWrongParamError(void) {
 
 void test_whenNoneFunctionGetInput0_thenReturnWrongParamError(void) {
     FunctionHandle_t function = { 0 };
-    int32_t input = 0;
+    int32_t* input = NULL;
     int32_t ret = 0;
 
     function_set_type(&function, kFunctionTypeNone);

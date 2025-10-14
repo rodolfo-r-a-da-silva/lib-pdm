@@ -51,7 +51,7 @@ int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
     return LIB_PDM_ERROR_NONE;
 }
 
-int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input) {
+int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t** p_input) {
     if (!valid_input(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
