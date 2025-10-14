@@ -30,7 +30,7 @@ int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
 }
 
 int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
-    if (instance == NULL) {
+    if ((instance == NULL) || (type == NULL)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 

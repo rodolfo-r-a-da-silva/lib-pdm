@@ -1,17 +1,19 @@
 ### General tests
-- [ ] When function instance argument is NULL
+- [ ] Function instance argument is NULL
     - [ ] Init returns wrong param error
     - [ ] Deinit returns wrong param error
-    - [x] Set type returns wrong param error - test_whenSetTypeWithNullPointer_thenReturnWrontParamError
-    - [x] Get type returns wrong param error - test_whenGetTypeWithNullPointer_thenReturnWrontParamError
+    - [x] Set type returns wrong param error - test_whenSetTypeWithNullInstance_thenReturnWrontParamError
+    - [x] Get type returns wrong param error - test_whenGetTypeWithNullInstance_thenReturnWrontParamError
     - [ ] Set input returns wrong param error
     - [ ] Get input returns wrong param error
     - [ ] Get result returns wrong param error
-    - [ ] Run  returns wrong param error
+    - [ ] Run returns wrong param error
 
-- [ ] When input pointer is NULL
-    - [ ] Set input return wrong param error
-    - [ ] Get input return wrong param error
+- [x] Get type with type as NULL pointer returns wrong param error - test_whenGetTypeWithNullType_thenReturnWrongParamError
+
+- [ ] Input pointer is NULL
+    - [ ] Set input returns wrong param error
+    - [ ] Get input returns wrong param error
 
 - [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit
 - [ ] Can't change function type when initialized
