@@ -1,3 +1,4 @@
+### General tests
 - [ ] When function instance argument is NULL
     - [ ] Init returns wrong param error
     - [ ] Deinit returns wrong param error
@@ -8,13 +9,14 @@
     - [ ] Get result returns wrong param error
     - [ ] Run  returns wrong param error
 
+- [ ] When input pointer is NULL
+    - [ ] Set input return wrong param error
+    - [ ] Get input return wrong param error
+
 - [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit
-- [ ] Only initialize when type is different from "None"
-    - [ ] Initializes when type is not "None"
-    - [ ] Can't initialized when type is "None"
+- [ ] Can't change function type when initialized
 - [ ] Function type is not changed on initialization
 - [ ] Function type is not changed on on deinitialization
-- [ ] Can only change function type when not initialized
 - [ ] Initialization Can get the initialized state to true
 - [ ] Denitialization Can get the initialized state to false
 - [ ] Initialization Can get output to zero
