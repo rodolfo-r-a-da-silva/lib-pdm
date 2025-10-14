@@ -53,5 +53,7 @@ int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type);
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type);
 int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t** p_input);
 int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input);
+int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge);
+int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge);
 
 #endif  // LIB_FUNCTIONS_FUNCTIONS_H_

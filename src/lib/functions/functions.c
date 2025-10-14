@@ -67,24 +67,28 @@ int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
     return LIB_PDM_ERROR_NONE;
 }
 
+int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge) {
+    return LIB_PDM_ERROR_NONE;
+}
+int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge) {
+    return LIB_PDM_ERROR_NONE;
+}
+
 static bool valid_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
     if (instance == NULL) {
         return false;
     }
 
-    switch (instance->type) {
-        case kFunctionTypeNone: {
-            return false;
-        }
+    bool ret = false;
 
-        case kFunctionTypeNOT: {
-            return (input_nbr < 1U);
-        }
-
-        default: {
+    switch (input_nbr) {
+        case 0U:
+            ret = (instance->type == kFunctionTypeNOT);
             break;
-        }
+
+        default:
+            break;
     }
 
-    return false;
+    return ret;
 }
