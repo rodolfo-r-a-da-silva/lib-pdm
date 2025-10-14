@@ -32,8 +32,8 @@
 ### Debounced output tests
 
 ### "None" function tests
-- [ ] Can't set inputs
-- [ ] Can't get inputs
+- [x] Can't set inputs - test_whenNoneFunctionSetInput0_thenReturnWrongParamError
+- [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnWrongParamError
 - [ ] Can't set input edges
 - [ ] Can't get input edges
 - [ ] Can't initialize
@@ -42,8 +42,8 @@
 
 ### "NOT" function tests
 - [ ] Initialization with correct parameters
-    - [x] Can't set input 1 or higher - test_whenSetNotFunctionInput1_thenReturnsWrongParamError
-    - [x] Can set input 0 - test_whenSetNotFunctionInput0_thenReturnsNoError
+    - [x] Can't set input 1 or higher - test_whenNotFunctionSetInput1_thenReturnsWrongParamError
+    - [x] Can set input 0 - test_whenNotSetFunctionInput0_thenReturnsNoError
     - [ ] Can't get input 1 or higher
     - [ ] Can get input 0
     - [ ] Can't initialize without inputs
