@@ -1,10 +1,10 @@
 - [ ] When function instance argument is NULL
     - [ ] Init returns wrong param error
     - [ ] Deinit returns wrong param error
-    - [ ] Get type returns wrong param error
-    - [ ] Set type returns wrong param error
-    - [ ] Get input returns wrong param error
+    - [x] Set type returns wrong param error - test_whenSetTypeWithNullPointer_thenReturnWrontParamError
+    - [x] Get type returns wrong param error - test_whenGetTypeWithNullPointer_thenReturnWrontParamError
     - [ ] Set input returns wrong param error
+    - [ ] Get input returns wrong param error
     - [ ] Get result returns wrong param error
     - [ ] Run  returns wrong param error
 
