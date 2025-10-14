@@ -5,7 +5,24 @@
 void setUp(void) {}
 void tearDown(void) {}
 
-void test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit(void) {
+void test_whenSetTypeWithNullPointer_thenReturnWrontParamError(void) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    ret = function_set_type(NULL, kFunctionTypeNone);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenGetTypeWithNullPointer_thenReturnWrontParamError(void) {
+    FunctionType_t type = kFunctionTypeNone;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    ret = function_get_type(NULL, &type);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenSetAndGetType_thenReturnNoErrorWhenNotInit(void) {
     FunctionHandle_t function;
     FunctionType_t type = kFunctionTypeNone;
 
@@ -15,7 +32,7 @@ void test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit(void) {
     TEST_ASSERT_EQUAL(kFunctionTypeNOT, type);
 }
 
-void test_whenSetNotFunctionInput1_thenReturnsWrongParamError(void) {
+void test_whenSetNotFunctionInput1_thenReturnWrongParamError(void) {
     FunctionHandle_t function;
     int32_t input = 0;
     int32_t ret = LIB_PDM_ERROR_NONE;
@@ -26,7 +43,7 @@ void test_whenSetNotFunctionInput1_thenReturnsWrongParamError(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
 }
 
-void test_whenSetNotFunctionInput0_thenReturnsNoError(void) {
+void test_whenSetNotFunctionInput0_thenReturnNoError(void) {
     FunctionHandle_t function;
     int32_t input = 0;
     int32_t ret = LIB_PDM_ERROR_NONE;

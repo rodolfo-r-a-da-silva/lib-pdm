@@ -1,3 +1,5 @@
+#include <stddef.h>
+
 #include "functions.h"
 
 int32_t function_init(FunctionHandle_t* instance) {
@@ -28,14 +30,18 @@ int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
 }
 
 int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
     *type = instance->type;
 
     return LIB_PDM_ERROR_NONE;
 }
 
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
-    if (instance->is_init) {
-        return LIB_PDM_ERROR_INITIALIZED;
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
     instance->type = type;
