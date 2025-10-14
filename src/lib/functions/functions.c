@@ -68,9 +68,17 @@ int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
 }
 
 int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge) {
+    if (!valid_input(instance, input_nbr)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
     return LIB_PDM_ERROR_NONE;
 }
 int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge) {
+    if (!valid_input(instance, input_nbr)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
     return LIB_PDM_ERROR_NONE;
 }
 

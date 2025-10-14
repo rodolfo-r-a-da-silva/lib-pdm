@@ -34,10 +34,10 @@
 ### "None" function tests
 - [x] Can't set inputs - test_whenNoneFunctionSetInput0_thenReturnWrongParamError
 - [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnWrongParamError
-- [ ] Can't set input edges
-- [ ] Can't get input edges
+- [x] Can't set input edges - test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError
+- [x] Can't get input edges - test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError
 - [ ] Can't initialize
-- [ ] Can't deinitialize
+- [ ] Can't deinitialize 
 - [ ] Can't run
 
 ### "NOT" function tests

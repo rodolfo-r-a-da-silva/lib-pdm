@@ -63,6 +63,27 @@ void test_whenNoneFunctionGetInput0_thenReturnWrongParamError(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
 }
 
+void test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = 0;
+
+    function_set_type(&function, kFunctionTypeNone);
+    ret = function_set_input_edge(&function, 0U, kFunctionInputEdgeBoth);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError(void) {
+    FunctionHandle_t function = { 0 };
+    FunctionInputEdge_t* edge = kFunctionInputEdgeNone;
+    int32_t ret = 0;
+
+    function_set_type(&function, kFunctionTypeNone);
+    ret = function_get_input_edge(&function, 0U, &edge);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
 void test_whenNotFunctionSetInput1_thenReturnWrongParamError(void) {
     FunctionHandle_t function = { 0 };
     int32_t input = 0;
