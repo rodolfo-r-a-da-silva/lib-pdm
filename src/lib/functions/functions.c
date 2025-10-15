@@ -71,6 +71,8 @@ int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
+    *p_input = instance->data_not.input;
+
     return LIB_PDM_ERROR_NONE;
 }
 
