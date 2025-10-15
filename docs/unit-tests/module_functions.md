@@ -44,8 +44,8 @@
 - [ ] Initialization with correct parameters
     - [x] Can't set input 1 or higher - test_whenNotFunctionSetInput1_thenReturnsWrongParamError
     - [x] Can set input 0 - test_whenNotSetFunctionInput0_thenReturnsNoError
-    - [ ] Can't get input 1 or higher
-    - [ ] Can get input 0
+    - [x] Can't get input 1 or higher - test_whenNotFunctionGetInput1_thenReturnWrongParamError
+    - [x] Can get input 0 - test_whenNotFunctionGetInput0_thenReturnNoError
     - [ ] Can't initialize without inputs
     - [ ] Can initialize with one input
 - [ ] Function logic
