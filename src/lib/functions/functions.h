@@ -40,9 +40,16 @@ typedef enum {
 typedef uint8_t FunctionInputNbr_t;
 
 typedef struct {
+    int32_t* input;
+} FunctionDataNOT_t;
+
+
+typedef struct {
     int32_t output;
     FunctionType_t type;
     bool is_init;
+
+    FunctionDataNOT_t data_not;
 } FunctionHandle_t;
 
 int32_t function_init(FunctionHandle_t* instance);

@@ -157,3 +157,25 @@ void test_whenNotFunctionGetInput0_thenReturnNoError(void) {
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
+
+void test_whenNotFunctionInitWithoutInputs_thenReturnInputError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    ret = function_init(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NO_INPUT, ret);
+}
+
+void test_whenNotFunctionInitWithInputs_thenReturnNoError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    ret = function_set_input(&function, 0U, &input);
+    ret = function_init(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}

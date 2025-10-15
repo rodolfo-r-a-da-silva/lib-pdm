@@ -46,8 +46,8 @@
     - [x] Can set input 0 - test_whenNotSetFunctionInput0_thenReturnsNoError
     - [x] Can't get input 1 or higher - test_whenNotFunctionGetInput1_thenReturnWrongParamError
     - [x] Can get input 0 - test_whenNotFunctionGetInput0_thenReturnNoError
-    - [ ] Can't initialize without inputs
-    - [ ] Can initialize with one input
+    - [x] Can't initialize without inputs - test_whenNotFunctionInitWithoutInputs_thenReturnInputError
+    - [x] Can initialize with one input - test_whenNotFunctionInitWithInputs_thenReturnNoError
 - [ ] Function logic
     - [ ] "0" input results in true
     - [ ] "1" input results in false

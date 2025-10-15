@@ -2,11 +2,14 @@
 
 #include "functions.h"
 
-static bool valid_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
+static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
+static bool are_inputs_set(FunctionHandle_t* instance);
 
 int32_t function_init(FunctionHandle_t* instance) {
     if (instance->type == kFunctionTypeNone) {
         return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else if (!are_inputs_set(instance)) {
+        return LIB_PDM_ERROR_NO_INPUT;
     }
 
     instance->output = 0;
@@ -64,7 +67,7 @@ int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
 }
 
 int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t** p_input) {
-    if (!valid_input(instance, input_nbr)) {
+    if (!is_input_valid(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
@@ -72,29 +75,31 @@ int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
 }
 
 int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input) {
-    if (!valid_input(instance, input_nbr)) {
+    if (!is_input_valid(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
+
+    instance->data_not.input = p_input;
 
     return LIB_PDM_ERROR_NONE;
 }
 
 int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge) {
-    if (!valid_input(instance, input_nbr)) {
+    if (!is_input_valid(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
     return LIB_PDM_ERROR_NONE;
 }
 int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge) {
-    if (!valid_input(instance, input_nbr)) {
+    if (!is_input_valid(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
     return LIB_PDM_ERROR_NONE;
 }
 
-static bool valid_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
+static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
     if (instance == NULL) {
         return false;
     }
@@ -105,6 +110,27 @@ static bool valid_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr
         case 0U:
             ret = (instance->type == kFunctionTypeNOT);
             break;
+
+        default:
+            break;
+    }
+
+    return ret;
+}
+
+static bool are_inputs_set(FunctionHandle_t* instance) {
+    if (instance == NULL) {
+        return false;
+    }
+
+    bool ret = false;
+
+    switch (instance->type) {
+        case kFunctionTypeNOT: {
+            if (instance->data_not.input != NULL) {
+                ret = true;
+            }
+        }
 
         default:
             break;
