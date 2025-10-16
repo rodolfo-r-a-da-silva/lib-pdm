@@ -47,8 +47,8 @@
     - [x] Can't get input 1 or higher - test_whenNotFunctionGetInput1_thenReturnWrongParamError
     - [x] Can get input 0 - test_whenNotFunctionGetInput0_thenReturnNoError
     - [x] Can get a set input - test_whenNotFunctionSetInput_thenGetInputRetrievesAddress
-    - [ ] Can't set input edges
-    - [ ] Can't get input edges
+    - [x] Can't set input edges - test_whenNotFunctionSetInput0Edge_thenReturnFunctionTypeError
+    - [x] Can't get input edges - test_whenNotFunctionGetInput0Edge_thenReturnFunctionTypeError
     - [x] Can't initialize without inputs - test_whenNotFunctionInitWithoutInputs_thenReturnInputError
     - [x] Can initialize with one input - test_whenNotFunctionInitWithInputs_thenReturnNoError
 - [ ] Function logic

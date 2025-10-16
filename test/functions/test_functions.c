@@ -170,6 +170,27 @@ void test_whenNotFunctionSetInput_thenGetInputRetrievesAddress(void) {
     TEST_ASSERT_EQUAL_HEX32(&input, address);
 }
 
+void test_whenNotFunctionSetInput0Edge_thenReturnFunctionTypeError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    ret = function_set_input_edge(&function, 0U, kFunctionInputEdgeRising);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
+}
+
+void test_whenNotFunctionGetInput0Edge_thenReturnFunctionTypeError(void) {
+    FunctionHandle_t function = { 0 };
+    FunctionInputEdge_t edge = kFunctionInputEdgeNone;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    ret = function_get_input_edge(&function, 0U, &edge);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
+}
+
 void test_whenNotFunctionInitWithoutInputs_thenReturnInputError(void) {
     FunctionHandle_t function = { 0 };
     int32_t ret = LIB_PDM_ERROR_NONE;

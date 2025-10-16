@@ -3,6 +3,7 @@
 #include "functions.h"
 
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
+static bool has_input_edges(FunctionHandle_t* instance);
 static bool are_inputs_set(FunctionHandle_t* instance);
 
 int32_t function_init(FunctionHandle_t* instance) {
@@ -89,6 +90,8 @@ int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
 int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge) {
     if (!is_input_valid(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (!has_input_edges(instance)) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
     }
 
     return LIB_PDM_ERROR_NONE;
@@ -96,6 +99,8 @@ int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
 int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge) {
     if (!is_input_valid(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (!has_input_edges(instance)) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
     }
 
     return LIB_PDM_ERROR_NONE;
@@ -118,6 +123,14 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
     }
 
     return ret;
+}
+
+static bool has_input_edges(FunctionHandle_t* instance) {
+    if (instance == NULL) {
+        return false;
+    }
+
+    return (instance->type != kFunctionTypeNOT);
 }
 
 static bool are_inputs_set(FunctionHandle_t* instance) {
