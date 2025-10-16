@@ -227,19 +227,9 @@
     - [ ] Can initialize with only one input and edge configured
 - [ ] Function logic
 
-### "Set" functions tests
+### "Set Reset" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can get a set input
-    - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can't initialize without input edges configured
-    - [ ] Can initialize with two inputs and edges configured
-- [ ] Function logic
-
-### "Reset" functions tests
-- [ ] Initialization with correct parameters
-    - [ ] Can get a set input
-    - [ ] Can get a set input edge
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
