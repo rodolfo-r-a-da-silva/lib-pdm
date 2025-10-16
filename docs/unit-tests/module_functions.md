@@ -221,14 +221,10 @@
     - [ ] Can't get input 1 or higher
     - [ ] Can get input 0
     - [ ] Can get a set input
-    - [ ] Can't set input 1 edge or higher
-    - [ ] Can set input 0 edge
-    - [ ] Can't get input 1 edge or higher
-    - [ ] Can get input 0 edge
-    - [ ] Can get a set input edge
+    - [ ] Can't set input edges
+    - [ ] Can't get input edges
     - [ ] Can't initialize without inputs
-    - [ ] Can't initialize without input edge configured
-    - [ ] Can initialize with only one input and edge configured
+    - [ ] Can initialize with only one input
 - [ ] Function logic
 
 ### "Pulse" functions tests
