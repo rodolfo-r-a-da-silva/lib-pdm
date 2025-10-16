@@ -185,23 +185,6 @@
     - [ ] Input 0 greater than input 1 results in true
     - [ ] Input 0 equals to input 1 results in false
 
-### "Sum" functions tests
-- [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher
-    - [ ] Can set input 0
-    - [ ] Can set input 1
-    - [ ] Can't get input 2 or higher
-    - [ ] Can get input 0
-    - [ ] Can get input 1
-    - [ ] Can get a set input
-    - [ ] Can't set input edges
-    - [ ] Can't get input edges
-    - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can initialize with two inputs
-- [ ] Function logic
-    - [ ] Result is the sum of input 1 and input 2
-
 ### "Hysteresis" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 1 or higher
