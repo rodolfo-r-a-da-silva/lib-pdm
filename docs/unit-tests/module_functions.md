@@ -219,6 +219,7 @@
     - [ ] Can get a set input
     - [ ] Can't set input 1 edge or higher
     - [ ] Can set input 0 edge
+    - [ ] Can't set "none" as edge
     - [ ] Can't get input 1 edge or higher
     - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
@@ -229,7 +230,17 @@
 
 ### "Set Reset" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Can't set input 2 or higher
+    - [ ] Can set input 0
+    - [ ] Can't get input 2 or higher
+    - [ ] Can get input 0
     - [ ] Can get a set input
+    - [ ] Can't set input 2 edge or higher
+    - [ ] Can set input 0 edge
+    - [ ] Can't set "none" as edge
+    - [ ] Can't get input 2 edge or higher
+    - [ ] Can get input 0 edge
+    - [ ] Can get a set input edge
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
@@ -238,17 +249,35 @@
 
 ### "Toggle" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Can't set input 2 or higher
+    - [ ] Can set input 0
+    - [ ] Can't get input 2 or higher
+    - [ ] Can get input 0
     - [ ] Can get a set input
+    - [ ] Can't set input 2 edge or higher
+    - [ ] Can set input 0 edge
+    - [ ] Can't set "none" as edge
+    - [ ] Can't get input 2 edge or higher
+    - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
-    - [ ] Can initialize with two inputs and edges configured
+    - [ ] Can initialize with 2 inputs and edges configured
 - [ ] Function logic
 
 ### "Counter" functions tests
 - [ ] Initialization with correct parameters
+    - [ ] Can't set input 4 or higher
+    - [ ] Can set input 0
+    - [ ] Can't get input 4 or higher
+    - [ ] Can get input 0
     - [ ] Can get a set input
+    - [ ] Can't set input 4 edge or higher
+    - [ ] Can set input 0 edge
+    - [ ] Can't set "none" as edge
+    - [ ] Can't get input 4 edge or higher
+    - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
