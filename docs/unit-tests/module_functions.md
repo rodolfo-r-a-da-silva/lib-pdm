@@ -46,7 +46,7 @@
     - [x] Can set input 0 - test_whenNotSetFunctionInput0_thenReturnsNoError
     - [x] Can't get input 1 or higher - test_whenNotFunctionGetInput1_thenReturnWrongParamError
     - [x] Can get input 0 - test_whenNotFunctionGetInput0_thenReturnNoError
-    - [x] Can get a set function's input
+    - [x] Can get a set input
     - [x] Can't initialize without inputs - test_whenNotFunctionInitWithoutInputs_thenReturnInputError
     - [x] Can initialize with one input - test_whenNotFunctionInitWithInputs_thenReturnNoError
 - [ ] Function logic
@@ -61,7 +61,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can't get input 0
     - [ ] Can't get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -77,7 +77,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
     - [ ] Can get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -95,7 +95,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
     - [ ] Can get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -112,7 +112,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
     - [ ] Can get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -126,7 +126,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
     - [ ] Can get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -143,7 +143,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
     - [ ] Can get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -160,7 +160,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
     - [ ] Can get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -177,7 +177,7 @@
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
     - [ ] Can get input 1
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -200,7 +200,7 @@
     - [ ] Can set input 0
     - [ ] Can't get input 1 or higher
     - [ ] Can get input 0
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize without input edge configured
     - [ ] Can initialize with only one input and edge configured
@@ -212,7 +212,7 @@
     - [ ] Can set input 0
     - [ ] Can't get input 1 or higher
     - [ ] Can get input 0
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize without input edge configured
     - [ ] Can initialize with only one input and edge configured
@@ -220,7 +220,7 @@
 
 ### "Set" functions tests
 - [ ] Initialization with correct parameters
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
@@ -229,7 +229,7 @@
 
 ### "Reset" functions tests
 - [ ] Initialization with correct parameters
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
@@ -238,7 +238,7 @@
 
 ### "Toggle" functions tests
 - [ ] Initialization with correct parameters
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
@@ -247,7 +247,7 @@
 
 ### "Counter" functions tests
 - [ ] Initialization with correct parameters
-    - [ ] Can get a set function's input
+    - [ ] Can get a set input
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
