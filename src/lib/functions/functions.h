@@ -6,6 +6,8 @@
 
 #include "common/pdm_errno.h"
 
+#define PDM_FUNCTION_LOGIC_FALSE  0
+
 typedef enum {
     kFunctionTypeNone = 0U,
     kFunctionTypeNOT,

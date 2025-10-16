@@ -207,8 +207,45 @@ void test_whenNotFunctionInitWithInputs_thenReturnNoError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
 
     function_set_type(&function, kFunctionTypeNOT);
-    ret = function_set_input(&function, 0U, &input);
+    function_set_input(&function, 0U, &input);
     ret = function_init(&function);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}
+
+void test_whenNotInitialized_thenIsInitReturnsFalse(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    bool ret = false;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    ret = function_is_init(&function);
+
+    TEST_ASSERT_EQUAL(false, ret);
+}
+
+void test_whenInitialized_thenIsInitReturnsTrue(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    bool ret = false;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    function_init(&function);
+    ret = function_is_init(&function);
+
+    TEST_ASSERT_EQUAL(true, ret);
+}
+
+void test_whenNotFunctionRunWithoutInit_thenReturnInitError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    ret = function_run(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NO_INIT, ret);
 }

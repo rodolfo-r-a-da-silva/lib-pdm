@@ -36,6 +36,8 @@ bool function_is_init(FunctionHandle_t* instance) {
 int32_t function_run(FunctionHandle_t* instance) {
     if (instance->type == kFunctionTypeNone) {
         return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else if (!function_is_init(instance)) {
+        return LIB_PDM_ERROR_NO_INIT;
     }
 
     return LIB_PDM_ERROR_NONE;
