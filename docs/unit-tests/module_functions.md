@@ -26,6 +26,7 @@
 - [x] "is_init" function returns false when not initialized - test_whenNotInitialized_thenIsInitReturnsFalse
 - [x] "is_init" function returns true when not initialized - test_whenInitialized_thenIsInitReturnsTrue
 - [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
+- [x] Can run when initialized - test_whenNotFunctionRun_thenReturnNoError
 
 ### Boolean from integers
 - [ ] 0 is false

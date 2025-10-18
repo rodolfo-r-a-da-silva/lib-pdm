@@ -249,3 +249,17 @@ void test_whenNotFunctionRunWithoutInit_thenReturnInitError(void) {
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NO_INIT, ret);
 }
+
+void test_whenNotFunctionRun_thenReturnNoError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    function_init(&function);
+
+    ret = function_run(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}
