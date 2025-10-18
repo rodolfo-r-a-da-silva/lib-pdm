@@ -56,8 +56,8 @@
     - [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenNotFunctionRun_thenReturnNoError
 - [ ] Function logic
-    - [ ] "0" input results in true
-    - [ ] "1" input results in false
+    - [x] "0" input results in true - test_whenNotFunctionInputIsFalse_thenResultIsTrue
+    - [x] "1" input results in false - test_whenNotFunctionInputIsTrue_thenResultIsFalse
 
 ### "AND" function tests
 - [ ] Initialization with correct parameters

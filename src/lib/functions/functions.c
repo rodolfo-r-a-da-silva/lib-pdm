@@ -34,16 +34,32 @@ bool function_is_init(FunctionHandle_t* instance) {
 }
 
 int32_t function_run(FunctionHandle_t* instance) {
-    if (instance->type == kFunctionTypeNone) {
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
         return LIB_PDM_ERROR_FUNCTION_TYPE;
     } else if (!function_is_init(instance)) {
         return LIB_PDM_ERROR_NO_INIT;
+    }
+
+    switch (instance->type) {
+        case kFunctionTypeNOT:
+            instance->output = (*instance->data_not.input == PDM_FUNCTION_FALSE) 
+                    ? PDM_FUNCTION_TRUE : PDM_FUNCTION_FALSE;
+            break;
+
+        default:
+            break;
     }
 
     return LIB_PDM_ERROR_NONE;
 }
 
 int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
+    if ((instance == NULL) || (result == NULL)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
     *result = instance->output;
 
     return LIB_PDM_ERROR_NONE;
