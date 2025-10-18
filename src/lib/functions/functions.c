@@ -44,8 +44,8 @@ int32_t function_run(FunctionHandle_t* instance) {
 
     switch (instance->type) {
         case kFunctionTypeNOT:
-            instance->output = (*instance->data_not.input == PDM_FUNCTION_FALSE) 
-                    ? PDM_FUNCTION_TRUE : PDM_FUNCTION_FALSE;
+            instance->output = (*instance->data_not.input == LIB_PDM_FUNCTION_FALSE) 
+                    ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
             break;
 
         default:

@@ -266,8 +266,8 @@ void test_whenNotFunctionRun_thenReturnNoError(void) {
 
 void test_whenNotFunctionInputIsFalse_thenResultIsTrue(void) {
     FunctionHandle_t function = { 0 };
-    int32_t input = PDM_FUNCTION_FALSE;
-    int32_t output = PDM_FUNCTION_FALSE;
+    int32_t input = LIB_PDM_FUNCTION_FALSE;
+    int32_t output = LIB_PDM_FUNCTION_FALSE;
 
     function_set_type(&function, kFunctionTypeNOT);
     function_set_input(&function, 0U, &input);
@@ -276,13 +276,13 @@ void test_whenNotFunctionInputIsFalse_thenResultIsTrue(void) {
 
     function_get_result(&function, &output);
 
-    TEST_ASSERT_EQUAL(PDM_FUNCTION_TRUE, output);
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
 }
 
 void test_whenNotFunctionInputIsTrue_thenResultIsFalse(void) {
     FunctionHandle_t function = { 0 };
-    int32_t input = PDM_FUNCTION_TRUE;
-    int32_t output = PDM_FUNCTION_TRUE;
+    int32_t input = LIB_PDM_FUNCTION_TRUE;
+    int32_t output = LIB_PDM_FUNCTION_TRUE;
 
     function_set_type(&function, kFunctionTypeNOT);
     function_set_input(&function, 0U, &input);
@@ -291,5 +291,5 @@ void test_whenNotFunctionInputIsTrue_thenResultIsFalse(void) {
 
     function_get_result(&function, &output);
 
-    TEST_ASSERT_EQUAL(PDM_FUNCTION_FALSE, output);
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
 }
