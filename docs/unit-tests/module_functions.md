@@ -38,6 +38,8 @@
 - [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnWrongParamError
 - [x] Can't set input edges - test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError
 - [x] Can't get input edges - test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError
+- [ ] Can't set inverted result logic
+- [ ] Can't get inverted result logic
 - [x] Can't initialize - test_whenNoneFunctionInit_thenReturnTypeError
 - [x] Can't deinitialize - test_whenNoneFunctionDeinit_thenReturnTypeError
 - [x] Can't run - test_whenNoneFunctionRun_thenReturnTypeError
@@ -51,6 +53,8 @@
     - [x] Can get a set input - test_whenNotFunctionSetInput_thenGetInputRetrievesAddress
     - [x] Can't set input edges - test_whenNotFunctionSetInput0Edge_thenReturnFunctionTypeError
     - [x] Can't get input edges - test_whenNotFunctionGetInput0Edge_thenReturnFunctionTypeError
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [x] Can't initialize without inputs - test_whenNotFunctionInitWithoutInputs_thenReturnInputError
     - [x] Can initialize with one input - test_whenNotFunctionInitWithInputs_thenReturnNoError
     - [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
@@ -70,12 +74,15 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic
+    - [ ] Two "0" inputs results in true
     - [ ] One "0" and one "1" input results in false
     - [ ] Two "1" inputs results in true
 
@@ -90,6 +97,8 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -97,7 +106,6 @@
     - [ ] Can run when initialized
 - [ ] Function logic
     - [ ] Single "0" input results in false
-    - [ ] Single "1" input results in true
     - [ ] One "0" and one "1" input results in true
     - [ ] Two "1" inputs results in true
 
@@ -112,6 +120,8 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -133,6 +143,8 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -151,6 +163,8 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -172,6 +186,8 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -193,6 +209,8 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
@@ -211,6 +229,8 @@
     - [ ] Can get input 0
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can initialize with only one input
     - [ ] Can't run when not initialized
@@ -226,6 +246,8 @@
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can initialize with only one input
     - [ ] Can't run when not initialized
@@ -245,6 +267,8 @@
     - [ ] Can't get input 1 edge or higher
     - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize without input edge configured
     - [ ] Can initialize with only one input and edge configured
@@ -265,6 +289,8 @@
     - [ ] Can't get input 2 edge or higher
     - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
@@ -286,6 +312,8 @@
     - [ ] Can't get input 2 edge or higher
     - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
+    - [ ] Can set inverted result logic
+    - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
@@ -307,6 +335,8 @@
     - [ ] Can't get input 4 edge or higher
     - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
+    - [ ] Can't set inverted result logic
+    - [ ] Can't get inverted result logic
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
