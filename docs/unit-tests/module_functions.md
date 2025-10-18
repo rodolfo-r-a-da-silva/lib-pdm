@@ -25,8 +25,6 @@
 - [ ] Denitialization Can get output to zero
 - [x] "is_init" function returns false when not initialized - test_whenNotInitialized_thenIsInitReturnsFalse
 - [x] "is_init" function returns true when not initialized - test_whenInitialized_thenIsInitReturnsTrue
-- [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
-- [x] Can run when initialized - test_whenNotFunctionRun_thenReturnNoError
 
 ### Boolean from integers
 - [ ] 0 is false
@@ -55,6 +53,8 @@
     - [x] Can't get input edges - test_whenNotFunctionGetInput0Edge_thenReturnFunctionTypeError
     - [x] Can't initialize without inputs - test_whenNotFunctionInitWithoutInputs_thenReturnInputError
     - [x] Can initialize with one input - test_whenNotFunctionInitWithInputs_thenReturnNoError
+    - [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
+    - [x] Can run when initialized - test_whenNotFunctionRun_thenReturnNoError
 - [ ] Function logic
     - [ ] "0" input results in true
     - [ ] "1" input results in false
@@ -73,6 +73,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
     - [ ] One "0" and one "1" input results in false
     - [ ] Two "1" inputs results in true
@@ -91,6 +93,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
     - [ ] Single "0" input results in false
     - [ ] Single "1" input results in true
@@ -111,6 +115,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
     - [ ] Two "0" inputs result in false
     - [ ] One "0" and one "1" input results in true
@@ -130,6 +136,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
 
 ### "Equals to" functions tests
@@ -146,6 +154,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
     - [ ] Input 0 lesser than input 1 results in false
     - [ ] Input 0 greater than input 1 results in false
@@ -165,6 +175,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
     - [ ] Input 0 lesser than input 1 results in true
     - [ ] Input 0 greater than input 1 results in false
@@ -184,6 +196,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
     - [ ] Input 0 lesser than input 1 results in false
     - [ ] Input 0 greater than input 1 results in true
@@ -199,6 +213,8 @@
     - [ ] Can't get input edges
     - [ ] Can't initialize without inputs
     - [ ] Can initialize with only one input
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
 
 ### "Blink" functions tests
@@ -212,6 +228,8 @@
     - [ ] Can't get input edges
     - [ ] Can't initialize without inputs
     - [ ] Can initialize with only one input
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
 
 ### "Pulse" functions tests
@@ -230,6 +248,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize without input edge configured
     - [ ] Can initialize with only one input and edge configured
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
 
 ### "Set Reset" functions tests
@@ -249,6 +269,8 @@
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
     - [ ] Can initialize with two inputs and edges configured
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
 
 ### "Toggle" functions tests
@@ -268,6 +290,8 @@
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
     - [ ] Can initialize with 2 inputs and edges configured
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
 
 ### "Counter" functions tests
@@ -287,4 +311,6 @@
     - [ ] Can't initialize with only one input
     - [ ] Can't initialize without input edges configured
     - [ ] Can initialize with four inputs and edges configured
+    - [ ] Can't run when not initialized
+    - [ ] Can run when initialized
 - [ ] Function logic
