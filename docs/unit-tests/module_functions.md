@@ -10,6 +10,7 @@
     - [ ] Run returns wrong param error
 
 - [x] Get type with type as NULL pointer returns wrong param error - test_whenGetTypeWithNullType_thenReturnWrongParamError
+- [ ] Get result inversion with invert as NULL pointer returns wron param error
 
 - [ ] Input pointer is NULL
     - [ ] Set input returns wrong param error
