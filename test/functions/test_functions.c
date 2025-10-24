@@ -191,6 +191,11 @@ void test_whenNotFunctionGetInput0Edge_thenReturnFunctionTypeError(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
 }
 
+void test_whenNotFunctionSetInvertedResultWithTrue_thenReturnErrorNone(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = LIB_PDM_ERROR_NONE;
+}
+
 void test_whenNotFunctionInitWithoutInputs_thenReturnInputError(void) {
     FunctionHandle_t function = { 0 };
     int32_t ret = LIB_PDM_ERROR_NONE;

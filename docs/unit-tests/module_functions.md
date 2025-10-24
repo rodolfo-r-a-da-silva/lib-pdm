@@ -2,19 +2,21 @@
 - [ ] Function instance argument is NULL
     - [ ] Init returns wrong param error
     - [ ] Deinit returns wrong param error
+    - [ ] Is init returns false
     - [x] Set type returns wrong param error - test_whenSetTypeWithNullInstance_thenReturnWrontParamError
     - [x] Get type returns wrong param error - test_whenGetTypeWithNullInstance_thenReturnWrontParamError
     - [ ] Set input returns wrong param error
     - [ ] Get input returns wrong param error
+    - [ ] Set result inversion returns wrong param error
+    - [ ] Get result inversion returns wrong param error
     - [ ] Get result returns wrong param error
     - [ ] Run returns wrong param error
 
-- [x] Get type with type as NULL pointer returns wrong param error - test_whenGetTypeWithNullType_thenReturnWrongParamError
-- [ ] Get result inversion with invert as NULL pointer returns wron param error
-
-- [ ] Input pointer is NULL
+- [ ] Secondary pointer is NULL
+    - [x] Get type returns wrong param error - test_whenGetTypeWithNullType_thenReturnWrongParamError
     - [ ] Set input returns wrong param error
     - [ ] Get input returns wrong param error
+    - [ ] Get result returns wrong param error
 
 - [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit
 - [ ] Can't change function type when initialized

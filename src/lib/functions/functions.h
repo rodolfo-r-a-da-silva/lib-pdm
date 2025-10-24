@@ -60,6 +60,8 @@ int32_t function_deinit(FunctionHandle_t* instance);
 bool function_is_init(FunctionHandle_t* instance);
 int32_t function_run(FunctionHandle_t* instance);
 int32_t function_get_result(FunctionHandle_t* instance, int32_t* result);
+int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert);
+int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert);
 int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type);
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type);
 int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t** p_input);
