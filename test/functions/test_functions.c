@@ -75,7 +75,7 @@ void test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError(void) {
 
 void test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError(void) {
     FunctionHandle_t function = { 0 };
-    FunctionInputEdge_t* edge = kFunctionInputEdgeNone;
+    FunctionInputEdge_t edge = kFunctionInputEdgeNone;
     int32_t ret = 0;
 
     function_set_type(&function, kFunctionTypeNone);
