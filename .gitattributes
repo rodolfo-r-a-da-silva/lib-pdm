@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
+# Use default behavior if core.autocrlf isn't set
 * text=auto
+
+# Use LF on .sh files
+*.sh text eol=lf
