@@ -2,6 +2,6 @@
 
 echo "Cleaning previous tests executions"
 
-rm -rf $(dirname $(realpath $BASH_SOURCE))/../build/test
+rm -rf $(dirname $(readlink -f $0))/../build/test
 
 ceedling test:all
