@@ -270,10 +270,6 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
  * false if invalid
  */
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
-    if (instance == NULL) {
-        return false;
-    }
-
     bool ret = false;
 
     switch (input_nbr) {
@@ -297,10 +293,6 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
  * false if it can't
  */
 static bool has_input_edges(FunctionHandle_t* instance) {
-    if (instance == NULL) {
-        return false;
-    }
-
     return (instance->type != kFunctionTypeNOT);
 }
 
@@ -312,10 +304,6 @@ static bool has_input_edges(FunctionHandle_t* instance) {
  * @return True if the required inputs are set, false if aren't set
  */
 static bool are_inputs_set(FunctionHandle_t* instance) {
-    if (instance == NULL) {
-        return false;
-    }
-
     bool ret = false;
 
     switch (instance->type) {
