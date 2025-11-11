@@ -84,6 +84,27 @@ void test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
 }
 
+void test_whenNoneFunctionSetInvertedResult_thenReturnFunctionTypeError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = 0;
+
+    function_set_type(&function, kFunctionTypeNone);
+    ret = function_set_result_invertion(&function, false);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
+}
+
+void test_whenNoneFunctionGetInvertedResult_thenReturnFunctionTypeError(void) {
+    FunctionHandle_t function = { 0 };
+    bool inverted = false;
+    int32_t ret = 0;
+
+    function_set_type(&function, kFunctionTypeNone);
+    ret = function_get_result_invertion(&function, &inverted);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
+}
+
 void test_whenNoneFunctionInit_thenReturnTypeError(void) {
     FunctionHandle_t function = { 0 };
     int32_t ret = 0;
