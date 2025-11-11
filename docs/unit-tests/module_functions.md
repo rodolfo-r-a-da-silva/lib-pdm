@@ -70,10 +70,10 @@
     - [x] Can't set input 2 or higher - test_whenAndFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenAndFunctionSetInput0_thenReturnNoError
     - [x] Can set input 1 - test_whenAndFunctionSetInput1_thenReturnNoError
-    - [ ] Can't get input 2 or higher
-    - [ ] Can get input 0
-    - [ ] Can get input 1
-    - [ ] Can get a set input
+    - [x] Can't get input 2 or higher - test_whenAndFunctionGetInput2_thenReturnWrongParamError
+    - [x] Can get input 0 - test_whenAndFunctionGetInput0_thenReturnNoError
+    - [x] Can get input 1 - test_whenAndFunctionGetInput1_thenReturnNoError
+    - [x] Can get a set input - test_whenAndFunctionSetInput_thenGetInputRetrievesAddress
     - [ ] Can't set input edges
     - [ ] Can't get input edges
     - [ ] Can set inverted result logic
