@@ -67,12 +67,12 @@
 
 ### "AND" function tests
 - [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher
-    - [ ] Can't set input 0
-    - [ ] Can't set input 1
+    - [x] Can't set input 2 or higher - test_whenAndFunctionSetInput2_thenReturnWrongParamError
+    - [x] Can set input 0 - test_whenAndFunctionSetInput0_thenReturnNoError
+    - [x] Can set input 1 - test_whenAndFunctionSetInput1_thenReturnNoError
     - [ ] Can't get input 2 or higher
-    - [ ] Can't get input 0
-    - [ ] Can't get input 1
+    - [ ] Can get input 0
+    - [ ] Can get input 1
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges

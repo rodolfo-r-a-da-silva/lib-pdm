@@ -314,18 +314,18 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
  * false if invalid
  */
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
-    bool ret = false;
+    switch (instance->type) {
+        case kFunctionTypeNOT:
+            return (input_nbr == 0U);
 
-    switch (input_nbr) {
-        case 0U:
-            ret = (instance->type == kFunctionTypeNOT);
-            break;
+        case kFunctionTypeAND:
+            return (input_nbr < 2U);
 
         default:
             break;
     }
 
-    return ret;
+    return false;
 }
 
 /**
