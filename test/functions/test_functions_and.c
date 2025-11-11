@@ -79,3 +79,24 @@ void test_whenAndFunctionSetInput_thenGetInputRetrievesAddress(void) {
 
     TEST_ASSERT_EQUAL(&input, p_input);
 }
+
+void test_whenAndFunctionSetInpuEdge0_thenReturnFunctionTypeError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    ret = function_set_input_edge(&function, 0U, kFunctionInputEdgeBoth);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
+}
+
+void test_whenAndFunctionGetInpuEdge0_thenReturnFunctionTypeError(void) {
+    FunctionHandle_t function = { 0 };
+    FunctionInputEdge_t edge = kFunctionInputEdgeBoth;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    ret = function_get_input_edge(&function, 0U, &edge);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
+}

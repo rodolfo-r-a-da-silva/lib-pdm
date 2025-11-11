@@ -337,7 +337,8 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
  * false if it can't
  */
 static bool has_input_edges(FunctionHandle_t* instance) {
-    return (instance->type != kFunctionTypeNOT);
+    return ((instance->type >= kFunctionTypeBlink)
+            && (instance->type < kFunctionTypeMax));
 }
 
 /**
