@@ -113,6 +113,10 @@ int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
 int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) {
     if ((instance == NULL) || (invert == NULL)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else {
+        // Do nothing
     }
 
     return LIB_PDM_ERROR_NONE;
@@ -131,6 +135,10 @@ int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) 
 int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
     if (instance == NULL) {
         return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else {
+        // Do nothing
     }
 
     return LIB_PDM_ERROR_NONE;

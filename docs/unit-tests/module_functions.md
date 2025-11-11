@@ -41,8 +41,8 @@
 - [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnWrongParamError
 - [x] Can't set input edges - test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError
 - [x] Can't get input edges - test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError
-- [ ] Can't set inverted result logic - test_whenNoneFunctionSetInvertedResult_thenReturnFunctionTypeError
-- [ ] Can't get inverted result logic - test_whenNoneFunctionGetInvertedResult_thenReturnFunctionTypeError
+- [x] Can't set inverted result logic - test_whenNoneFunctionSetInvertedResult_thenReturnFunctionTypeError
+- [x] Can't get inverted result logic - test_whenNoneFunctionGetInvertedResult_thenReturnFunctionTypeError
 - [x] Can't initialize - test_whenNoneFunctionInit_thenReturnTypeError
 - [x] Can't deinitialize - test_whenNoneFunctionDeinit_thenReturnTypeError
 - [x] Can't run - test_whenNoneFunctionRun_thenReturnTypeError
