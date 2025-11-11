@@ -119,6 +119,8 @@ int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) 
         // Do nothing
     }
 
+    *invert = instance->data_not.invert;
+
     return LIB_PDM_ERROR_NONE;
 }
 
@@ -140,6 +142,8 @@ int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
     } else {
         // Do nothing
     }
+
+    instance->data_not.invert = invert;
 
     return LIB_PDM_ERROR_NONE;
 }

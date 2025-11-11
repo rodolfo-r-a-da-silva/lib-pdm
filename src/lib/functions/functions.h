@@ -44,6 +44,7 @@ typedef uint8_t FunctionInputNbr_t;
 
 typedef struct {
     int32_t* input;
+    bool invert;
 } FunctionDataNOT_t;
 
 

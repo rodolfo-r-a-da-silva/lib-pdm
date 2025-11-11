@@ -216,6 +216,24 @@ void test_whenNotFunctionGetInput0Edge_thenReturnFunctionTypeError(void) {
 void test_whenNotFunctionSetInvertedResultWithTrue_thenReturnErrorNone(void) {
     FunctionHandle_t function = { 0 };
     int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    ret = function_set_result_invertion(&function, true);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}
+
+void test_whenNotFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion(void) {
+    FunctionHandle_t function = { 0 };
+    bool invert = false;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_result_invertion(&function, true);
+    ret = function_get_result_invertion(&function, &invert);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+    TEST_ASSERT_EQUAL(true, invert);
 }
 
 void test_whenNotFunctionInitWithoutInputs_thenReturnInputError(void) {

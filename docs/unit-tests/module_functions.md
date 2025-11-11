@@ -55,8 +55,8 @@
     - [x] Can get a set input - test_whenNotFunctionSetInput_thenGetInputRetrievesAddress
     - [x] Can't set input edges - test_whenNotFunctionSetInput0Edge_thenReturnFunctionTypeError
     - [x] Can't get input edges - test_whenNotFunctionGetInput0Edge_thenReturnFunctionTypeError
-    - [ ] Can set inverted result logic
-    - [ ] Can get inverted result logic
+    - [x] Can set inverted result logic - test_whenNotFunctionSetInvertedResultWithTrue_thenReturnErrorNone
+    - [x] Can get inverted result logic - test_whenNotFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
     - [x] Can't initialize without inputs - test_whenNotFunctionInitWithoutInputs_thenReturnInputError
     - [x] Can initialize with one input - test_whenNotFunctionInitWithInputs_thenReturnNoError
     - [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
