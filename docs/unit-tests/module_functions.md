@@ -47,7 +47,7 @@
 - [x] Can't run - test_whenNoneFunctionRun_thenReturnTypeError
 
 ### "NOT" function tests
-- [ ] Initialization with correct parameters
+- [x] Initialization with correct parameters
     - [x] Can't set input 1 or higher - test_whenNotFunctionSetInput1_thenReturnsWrongParamError
     - [x] Can set input 0 - test_whenNotSetFunctionInput0_thenReturnsNoError
     - [x] Can't get input 1 or higher - test_whenNotFunctionGetInput1_thenReturnWrongParamError
@@ -61,7 +61,7 @@
     - [x] Can initialize with one input - test_whenNotFunctionInitWithInputs_thenReturnNoError
     - [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenNotFunctionRun_thenReturnNoError
-- [ ] Function logic
+- [x] Function logic
     - [x] "0" input results in true - test_whenNotFunctionInputIsFalse_thenResultIsTrue
     - [x] "1" input results in false - test_whenNotFunctionInputIsTrue_thenResultIsFalse
 
