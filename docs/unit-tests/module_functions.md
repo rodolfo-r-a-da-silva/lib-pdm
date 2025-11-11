@@ -7,7 +7,6 @@
     - [x] Get type returns wrong param error - test_whenGetTypeWithNullInstance_thenReturnWrontParamError
     - [ ] Set input returns wrong param error
     - [ ] Get input returns wrong param error
-    - [ ] Set result inversion returns wrong param error
     - [ ] Get result inversion returns wrong param error
     - [ ] Get result returns wrong param error
     - [ ] Run returns wrong param error
