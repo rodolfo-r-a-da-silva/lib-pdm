@@ -2,6 +2,8 @@
 
 #include "functions.h"
 
+static bool get_result_inversion(FunctionHandle_t* instance);
+static void set_output_inversion(FunctionHandle_t* instance, bool invert);
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
 static bool has_input_edges(FunctionHandle_t* instance);
 static bool are_inputs_set(FunctionHandle_t* instance);
@@ -119,7 +121,7 @@ int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) 
         // Do nothing
     }
 
-    *invert = instance->data_not.invert;
+    *invert = get_result_inversion(instance);
 
     return LIB_PDM_ERROR_NONE;
 }
@@ -143,7 +145,7 @@ int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
         // Do nothing
     }
 
-    instance->data_not.invert = invert;
+    set_output_inversion(instance, invert);
 
     return LIB_PDM_ERROR_NONE;
 }
@@ -258,6 +260,48 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
     }
 
     return LIB_PDM_ERROR_NONE;
+}
+
+/**
+ * @brief Get the function's result invertion from the specific struct
+ * 
+ * @param instance A pointer to the struct containing the function's data
+ * 
+ * @return Result inversion variable value
+ */
+static bool get_result_inversion(FunctionHandle_t* instance) {
+    switch (instance->type) {
+        case kFunctionTypeNOT: {
+            return instance->data_not.invert;
+        }
+
+        default: {
+            break;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * @brief Set the function's result invertion in the specific struct
+ * 
+ * @param instance A pointer to the struct containing the function's data
+ * @param invert The function's result invertion value
+ */
+static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
+    switch (instance->type) {
+        case kFunctionTypeNOT: {
+            instance->data_not.invert = invert;
+            break;
+        }
+
+        default: {
+            break;
+        }
+    }
+
+    return;
 }
 
 /**
