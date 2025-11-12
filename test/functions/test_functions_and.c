@@ -100,3 +100,26 @@ void test_whenAndFunctionGetInpuEdge0_thenReturnFunctionTypeError(void) {
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_FUNCTION_TYPE, ret);
 }
+
+void test_whenAndFunctionSetInvertedResultWithTrue_thenReturnErrorNone(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    ret = function_set_result_invertion(&function, true);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}
+
+void test_whenAndFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion(void) {
+    FunctionHandle_t function = { 0 };
+    bool invert = false;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_result_invertion(&function, true);
+    ret = function_get_result_invertion(&function, &invert);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+    TEST_ASSERT_EQUAL(true, invert);
+}

@@ -76,8 +76,8 @@
     - [x] Can get a set input - test_whenAndFunctionSetInput_thenGetInputRetrievesAddress
     - [x] Can't set input edges - test_whenAndFunctionSetInpuEdge0_thenReturnFunctionTypeError
     - [x] Can't get input edges - test_whenAndFunctionGetInpuEdge0_thenReturnFunctionTypeError
-    - [ ] Can set inverted result logic
-    - [ ] Can get inverted result logic
+    - [x] Can set inverted result logic - test_whenAndFunctionSetInvertedResultWithTrue_thenReturnErrorNone
+    - [x] Can get inverted result logic - test_whenAndFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize with only one input
     - [ ] Can initialize with two inputs

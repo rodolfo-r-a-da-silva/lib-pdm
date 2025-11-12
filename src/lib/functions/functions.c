@@ -271,13 +271,14 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
  */
 static bool get_result_inversion(FunctionHandle_t* instance) {
     switch (instance->type) {
-        case kFunctionTypeNOT: {
+        case kFunctionTypeNOT:
             return instance->data_not.invert;
-        }
 
-        default: {
+        case kFunctionTypeAND:
+            return instance->data_and.invert;
+
+        default:
             break;
-        }
     }
 
     return false;
@@ -291,14 +292,16 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
  */
 static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
     switch (instance->type) {
-        case kFunctionTypeNOT: {
+        case kFunctionTypeNOT:
             instance->data_not.invert = invert;
             break;
-        }
 
-        default: {
+        case kFunctionTypeAND:
+            instance->data_and.invert = invert;
             break;
-        }
+
+        default:
+            break;
     }
 
     return;

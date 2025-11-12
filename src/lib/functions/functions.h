@@ -47,13 +47,21 @@ typedef struct {
     bool invert;
 } FunctionDataNOT_t;
 
+typedef struct {
+    int32_t* input[2];
+    bool invert;
+} FunctionDataAND_t;
+
 
 typedef struct {
     int32_t output;
     FunctionType_t type;
     bool is_init;
 
-    FunctionDataNOT_t data_not;
+    union {
+        FunctionDataNOT_t data_not;
+        FunctionDataAND_t data_and;
+    };
 } FunctionHandle_t;
 
 int32_t function_init(FunctionHandle_t* instance);
