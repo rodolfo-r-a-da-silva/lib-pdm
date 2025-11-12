@@ -66,7 +66,7 @@
     - [x] "1" input results in false - test_whenNotFunctionInputIsTrue_thenResultIsFalse
 
 ### "AND" function tests
-- [ ] Initialization with correct parameters
+- [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenAndFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenAndFunctionSetInput0_thenReturnNoError
     - [x] Can set input 1 - test_whenAndFunctionSetInput1_thenReturnNoError
@@ -81,8 +81,8 @@
     - [x] Can't initialize without input 0 - test_whenAndFunctionInitWithoutInput0_thenReturnInputError
     - [x] Can't initialize without input 1 - test_whenAndFunctionInitWithoutInput1_thenReturnInputError
     - [x] Can initialize with two inputs - test_whenAndFunctionInitWithBothInputs_thenReturnNoError
-    - [ ] Can't run when not initialized
-    - [ ] Can run when initialized
+    - [x] Can't run when not initialized - test_whenAndFunctionRunWithoutInit_thenReturnInitError
+    - [x] Can run when initialized - test_whenAndFunctionRun_thenReturnNoError
 - [ ] Function logic
     - [ ] Two "0" inputs results in true
     - [ ] One "0" and one "1" input results in false
