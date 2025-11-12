@@ -21,10 +21,10 @@
 - [ ] Can't change function type when initialized
 - [ ] Function type is not changed on initialization
 - [ ] Function type is not changed on on deinitialization
-- [ ] Initialization Can get the initialized state to true
-- [ ] Denitialization Can get the initialized state to false
-- [ ] Initialization Can get output to zero
-- [ ] Denitialization Can get output to zero
+- [ ] Initialization sets the initialized state to true
+- [ ] Denitialization sets the initialized state to false
+- [ ] Initialization sets output to zero
+- [ ] Denitialization sets output to zero
 - [x] "is_init" function returns false when not initialized - test_whenNotInitialized_thenIsInitReturnsFalse
 - [x] "is_init" function returns true when not initialized - test_whenInitialized_thenIsInitReturnsTrue
 
