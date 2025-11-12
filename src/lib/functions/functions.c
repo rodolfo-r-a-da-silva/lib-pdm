@@ -1,9 +1,13 @@
 #include <stddef.h>
 
+#include <stdio.h>
+
 #include "functions.h"
 
 static bool get_result_inversion(FunctionHandle_t* instance);
 static void set_output_inversion(FunctionHandle_t* instance, bool invert);
+static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
+static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input);
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
 static bool has_input_edges(FunctionHandle_t* instance);
 static bool are_inputs_set(FunctionHandle_t* instance);
@@ -200,7 +204,7 @@ int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
-    *p_input = instance->data_not.input;
+    *p_input = get_input(instance, input_nbr);
 
     return LIB_PDM_ERROR_NONE;
 }
@@ -219,7 +223,7 @@ int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
-    instance->data_not.input = p_input;
+    set_input(instance, input_nbr, p_input);
 
     return LIB_PDM_ERROR_NONE;
 }
@@ -308,6 +312,57 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
 }
 
 /**
+ * @brief Set an input pointer of a function
+ * 
+ * @param instance A pointer to the struct containing the function's data
+ * @param input_nbr The number of the input which the pointer is to be retrieved
+ * 
+ * @return A pointer to the the function's input
+ */
+static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
+    switch (instance->type) {
+        case kFunctionTypeNOT: {
+            return instance->data_not.input;
+            break;
+        }
+
+        case kFunctionTypeAND: {
+            return instance->data_and.input[input_nbr];
+            break;
+        }
+
+        default:
+            break;
+    }
+
+    return NULL;
+}
+
+/**
+ * @brief Set an input pointer of a function
+ * 
+ * @param instance A pointer to the struct containing the function's data
+ * @param input_nbr The number of the input which the pointer is to be set
+ * @param input The pointer to the variable to be set as input
+ */
+static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input) {
+    switch (instance->type) {
+        case kFunctionTypeNOT: {
+            instance->data_not.input = input;
+            break;
+        }
+
+        case kFunctionTypeAND: {
+            instance->data_and.input[input_nbr] = input;
+            break;
+        }
+
+        default:
+            break;
+    }
+}
+
+/**
  * @brief Check if the input number is valid for the configured function type
  * 
  * @param instance A pointer to the struct containing the function's data
@@ -352,16 +407,30 @@ static bool has_input_edges(FunctionHandle_t* instance) {
  * @return True if the required inputs are set, false if aren't set
  */
 static bool are_inputs_set(FunctionHandle_t* instance) {
-    bool ret = false;
+    bool ret = true;
 
     switch (instance->type) {
         case kFunctionTypeNOT: {
-            if (instance->data_not.input != NULL) {
-                ret = true;
+            if (instance->data_not.input == NULL) {
+                ret = false;
             }
+
+            break;
+        }
+        
+        case kFunctionTypeAND: {
+            for (size_t i = 0U; i < LIB_PDM_FUNCTION_AND_INPUTS; ++i) {
+                if (instance->data_and.input[i] == NULL) {
+                    ret = false;
+                    break;
+                }
+            }
+
+            break;
         }
 
         default:
+            ret = false;
             break;
     }
 

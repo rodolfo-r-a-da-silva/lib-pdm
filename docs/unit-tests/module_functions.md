@@ -78,9 +78,9 @@
     - [x] Can't get input edges - test_whenAndFunctionGetInpuEdge0_thenReturnFunctionTypeError
     - [x] Can set inverted result logic - test_whenAndFunctionSetInvertedResultWithTrue_thenReturnErrorNone
     - [x] Can get inverted result logic - test_whenAndFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
-    - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can initialize with two inputs
+    - [x] Can't initialize without input 0 - test_whenAndFunctionInitWithoutInput0_thenReturnInputError
+    - [x] Can't initialize without input 1 - test_whenAndFunctionInitWithoutInput1_thenReturnInputError
+    - [x] Can initialize with two inputs - test_whenAndFunctionInitWithBothInputs_thenReturnNoError
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic

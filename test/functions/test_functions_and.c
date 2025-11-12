@@ -123,3 +123,50 @@ void test_whenAndFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGet
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
     TEST_ASSERT_EQUAL(true, invert);
 }
+
+void test_whenAndFunctionInitWithoutInputs_thenReturnInputError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    ret = function_init(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NO_INPUT, ret);
+}
+
+void test_whenAndFunctionInitWithoutInput0_thenReturnInputError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 1U, &input);
+    ret = function_init(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NO_INPUT, ret);
+}
+
+void test_whenAndFunctionInitWithoutInput1_thenReturnInputError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &input);
+    ret = function_init(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NO_INPUT, ret);
+}
+
+void test_whenAndFunctionInitWithBothInputs_thenReturnNoError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t inputs[2] = { 0 };
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &inputs[0]);
+    function_set_input(&function, 1U, &inputs[1]);
+    ret = function_init(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}

@@ -9,6 +9,9 @@
 #define LIB_PDM_FUNCTION_FALSE  0
 #define LIB_PDM_FUNCTION_TRUE  1
 
+#define LIB_PDM_FUNCTION_NOT_INPUTS  1U
+#define LIB_PDM_FUNCTION_AND_INPUTS  2U
+
 typedef enum {
     kFunctionTypeNone = 0U,
     kFunctionTypeNOT,
@@ -48,7 +51,7 @@ typedef struct {
 } FunctionDataNOT_t;
 
 typedef struct {
-    int32_t* input[2];
+    int32_t* input[LIB_PDM_FUNCTION_AND_INPUTS];
     bool invert;
 } FunctionDataAND_t;
 
