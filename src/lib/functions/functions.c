@@ -15,7 +15,7 @@ static bool are_inputs_set(FunctionHandle_t* instance);
 /**
  * @brief Initializes the function instance
  * 
- * @param instance A pointer to the struct containing the function's data
+ * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return An error code if negative
  */
@@ -35,7 +35,7 @@ int32_t function_init(FunctionHandle_t* instance) {
 /**
  * @brief Deinitializes the function instance
  * 
- * @param instance A pointer to the struct containing the function's data
+ * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return An error code if negative
  */
@@ -52,7 +52,7 @@ int32_t function_deinit(FunctionHandle_t* instance) {
 /**
  * @brief Check if the function instance is initialized
  * 
- * @param instance A pointer to the struct containing the function's data
+ * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return True if the function is initialized, false if not initialized
  */
@@ -63,7 +63,7 @@ bool function_is_init(FunctionHandle_t* instance) {
 /**
  * @brief Process the function's logic
  * 
- * @param instance A pointer to the struct containing the function's data
+ * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return An error code if negative
  */
@@ -92,8 +92,8 @@ int32_t function_run(FunctionHandle_t* instance) {
 /**
  * @brief Get the function's result from the last process execution
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param result A pointer to the variable that stores the function's result
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[out] result A pointer to the variable that stores the function's result
  * 
  * @return An error code if negative
  */
@@ -110,8 +110,8 @@ int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
 /**
  * @brief Check if the function's output logic is inverted
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param invert A pointer to the variable that stores the functoin logic
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[out] invert A pointer to the variable that stores the functoin logic
  * inversion
  * 
  * @return An error code if negative
@@ -133,8 +133,8 @@ int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) 
 /**
  * @brief Set the function's logic inversion
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param invert False if the function's result must stay as is, false if the
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] invert False if the function's result must stay as is, false if the
  * function's result must be inverted. When inverted, any result different from
  * 0 will turn to false and 0 will turn to true
  * 
@@ -157,8 +157,8 @@ int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
 /**
  * @brief Get the function's logic type
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param type A pointer to the variable that stores the function's logic type
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[out] type A pointer to the variable that stores the function's logic type
  * 
  * @return An error code if negative
  */
@@ -175,8 +175,8 @@ int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
 /**
  * @brief Set the function's logic type
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param type The function type to be set
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] type The function type to be set
  * 
  * @return An error code if negative
  */
@@ -193,9 +193,9 @@ int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
 /**
  * @brief Get the function's input memory address
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param input_nbr The number of the input address to be retrived
- * @param p_input A pointer to store the address of the retrieved input channel
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input address to be retrived
+ * @param[out] p_input A pointer to store the address of the retrieved input channel
  * 
  * @return An error code if negative
  */
@@ -212,9 +212,9 @@ int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
 /**
  * @brief Set the function's input memory address
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param input_nbr The number of the input address to be set
- * @param p_input A pointer with the address of the input channel
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input address to be set
+ * @param[in] p_input A pointer with the address of the input channel
  * 
  * @return An error code if negative
  */
@@ -231,9 +231,9 @@ int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
 /**
  * @brief Get the function's input edge type
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param input_nbr The number of the input edge type to be retrieved
- * @param p_input A pointer to store the retrieved input edge type
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input edge type to be retrieved
+ * @param[out] p_input A pointer to store the retrieved input edge type
  * 
  * @return An error code if negative
  */
@@ -250,9 +250,9 @@ int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
 /**
  * @brief Set the function's input edge type
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param input_nbr The number of the input edge type to be set
- * @param p_input The input edge type to be set
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input edge type to be set
+ * @param[in] p_input The input edge type to be set
  * 
  * @return An error code if negative
  */
@@ -269,7 +269,7 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
 /**
  * @brief Get the function's result invertion from the specific struct
  * 
- * @param instance A pointer to the struct containing the function's data
+ * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return Result inversion variable value
  */
@@ -291,8 +291,8 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
 /**
  * @brief Set the function's result invertion in the specific struct
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param invert The function's result invertion value
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] invert The function's result invertion value
  */
 static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
     switch (instance->type) {
@@ -314,8 +314,8 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
 /**
  * @brief Set an input pointer of a function
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param input_nbr The number of the input which the pointer is to be retrieved
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input which the pointer is to be retrieved
  * 
  * @return A pointer to the the function's input
  */
@@ -341,9 +341,9 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
 /**
  * @brief Set an input pointer of a function
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param input_nbr The number of the input which the pointer is to be set
- * @param input The pointer to the variable to be set as input
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input which the pointer is to be set
+ * @param[in] input The pointer to the variable to be set as input
  */
 static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input) {
     switch (instance->type) {
@@ -365,8 +365,8 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
 /**
  * @brief Check if the input number is valid for the configured function type
  * 
- * @param instance A pointer to the struct containing the function's data
- * @param input_nbr The number of the input to be validated
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input to be validated
  * 
  * @return True if the input number is valid for the current function type,
  * false if invalid
@@ -389,7 +389,7 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
 /**
  * @brief Check if the current function type can have input edges set
  * 
- * @param instance A pointer to the struct containing the function's data
+ * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return True if the current function type can have input edges configured,
  * false if it can't
@@ -402,7 +402,7 @@ static bool has_input_edges(FunctionHandle_t* instance) {
 /**
  * @brief Check if the function has its required inputs set for its type
  * 
- * @param instance A pointer to the struct containing the function's data
+ * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return True if the required inputs are set, false if aren't set
  */
