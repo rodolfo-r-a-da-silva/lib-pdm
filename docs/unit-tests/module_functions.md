@@ -112,13 +112,13 @@
     - [x] Can initialize with two inputs - test_whenOrFunctionInitWithBothInputs_thenReturnNoError
     - [x] Can't run when not initialized - test_whenOrFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenOrFunctionRun_thenReturnNoError
-- [ ] Function logic
+- [x] Function logic
     - [x] Input 0 and 1 are "0" results in false - test_whenOrFunctionInput0And1AreFalse_thenResultIsFalse
     - [x] Input 0 is "0" and 1 is "1" results in true - test_whenOrFunctionInput0IsTrueAnd1IsFalse_thenResultIsTrue
     - [x] Input 0 is "1" and 1 is "0" results in true - test_whenOrFunctionInput0IsFalseAnd1IsTrue_thenResultIsTrue
     - [x] Input 0 and 1 are "1" results in true - test_whenOrFunctionInput0And1AreTrue_thenResultIsTrue
-    - [ ] Input 0 is "0" and 1 is "2" results in true
-    - [ ] Input 0 is "0" and 1 is "-1" results in true
+    - [x] Input 0 is "0" and 1 is "2" results in true - test_whenOrFunctionInput0Is0And1Is2_thenResultIsTrue
+    - [x] Input 0 is "0" and 1 is "-1" results in true - test_whenOrFunctionInput0Is0And1IsMinus1_thenResultIsTrue
 
 ### "XOR" function tests
 - [ ] Initialization with correct parameters
