@@ -62,8 +62,8 @@
     - [x] Can't run when not initialized - test_whenNotFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenNotFunctionRun_thenReturnNoError
 - [x] Function logic
-    - [x] "0" input results in true - test_whenNotFunctionInputIsFalse_thenResultIsTrue
-    - [x] "1" input results in false - test_whenNotFunctionInputIsTrue_thenResultIsFalse
+    - [x] "0" input results in true - test_whenNotFunctionInputIs0_thenResultIsTrue
+    - [x] "1" input results in false - test_whenNotFunctionInputIs1_thenResultIsFalse
     - [x] "2" input results in false - test_whenNotFunctionInputIs2_thenResultIsFalse
     - [x] "-1" input results in false - test_whenNotFunctionInputIsMinus1_thenResultIsFalse
 
@@ -86,10 +86,10 @@
     - [x] Can't run when not initialized - test_whenAndFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenAndFunctionRun_thenReturnNoError
 - [x] Function logic
-    - [x] Input 0 and 1 are "0" results in false - test_whenAndFunctionInput0And1AreFalse_thenResultIsFalse
-    - [x] Input 0 is "0" and 1 is "1" results in false - test_whenAndFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse
-    - [x] Input 0 is "1" and 1 is "0" results in false - test_whenAndFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse
-    - [x] Input 0 and 1 are "1" results in true - test_whenAndFunctionInput0And1AreTrue_thenResultIsTrue
+    - [x] Input 0 and 1 are "0" results in false - test_whenAndFunctionInput0And1Are0_thenResultIsFalse
+    - [x] Input 0 is "0" and 1 is "1" results in false - test_whenAndFunctionInput0Is0And1Is1_thenResultIsFalse
+    - [x] Input 0 is "1" and 1 is "0" results in false - test_whenAndFunctionInput0Is1And1Is0_thenResultIsFalse
+    - [x] Input 0 and 1 are "1" results in true - test_whenAndFunctionInput0And1Are1_thenResultIsTrue
     - [x] Input 0 is "1" and 1 is "2" results in true - test_whenAndFunctionInput0Is1And1Is2_thenResultIsTrue
     - [x] Input 0 is "1" and 1 is "-1" results in true - test_whenAndFunctionInput0Is1And1IsMinus1_thenResultIsTrue
 
@@ -113,10 +113,10 @@
     - [x] Can't run when not initialized - test_whenOrFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenOrFunctionRun_thenReturnNoError
 - [x] Function logic
-    - [x] Input 0 and 1 are "0" results in false - test_whenOrFunctionInput0And1AreFalse_thenResultIsFalse
-    - [x] Input 0 is "0" and 1 is "1" results in true - test_whenOrFunctionInput0IsTrueAnd1IsFalse_thenResultIsTrue
-    - [x] Input 0 is "1" and 1 is "0" results in true - test_whenOrFunctionInput0IsFalseAnd1IsTrue_thenResultIsTrue
-    - [x] Input 0 and 1 are "1" results in true - test_whenOrFunctionInput0And1AreTrue_thenResultIsTrue
+    - [x] Input 0 and 1 are "0" results in false - test_whenOrFunctionInput0And1Are0_thenResultIsFalse
+    - [x] Input 0 is "0" and 1 is "1" results in true - test_whenOrFunctionInput0Is1And1Is0_thenResultIsTrue
+    - [x] Input 0 is "1" and 1 is "0" results in true - test_whenOrFunctionInput0Is0And1Is1_thenResultIsTrue
+    - [x] Input 0 and 1 are "1" results in true - test_whenOrFunctionInput0And1Are1_thenResultIsTrue
     - [x] Input 0 is "0" and 1 is "2" results in true - test_whenOrFunctionInput0Is0And1Is2_thenResultIsTrue
     - [x] Input 0 is "0" and 1 is "-1" results in true - test_whenOrFunctionInput0Is0And1IsMinus1_thenResultIsTrue
 

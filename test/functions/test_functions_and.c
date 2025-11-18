@@ -198,9 +198,9 @@ void test_whenAndFunctionRun_thenReturnNoError(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
 
-void test_whenAndFunctionInput0And1AreFalse_thenResultIsFalse(void) {
+void test_whenAndFunctionInput0And1Are0_thenResultIsFalse(void) {
     FunctionHandle_t function = { 0 };
-    int32_t inputs[2] = { LIB_PDM_FUNCTION_FALSE, LIB_PDM_FUNCTION_FALSE };
+    int32_t inputs[2] = { 0, 0 };
     int32_t output = LIB_PDM_FUNCTION_TRUE;
 
     function_set_type(&function, kFunctionTypeAND);
@@ -214,9 +214,9 @@ void test_whenAndFunctionInput0And1AreFalse_thenResultIsFalse(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
 }
 
-void test_whenAndFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse(void) {
+void test_whenAndFunctionInput0Is1And1Is0_thenResultIsFalse(void) {
     FunctionHandle_t function = { 0 };
-    int32_t inputs[2] = { LIB_PDM_FUNCTION_TRUE, LIB_PDM_FUNCTION_FALSE };
+    int32_t inputs[2] = { 1, 0 };
     int32_t output = LIB_PDM_FUNCTION_TRUE;
 
     function_set_type(&function, kFunctionTypeAND);
@@ -230,9 +230,9 @@ void test_whenAndFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
 }
 
-void test_whenAndFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse(void) {
+void test_whenAndFunctionInput0Is0And1Is1_thenResultIsFalse(void) {
     FunctionHandle_t function = { 0 };
-    int32_t inputs[2] = { LIB_PDM_FUNCTION_FALSE, LIB_PDM_FUNCTION_TRUE };
+    int32_t inputs[2] = { 0, 1 };
     int32_t output = LIB_PDM_FUNCTION_TRUE;
 
     function_set_type(&function, kFunctionTypeAND);
@@ -246,9 +246,9 @@ void test_whenAndFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
 }
 
-void test_whenAndFunctionInput0And1AreTrue_thenResultIsTrue(void) {
+void test_whenAndFunctionInput0And1Are1_thenResultIsTrue(void) {
     FunctionHandle_t function = { 0 };
-    int32_t inputs[2] = { LIB_PDM_FUNCTION_TRUE, LIB_PDM_FUNCTION_TRUE };
+    int32_t inputs[2] = { 1, 1 };
     int32_t output = LIB_PDM_FUNCTION_FALSE;
 
     function_set_type(&function, kFunctionTypeAND);
