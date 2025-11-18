@@ -84,9 +84,9 @@
     - [x] Can't run when not initialized - test_whenAndFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenAndFunctionRun_thenReturnNoError
 - [x] Function logic
-    - [x] Input 0 and input 1 are "0" results in false - test_whenAndFunctionInput0And1AreFalse_thenResultIsFalse
-    - [x] Input 0 is "0" and input 1 is "1" results in false - test_whenAndFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse
-    - [x] Input 0 is "1" and input 1 is "0" results in false - test_whenAndFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse
+    - [x] Input 0 and 1 are "0" results in false - test_whenAndFunctionInput0And1AreFalse_thenResultIsFalse
+    - [x] Input 0 is "0" and 1 is "1" results in false - test_whenAndFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse
+    - [x] Input 0 is "1" and 1 is "0" results in false - test_whenAndFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse
     - [x] Input 0 and 1 are "1" results in true - test_whenAndFunctionInput0And1AreTrue_thenResultIsTrue
 
 ### "OR" function tests
@@ -108,9 +108,10 @@
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic
-    - [ ] Single "0" input results in false
-    - [ ] One "0" and one "1" input results in true
-    - [ ] Two "1" inputs results in true
+    - [ ] Input 0 and 1 are "0" results in false
+    - [ ] Input 0 is "0" and 1 is "1" results in true
+    - [ ] Input 0 is "1" and 1 is "0" results in true
+    - [ ] Input 0 and 1 are "1" results in true
 
 ### "XOR" function tests
 - [ ] Initialization with correct parameters
@@ -131,9 +132,10 @@
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic
-    - [ ] Two "0" inputs result in false
-    - [ ] One "0" and one "1" input results in true
-    - [ ] Two "1" inputs results in false
+    - [ ] Input 0 and 1 are "0" results in false
+    - [ ] Input 0 is "0" and 1 is "1" results in true
+    - [ ] Input 0 is "1" and 1 is "0" results in true
+    - [ ] Input 0 and 1 are "1" results in false
 
 ### "Bitwise AND" function tests
 - [ ] Initialization with correct parameters
