@@ -4,13 +4,13 @@
 
 #include "functions.h"
 
-static bool get_result_inversion(FunctionHandle_t* instance);
-static void set_output_inversion(FunctionHandle_t* instance, bool invert);
+static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
 static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
 static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input);
-static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
-static bool has_input_edges(FunctionHandle_t* instance);
 static bool are_inputs_set(FunctionHandle_t* instance);
+static bool has_input_edges(FunctionHandle_t* instance);
+static bool get_result_inversion(FunctionHandle_t* instance);
+static void set_output_inversion(FunctionHandle_t* instance, bool invert);
 
 /**
  * @brief Initializes the function instance
@@ -267,48 +267,27 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
 }
 
 /**
- * @brief Get the function's result invertion from the specific struct
+ * @brief Check if the input number is valid for the configured function type
  * 
  * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] input_nbr The number of the input to be validated
  * 
- * @return Result inversion variable value
+ * @return True if the input number is valid for the current function type,
+ * false if invalid
  */
-static bool get_result_inversion(FunctionHandle_t* instance) {
+static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
     switch (instance->type) {
         case kFunctionTypeNOT:
-            return instance->data_not.invert;
+            return (input_nbr == 0U);
 
         case kFunctionTypeAND:
-            return instance->data_and.invert;
+            return (input_nbr < 2U);
 
         default:
             break;
     }
 
     return false;
-}
-
-/**
- * @brief Set the function's result invertion in the specific struct
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] invert The function's result invertion value
- */
-static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
-    switch (instance->type) {
-        case kFunctionTypeNOT:
-            instance->data_not.invert = invert;
-            break;
-
-        case kFunctionTypeAND:
-            instance->data_and.invert = invert;
-            break;
-
-        default:
-            break;
-    }
-
-    return;
 }
 
 /**
@@ -363,43 +342,6 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
 }
 
 /**
- * @brief Check if the input number is valid for the configured function type
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] input_nbr The number of the input to be validated
- * 
- * @return True if the input number is valid for the current function type,
- * false if invalid
- */
-static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
-    switch (instance->type) {
-        case kFunctionTypeNOT:
-            return (input_nbr == 0U);
-
-        case kFunctionTypeAND:
-            return (input_nbr < 2U);
-
-        default:
-            break;
-    }
-
-    return false;
-}
-
-/**
- * @brief Check if the current function type can have input edges set
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * 
- * @return True if the current function type can have input edges configured,
- * false if it can't
- */
-static bool has_input_edges(FunctionHandle_t* instance) {
-    return ((instance->type >= kFunctionTypeBlink)
-            && (instance->type < kFunctionTypeMax));
-}
-
-/**
  * @brief Check if the function has its required inputs set for its type
  * 
  * @param[in] instance A pointer to the struct containing the function's data
@@ -435,4 +377,62 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
     }
 
     return ret;
+}
+
+/**
+ * @brief Check if the current function type can have input edges set
+ * 
+ * @param[in] instance A pointer to the struct containing the function's data
+ * 
+ * @return True if the current function type can have input edges configured,
+ * false if it can't
+ */
+static bool has_input_edges(FunctionHandle_t* instance) {
+    return ((instance->type >= kFunctionTypeBlink)
+            && (instance->type < kFunctionTypeMax));
+}
+
+/**
+ * @brief Get the function's result invertion from the specific struct
+ * 
+ * @param[in] instance A pointer to the struct containing the function's data
+ * 
+ * @return Result inversion variable value
+ */
+static bool get_result_inversion(FunctionHandle_t* instance) {
+    switch (instance->type) {
+        case kFunctionTypeNOT:
+            return instance->data_not.invert;
+
+        case kFunctionTypeAND:
+            return instance->data_and.invert;
+
+        default:
+            break;
+    }
+
+    return false;
+}
+
+/**
+ * @brief Set the function's result invertion in the specific struct
+ * 
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] invert The function's result invertion value
+ */
+static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
+    switch (instance->type) {
+        case kFunctionTypeNOT:
+            instance->data_not.invert = invert;
+            break;
+
+        case kFunctionTypeAND:
+            instance->data_and.invert = invert;
+            break;
+
+        default:
+            break;
+    }
+
+    return;
 }
