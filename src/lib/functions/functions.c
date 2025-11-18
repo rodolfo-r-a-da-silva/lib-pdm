@@ -282,6 +282,9 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
         case kFunctionTypeXOR:
             return (input_nbr < 2U);
 
+        case kFunctionTypeBitwiseAND:
+            return (input_nbr < 2U);
+
         default:
             break;
     }
@@ -311,6 +314,9 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
         case kFunctionTypeXOR:
             return instance->data_xor.input[input_nbr];
 
+        case kFunctionTypeBitwiseAND:
+            return instance->data_bitwise_and.input[input_nbr];
+
         default:
             break;
     }
@@ -338,6 +344,9 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
 
         case kFunctionTypeXOR:
             instance->data_xor.input[input_nbr] = input;
+
+        case kFunctionTypeBitwiseAND:
+            instance->data_bitwise_and.input[input_nbr] = input;
 
         default:
             break;
@@ -386,8 +395,19 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
         }
 
         case kFunctionTypeXOR: {
-            for (size_t i = 0U; i < LIB_PDM_FUNCTION_OR_INPUTS; ++i) {
+            for (size_t i = 0U; i < LIB_PDM_FUNCTION_XOR_INPUTS; ++i) {
                 if (instance->data_xor.input[i] == NULL) {
+                    ret = false;
+                    break;
+                }
+            }
+
+            break;
+        }
+
+        case kFunctionTypeBitwiseAND: {
+            for (size_t i = 0U; i < LIB_PDM_FUNCTION_BITWISE_AND_INPUTS; ++i) {
+                if (instance->data_bitwise_and.input[i] == NULL) {
                     ret = false;
                     break;
                 }
@@ -438,6 +458,9 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
         case kFunctionTypeXOR:
             return instance->data_xor.invert;
 
+        case kFunctionTypeBitwiseAND:
+            return instance->data_bitwise_and.invert;
+
         default:
             break;
     }
@@ -467,6 +490,10 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
 
         case kFunctionTypeXOR:
             instance->data_xor.invert = invert;
+            break;
+
+        case kFunctionTypeBitwiseAND:
+            instance->data_bitwise_and.invert = invert;
             break;
 
         default:

@@ -149,24 +149,24 @@
     - [x] Input 0 is "-1" and 1 is "2" results in false - test_whenXorFunctionInput0IsMinus1And2Is2_thenResultIsFalse
 
 ### "Bitwise AND" function tests
-- [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher - test_whenBitwiseAndFunctionSetInput2_thenReturnWrongParamError
-    - [ ] Can set input 0 - test_whenBitwiseAndFunctionSetInput0_thenReturnNoError
-    - [ ] Can set input 1 - test_whenBitwiseAndFunctionSetInput1_thenReturnNoError
-    - [ ] Can't get input 2 or higher - test_whenBitwiseAndFunctionGetInput2_thenReturnWrongParamError
-    - [ ] Can get input 0 - test_whenBitwiseAndFunctionGetInput0_thenReturnNoError
-    - [ ] Can get input 1 - test_whenBitwiseAndFunctionGetInput1_thenReturnNoError
-    - [ ] Can get a set input - test_whenBitwiseAndFunctionSetInput_thenGetInputRetrievesAddress
-    - [ ] Can't set input edges - test_whenBitwiseAndFunctionSetInpuEdge0_thenReturnFunctionTypeError
-    - [ ] Can't get input edges - test_whenBitwiseAndFunctionGetInpuEdge0_thenReturnFunctionTypeError
-    - [ ] Can set inverted result logic - test_whenBitwiseAndFunctionSetInvertedResultWithTrue_thenReturnErrorNone
-    - [ ] Can get inverted result logic - test_whenBitwiseAndFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
-    - [ ] Can't initialize without inputs - test_whenBitwiseAndFunctionInitWithoutInputs_thenReturnInputError
-    - [ ] Can't initialize without input 0 - test_whenBitwiseAndFunctionInitWithoutInput0_thenReturnInputError
-    - [ ] Can't initialize without input 1 - test_whenBitwiseAndFunctionInitWithoutInput1_thenReturnInputError
-    - [ ] Can initialize with two inputs - test_whenBitwiseAndFunctionInitWithBothInputs_thenReturnNoError
-    - [ ] Can't run when not initialized - test_whenBitwiseAndFunctionRunWithoutInit_thenReturnInitError
-    - [ ] Can run when initialized - test_whenBitwiseAndFunctionRun_thenReturnNoError
+- [x] Initialization with correct parameters
+    - [x] Can't set input 2 or higher - test_whenBitwiseAndFunctionSetInput2_thenReturnWrongParamError
+    - [x] Can set input 0 - test_whenBitwiseAndFunctionSetInput0_thenReturnNoError
+    - [x] Can set input 1 - test_whenBitwiseAndFunctionSetInput1_thenReturnNoError
+    - [x] Can't get input 2 or higher - test_whenBitwiseAndFunctionGetInput2_thenReturnWrongParamError
+    - [x] Can get input 0 - test_whenBitwiseAndFunctionGetInput0_thenReturnNoError
+    - [x] Can get input 1 - test_whenBitwiseAndFunctionGetInput1_thenReturnNoError
+    - [x] Can get a set input - test_whenBitwiseAndFunctionSetInput_thenGetInputRetrievesAddress
+    - [x] Can't set input edges - test_whenBitwiseAndFunctionSetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can't get input edges - test_whenBitwiseAndFunctionGetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can set inverted result logic - test_whenBitwiseAndFunctionSetInvertedResultWithTrue_thenReturnErrorNone
+    - [x] Can get inverted result logic - test_whenBitwiseAndFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
+    - [x] Can't initialize without inputs - test_whenBitwiseAndFunctionInitWithoutInputs_thenReturnInputError
+    - [x] Can't initialize without input 0 - test_whenBitwiseAndFunctionInitWithoutInput0_thenReturnInputError
+    - [x] Can't initialize without input 1 - test_whenBitwiseAndFunctionInitWithoutInput1_thenReturnInputError
+    - [x] Can initialize with two inputs - test_whenBitwiseAndFunctionInitWithBothInputs_thenReturnNoError
+    - [x] Can't run when not initialized - test_whenBitwiseAndFunctionRunWithoutInit_thenReturnInitError
+    - [x] Can run when initialized - test_whenBitwiseAndFunctionRun_thenReturnNoError
 - [ ] Function logic
 
 ### "Equals to" functions tests

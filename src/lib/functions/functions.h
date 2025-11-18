@@ -13,6 +13,7 @@
 #define LIB_PDM_FUNCTION_AND_INPUTS  2U
 #define LIB_PDM_FUNCTION_OR_INPUTS  2U
 #define LIB_PDM_FUNCTION_XOR_INPUTS  2U
+#define LIB_PDM_FUNCTION_BITWISE_AND_INPUTS  2U
 
 typedef enum {
     kFunctionTypeNone = 0U,
@@ -68,6 +69,11 @@ typedef struct {
 } FunctionDataXOR_t;
 
 typedef struct {
+    int32_t* input[LIB_PDM_FUNCTION_BITWISE_AND_INPUTS];
+    bool invert;
+} FunctionDataBitwiseAND_t;
+
+typedef struct {
     int32_t output;
     FunctionType_t type;
     bool is_init;
@@ -77,6 +83,7 @@ typedef struct {
         FunctionDataAND_t data_and;
         FunctionDataOR_t data_or;
         FunctionDataOR_t data_xor;
+        FunctionDataBitwiseAND_t data_bitwise_and;
     };
 } FunctionHandle_t;
 
