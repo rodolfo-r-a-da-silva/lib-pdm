@@ -121,32 +121,32 @@
     - [x] Input 0 is "0" and 1 is "-1" results in true - test_whenOrFunctionInput0Is0And1IsMinus1_thenResultIsTrue
 
 ### "XOR" function tests
-- [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher - test_whenXorFunctionSetInput2_thenReturnWrongParamError
-    - [ ] Can set input 0 - test_whenXorFunctionSetInput0_thenReturnNoError
-    - [ ] Can set input 1 - test_whenXorFunctionSetInput1_thenReturnNoError
-    - [ ] Can't get input 2 or higher - test_whenXorFunctionGetInput2_thenReturnWrongParamError
-    - [ ] Can get input 0 - test_whenXorFunctionGetInput0_thenReturnNoError
-    - [ ] Can get input 1 - test_whenXorFunctionGetInput1_thenReturnNoError
-    - [ ] Can get a set input - test_whenXorFunctionSetInput_thenGetInputRetrievesAddress
-    - [ ] Can't set input edges - test_whenXorFunctionSetInpuEdge0_thenReturnFunctionTypeError
-    - [ ] Can't get input edges - test_whenXorFunctionGetInpuEdge0_thenReturnFunctionTypeError
-    - [ ] Can set inverted result logic - test_whenXorFunctionSetInvertedResultWithTrue_thenReturnErrorNone
-    - [ ] Can get inverted result logic - test_whenXorFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
-    - [ ] Can't initialize without inputs - test_whenXorFunctionInitWithoutInputs_thenReturnInputError
-    - [ ] Can't initialize without input 0 - test_whenXorFunctionInitWithoutInput0_thenReturnInputError
-    - [ ] Can't initialize without input 1 - test_whenXorFunctionInitWithoutInput1_thenReturnInputError
-    - [ ] Can initialize with two inputs - test_whenXorFunctionInitWithBothInputs_thenReturnNoError
-    - [ ] Can't run when not initialized - test_whenXorFunctionRunWithoutInit_thenReturnInitError
-    - [ ] Can run when initialized - test_whenXorFunctionRun_thenReturnNoError
-- [ ] Function logic
-    - [ ] Input 0 and 1 are "0" results in false - test_whenXorFunctionInput0And1Are0_thenResultIsFalse
-    - [ ] Input 0 is "0" and 1 is "1" results in true - test_whenXorFunctionInput0Is0And1Is1_thenResultIsTrue
-    - [ ] Input 0 is "1" and 1 is "0" results in true - test_whenXorFunctionInput0Is1And1Is0_thenResultIsTrue
-    - [ ] Input 0 and 1 are "1" results in false - test_whenXorFunctionInput0And1Are1_thenResultIsFalse
-    - [ ] Input 0 is "0" and 1 is "2" results in true - test_whenXorFunctionInput0Is0And1Is2_thenResultIsTrue
-    - [ ] Input 0 is "0" and 1 is "-1" results in true - test_whenXorFunctionInput0Is0And1IsMinus1_thenResultIsTrue
-    - [ ] Input 0 is "-1" and 1 is "2" results in false - test_whenXorFunctionInput0IsMinus1And2Is2_thenResultIsFalse
+- [x] Initialization with correct parameters
+    - [x] Can't set input 2 or higher - test_whenXorFunctionSetInput2_thenReturnWrongParamError
+    - [x] Can set input 0 - test_whenXorFunctionSetInput0_thenReturnNoError
+    - [x] Can set input 1 - test_whenXorFunctionSetInput1_thenReturnNoError
+    - [x] Can't get input 2 or higher - test_whenXorFunctionGetInput2_thenReturnWrongParamError
+    - [x] Can get input 0 - test_whenXorFunctionGetInput0_thenReturnNoError
+    - [x] Can get input 1 - test_whenXorFunctionGetInput1_thenReturnNoError
+    - [x] Can get a set input - test_whenXorFunctionSetInput_thenGetInputRetrievesAddress
+    - [x] Can't set input edges - test_whenXorFunctionSetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can't get input edges - test_whenXorFunctionGetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can set inverted result logic - test_whenXorFunctionSetInvertedResultWithTrue_thenReturnErrorNone
+    - [x] Can get inverted result logic - test_whenXorFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
+    - [x] Can't initialize without inputs - test_whenXorFunctionInitWithoutInputs_thenReturnInputError
+    - [x] Can't initialize without input 0 - test_whenXorFunctionInitWithoutInput0_thenReturnInputError
+    - [x] Can't initialize without input 1 - test_whenXorFunctionInitWithoutInput1_thenReturnInputError
+    - [x] Can initialize with two inputs - test_whenXorFunctionInitWithBothInputs_thenReturnNoError
+    - [x] Can't run when not initialized - test_whenXorFunctionRunWithoutInit_thenReturnInitError
+    - [x] Can run when initialized - test_whenXorFunctionRun_thenReturnNoError
+- [x] Function logic
+    - [x] Input 0 and 1 are "0" results in false - test_whenXorFunctionInput0And1Are0_thenResultIsFalse
+    - [x] Input 0 is "0" and 1 is "1" results in true - test_whenXorFunctionInput0Is0And1Is1_thenResultIsTrue
+    - [x] Input 0 is "1" and 1 is "0" results in true - test_whenXorFunctionInput0Is1And1Is0_thenResultIsTrue
+    - [x] Input 0 and 1 are "1" results in false - test_whenXorFunctionInput0And1Are1_thenResultIsFalse
+    - [x] Input 0 is "0" and 1 is "2" results in true - test_whenXorFunctionInput0Is0And1Is2_thenResultIsTrue
+    - [x] Input 0 is "0" and 1 is "-1" results in true - test_whenXorFunctionInput0Is0And1IsMinus1_thenResultIsTrue
+    - [x] Input 0 is "-1" and 1 is "2" results in false - test_whenXorFunctionInput0IsMinus1And2Is2_thenResultIsFalse
 
 ### "Bitwise AND" function tests
 - [ ] Initialization with correct parameters
