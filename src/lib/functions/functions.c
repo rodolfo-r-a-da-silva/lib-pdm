@@ -276,6 +276,9 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
         case kFunctionTypeAND:
             return (input_nbr < 2U);
 
+        case kFunctionTypeOR:
+            return (input_nbr < 2U);
+
         default:
             break;
     }
@@ -293,15 +296,14 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
  */
 static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
     switch (instance->type) {
-        case kFunctionTypeNOT: {
+        case kFunctionTypeNOT:
             return instance->data_not.input;
-            break;
-        }
 
-        case kFunctionTypeAND: {
+        case kFunctionTypeAND:
             return instance->data_and.input[input_nbr];
-            break;
-        }
+
+        case kFunctionTypeOR:
+            return instance->data_or.input[input_nbr];
 
         default:
             break;
@@ -319,15 +321,14 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
  */
 static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input) {
     switch (instance->type) {
-        case kFunctionTypeNOT: {
+        case kFunctionTypeNOT:
             instance->data_not.input = input;
-            break;
-        }
 
-        case kFunctionTypeAND: {
+        case kFunctionTypeAND:
             instance->data_and.input[input_nbr] = input;
-            break;
-        }
+
+        case kFunctionTypeOR:
+            instance->data_or.input[input_nbr] = input;
 
         default:
             break;
@@ -356,6 +357,17 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
         case kFunctionTypeAND: {
             for (size_t i = 0U; i < LIB_PDM_FUNCTION_AND_INPUTS; ++i) {
                 if (instance->data_and.input[i] == NULL) {
+                    ret = false;
+                    break;
+                }
+            }
+
+            break;
+        }
+
+        case kFunctionTypeOR: {
+            for (size_t i = 0U; i < LIB_PDM_FUNCTION_OR_INPUTS; ++i) {
+                if (instance->data_or.input[i] == NULL) {
                     ret = false;
                     break;
                 }
@@ -400,6 +412,9 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
         case kFunctionTypeAND:
             return instance->data_and.invert;
 
+        case kFunctionTypeOR:
+            return instance->data_or.invert;
+
         default:
             break;
     }
@@ -421,6 +436,10 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
 
         case kFunctionTypeAND:
             instance->data_and.invert = invert;
+            break;
+
+        case kFunctionTypeOR:
+            instance->data_or.invert = invert;
             break;
 
         default:
@@ -447,6 +466,11 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
             return ((*instance->data_and.input[0] == LIB_PDM_FUNCTION_TRUE)
                     && (*instance->data_and.input[1] == LIB_PDM_FUNCTION_TRUE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+
+        case kFunctionTypeOR:
+            return ((*instance->data_or.input[0] == LIB_PDM_FUNCTION_FALSE)
+                    && (*instance->data_or.input[1] == LIB_PDM_FUNCTION_FALSE))
+                ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
 
         default:
             break;
