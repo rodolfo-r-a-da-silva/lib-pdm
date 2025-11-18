@@ -91,27 +91,28 @@
 
 ### "OR" function tests
 - [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher
-    - [ ] Can set input 0
-    - [ ] Can set input 1
-    - [ ] Can't get input 2 or higher
-    - [ ] Can get input 0
-    - [ ] Can get input 1
-    - [ ] Can get a set input
-    - [ ] Can't set input edges
-    - [ ] Can't get input edges
-    - [ ] Can set inverted result logic
-    - [ ] Can get inverted result logic
-    - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can initialize with two inputs
-    - [ ] Can't run when not initialized
-    - [ ] Can run when initialized
+    - [x] Can't set input 2 or higher - test_whenOrFunctionSetInput2_thenReturnWrongParamError
+    - [ ] Can set input 0 - test_whenOrFunctionSetInput0_thenReturnNoError
+    - [ ] Can set input 1 - test_whenOrFunctionSetInput1_thenReturnNoError
+    - [x] Can't get input 2 or higher - test_whenOrFunctionGetInput2_thenReturnWrongParamError
+    - [ ] Can get input 0 - test_whenOrFunctionGetInput0_thenReturnNoError
+    - [ ] Can get input 1 - test_whenOrFunctionGetInput1_thenReturnNoError
+    - [ ] Can get a set input - test_whenOrFunctionSetInput_thenGetInputRetrievesAddress
+    - [ ] Can't set input edges - test_whenOrFunctionSetInpuEdge0_thenReturnFunctionTypeError
+    - [ ] Can't get input edges - test_whenOrFunctionGetInpuEdge0_thenReturnFunctionTypeError
+    - [ ] Can set inverted result logic - test_whenOrFunctionSetInvertedResultWithTrue_thenReturnErrorNone
+    - [ ] Can get inverted result logic - test_whenOrFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
+    - [ ] Can't initialize without inputs - test_whenOrFunctionInitWithoutInputs_thenReturnInputError
+    - [ ] Can't initialize without input 0 - test_whenOrFunctionInitWithoutInput0_thenReturnInputError
+    - [ ] Can't initialize without input 1 - test_whenOrFunctionInitWithoutInput1_thenReturnInputError
+    - [ ] Can initialize with two inputs - test_whenOrFunctionInitWithBothInputs_thenReturnNoError
+    - [ ] Can't run when not initialized - test_whenOrFunctionRunWithoutInit_thenReturnInitError
+    - [ ] Can run when initialized - test_whenOrFunctionRun_thenReturnNoError
 - [ ] Function logic
-    - [ ] Input 0 and 1 are "0" results in false
-    - [ ] Input 0 is "0" and 1 is "1" results in true
-    - [ ] Input 0 is "1" and 1 is "0" results in true
-    - [ ] Input 0 and 1 are "1" results in true
+    - [ ] Input 0 and 1 are "0" results in false - test_whenOrFunctionInput0And1AreFalse_thenResultIsFalse
+    - [ ] Input 0 is "0" and 1 is "1" results in true - test_whenOrFunctionInput0IsTrueAnd1IsFalse_thenResultIsTrue
+    - [ ] Input 0 is "1" and 1 is "0" results in true - test_whenOrFunctionInput0IsFalseAnd1IsTrue_thenResultIsTrue
+    - [ ] Input 0 and 1 are "1" results in true - test_whenOrFunctionInput0And1AreTrue_thenResultIsTrue
 
 ### "XOR" function tests
 - [ ] Initialization with correct parameters

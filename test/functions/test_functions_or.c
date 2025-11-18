@@ -214,7 +214,7 @@ void test_whenOrFunctionInput0And1AreFalse_thenResultIsFalse(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
 }
 
-void test_whenOrFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse(void) {
+void test_whenOrFunctionInput0IsTrueAnd1IsFalse_thenResultIsTrue(void) {
     FunctionHandle_t function = { 0 };
     int32_t inputs[2] = { LIB_PDM_FUNCTION_TRUE, LIB_PDM_FUNCTION_FALSE };
     int32_t output = LIB_PDM_FUNCTION_FALSE;
@@ -230,7 +230,7 @@ void test_whenOrFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
 }
 
-void test_whenOrFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse(void) {
+void test_whenOrFunctionInput0IsFalseAnd1IsTrue_thenResultIsTrue(void) {
     FunctionHandle_t function = { 0 };
     int32_t inputs[2] = { LIB_PDM_FUNCTION_FALSE, LIB_PDM_FUNCTION_TRUE };
     int32_t output = LIB_PDM_FUNCTION_FALSE;
