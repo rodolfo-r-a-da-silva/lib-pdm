@@ -83,10 +83,11 @@
     - [x] Can initialize with two inputs - test_whenAndFunctionInitWithBothInputs_thenReturnNoError
     - [x] Can't run when not initialized - test_whenAndFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenAndFunctionRun_thenReturnNoError
-- [ ] Function logic
-    - [ ] Two "0" inputs results in true
-    - [ ] One "0" and one "1" input results in false
-    - [ ] Two "1" inputs results in true
+- [x] Function logic
+    - [x] Input 0 and input 1 are "0" results in false - test_whenAndFunctionInput0And1AreFalse_thenResultIsFalse
+    - [x] Input 0 is "0" and input 1 is "1" results in false - test_whenAndFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse
+    - [x] Input 0 is "1" and input 1 is "0" results in false - test_whenAndFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse
+    - [x] Input 0 and 1 are "1" results in true - test_whenAndFunctionInput0And1AreTrue_thenResultIsTrue
 
 ### "OR" function tests
 - [ ] Initialization with correct parameters

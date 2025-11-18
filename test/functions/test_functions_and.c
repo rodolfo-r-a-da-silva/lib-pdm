@@ -172,7 +172,7 @@ void test_whenAndFunctionInitWithBothInputs_thenReturnNoError(void) {
 }
 
 void test_whenAndFunctionRunWithoutInit_thenReturnInitError(void) {
-        FunctionHandle_t function = { 0 };
+    FunctionHandle_t function = { 0 };
     int32_t inputs[2] = { 0 };
     int32_t ret = LIB_PDM_ERROR_NONE;
 
@@ -185,7 +185,7 @@ void test_whenAndFunctionRunWithoutInit_thenReturnInitError(void) {
 }
 
 void test_whenAndFunctionRun_thenReturnNoError(void) {
-        FunctionHandle_t function = { 0 };
+    FunctionHandle_t function = { 0 };
     int32_t inputs[2] = { 0 };
     int32_t ret = LIB_PDM_ERROR_NONE;
 
@@ -196,4 +196,68 @@ void test_whenAndFunctionRun_thenReturnNoError(void) {
     ret = function_run(&function);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}
+
+void test_whenAndFunctionInput0And1AreFalse_thenResultIsFalse(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t inputs[2] = { LIB_PDM_FUNCTION_FALSE, LIB_PDM_FUNCTION_FALSE };
+    int32_t output = LIB_PDM_FUNCTION_TRUE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &inputs[0]);
+    function_set_input(&function, 1U, &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
+}
+
+void test_whenAndFunctionInput0IsTrueAnd1IsFalse_thenResultIsFalse(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t inputs[2] = { LIB_PDM_FUNCTION_TRUE, LIB_PDM_FUNCTION_FALSE };
+    int32_t output = LIB_PDM_FUNCTION_TRUE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &inputs[0]);
+    function_set_input(&function, 1U, &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
+}
+
+void test_whenAndFunctionInput0IsFalseAnd1IsTrue_thenResultIsFalse(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t inputs[2] = { LIB_PDM_FUNCTION_FALSE, LIB_PDM_FUNCTION_TRUE };
+    int32_t output = LIB_PDM_FUNCTION_TRUE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &inputs[0]);
+    function_set_input(&function, 1U, &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
+}
+
+void test_whenAndFunctionInput0And1AreTrue_thenResultIsTrue(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t inputs[2] = { LIB_PDM_FUNCTION_TRUE, LIB_PDM_FUNCTION_TRUE };
+    int32_t output = LIB_PDM_FUNCTION_FALSE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &inputs[0]);
+    function_set_input(&function, 1U, &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
 }

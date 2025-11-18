@@ -11,6 +11,7 @@ static bool are_inputs_set(FunctionHandle_t* instance);
 static bool has_input_edges(FunctionHandle_t* instance);
 static bool get_result_inversion(FunctionHandle_t* instance);
 static void set_output_inversion(FunctionHandle_t* instance, bool invert);
+static int32_t calculate_output(FunctionHandle_t* instance);
 
 /**
  * @brief Initializes the function instance
@@ -76,15 +77,7 @@ int32_t function_run(FunctionHandle_t* instance) {
         return LIB_PDM_ERROR_NO_INIT;
     }
 
-    switch (instance->type) {
-        case kFunctionTypeNOT:
-            instance->output = (*instance->data_not.input == LIB_PDM_FUNCTION_FALSE) 
-                    ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
-            break;
-
-        default:
-            break;
-    }
+    instance->output = calculate_output(instance);
 
     return LIB_PDM_ERROR_NONE;
 }
@@ -435,4 +428,29 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
     }
 
     return;
+}
+
+/**
+ * @brief Calculate the function's result based on its type and inputs
+ * 
+ * @param[in] instance A pointer to the struct containing the function's data
+ * 
+ * @return Result
+ */
+static int32_t calculate_output(FunctionHandle_t* instance) {
+    switch (instance->type) {
+        case kFunctionTypeNOT:
+            return (*instance->data_not.input != LIB_PDM_FUNCTION_FALSE) 
+                ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
+
+        case kFunctionTypeAND:
+            return ((*instance->data_and.input[0] == LIB_PDM_FUNCTION_TRUE)
+                    && (*instance->data_and.input[1] == LIB_PDM_FUNCTION_TRUE))
+                ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+
+        default:
+            break;
+    }
+
+    return LIB_PDM_FUNCTION_FALSE;
 }
