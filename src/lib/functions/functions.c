@@ -463,14 +463,14 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
 
         case kFunctionTypeAND:
-            return ((*instance->data_and.input[0] == LIB_PDM_FUNCTION_TRUE)
-                    && (*instance->data_and.input[1] == LIB_PDM_FUNCTION_TRUE))
+            return ((*instance->data_and.input[0] != LIB_PDM_FUNCTION_FALSE)
+                    && (*instance->data_and.input[1] != LIB_PDM_FUNCTION_FALSE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
 
         case kFunctionTypeOR:
-            return ((*instance->data_or.input[0] == LIB_PDM_FUNCTION_FALSE)
-                    && (*instance->data_or.input[1] == LIB_PDM_FUNCTION_FALSE))
-                ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
+            return ((*instance->data_or.input[0] != LIB_PDM_FUNCTION_FALSE)
+                    || (*instance->data_or.input[1] != LIB_PDM_FUNCTION_FALSE))
+                ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
 
         default:
             break;

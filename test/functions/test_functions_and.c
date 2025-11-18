@@ -261,3 +261,35 @@ void test_whenAndFunctionInput0And1AreTrue_thenResultIsTrue(void) {
 
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
 }
+
+void test_whenAndFunctionInput0Is1And1Is2_thenResultIsTrue(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t inputs[2] = { 1, 2 };
+    int32_t output = LIB_PDM_FUNCTION_TRUE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &inputs[0]);
+    function_set_input(&function, 1U, &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
+}
+
+void test_whenAndFunctionInput0Is1And1IsMinus1_thenResultIsTrue(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t inputs[2] = { 1, -1 };
+    int32_t output = LIB_PDM_FUNCTION_TRUE;
+
+    function_set_type(&function, kFunctionTypeAND);
+    function_set_input(&function, 0U, &inputs[0]);
+    function_set_input(&function, 1U, &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
+}
