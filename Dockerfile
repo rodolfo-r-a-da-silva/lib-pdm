@@ -4,6 +4,7 @@ RUN apk update && apk add --no-cache \
         build-base \
         cmake \
         ruby \
+        git \
         shadow
 
 RUN gem install ceedling
