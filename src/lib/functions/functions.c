@@ -269,27 +269,24 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
  * false if invalid
  */
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
+    bool ret = false;
     switch (instance->type) {
         case kFunctionTypeNOT:
-            return (input_nbr == 0U);
+            ret = (input_nbr == 0U);
+            break;
 
         case kFunctionTypeAND:
-            return (input_nbr < 2U);
-
         case kFunctionTypeOR:
-            return (input_nbr < 2U);
-
         case kFunctionTypeXOR:
-            return (input_nbr < 2U);
-
         case kFunctionTypeMask:
-            return (input_nbr < 2U);
+            ret = (input_nbr < 2U);
+            break;
 
         default:
             break;
     }
 
-    return false;
+    return ret;
 }
 
 /**
