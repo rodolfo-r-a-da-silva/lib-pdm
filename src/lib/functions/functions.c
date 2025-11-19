@@ -298,27 +298,34 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
  * @return A pointer to the the function's input
  */
 static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
+    int32_t* ret = NULL;
+
     switch (instance->type) {
         case kFunctionTypeNOT:
-            return instance->data_not.input;
+            ret = instance->data_not.input;
+            break;
 
         case kFunctionTypeAND:
-            return instance->data_and.input[input_nbr];
+            ret = instance->data_and.input[input_nbr];
+            break;
 
         case kFunctionTypeOR:
-            return instance->data_or.input[input_nbr];
+            ret = instance->data_or.input[input_nbr];
+            break;
 
         case kFunctionTypeXOR:
-            return instance->data_xor.input[input_nbr];
+            ret = instance->data_xor.input[input_nbr];
+            break;
 
         case kFunctionTypeMask:
-            return instance->data_mask.input[input_nbr];
+            ret = instance->data_mask.input[input_nbr];
+            break;
 
         default:
             break;
     }
 
-    return NULL;
+    return ret;
 }
 
 /**
@@ -332,18 +339,23 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
     switch (instance->type) {
         case kFunctionTypeNOT:
             instance->data_not.input = input;
+            break;
 
         case kFunctionTypeAND:
             instance->data_and.input[input_nbr] = input;
+            break;
 
         case kFunctionTypeOR:
             instance->data_or.input[input_nbr] = input;
+            break;
 
         case kFunctionTypeXOR:
             instance->data_xor.input[input_nbr] = input;
+            break;
 
         case kFunctionTypeMask:
             instance->data_mask.input[input_nbr] = input;
+            break;
 
         default:
             break;
@@ -442,27 +454,34 @@ static bool has_input_edges(FunctionHandle_t* instance) {
  * @return Result inversion variable value
  */
 static bool get_result_inversion(FunctionHandle_t* instance) {
+    bool ret = false;
+
     switch (instance->type) {
         case kFunctionTypeNOT:
-            return instance->data_not.invert;
+            ret = instance->data_not.invert;
+            break;
 
         case kFunctionTypeAND:
-            return instance->data_and.invert;
+            ret = instance->data_and.invert;
+            break;
 
         case kFunctionTypeOR:
-            return instance->data_or.invert;
+            ret = instance->data_or.invert;
+            break;
 
         case kFunctionTypeXOR:
-            return instance->data_xor.invert;
+            ret = instance->data_xor.invert;
+            break;
 
         case kFunctionTypeMask:
-            return instance->data_mask.invert;
+            ret = instance->data_mask.invert;
+            break;
 
         default:
             break;
     }
 
-    return false;
+    return ret;
 }
 
 /**
@@ -508,31 +527,37 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
  * @return Result
  */
 static int32_t calculate_output(FunctionHandle_t* instance) {
+    int32_t ret = LIB_PDM_FUNCTION_FALSE;
+
     switch (instance->type) {
         case kFunctionTypeNOT:
-            return (*instance->data_not.input != LIB_PDM_FUNCTION_FALSE) 
+            ret = (*instance->data_not.input != LIB_PDM_FUNCTION_FALSE) 
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
+            break;
 
         case kFunctionTypeAND:
-            return ((*instance->data_and.input[0] != LIB_PDM_FUNCTION_FALSE)
+            ret = ((*instance->data_and.input[0] != LIB_PDM_FUNCTION_FALSE)
                     && (*instance->data_and.input[1] != LIB_PDM_FUNCTION_FALSE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            break;
 
         case kFunctionTypeOR:
-            return ((*instance->data_or.input[0] != LIB_PDM_FUNCTION_FALSE)
+            ret = ((*instance->data_or.input[0] != LIB_PDM_FUNCTION_FALSE)
                     || (*instance->data_or.input[1] != LIB_PDM_FUNCTION_FALSE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            break;
 
         case kFunctionTypeXOR:
-            return (((*instance->data_or.input[0] == LIB_PDM_FUNCTION_FALSE)
+            ret = (((*instance->data_or.input[0] == LIB_PDM_FUNCTION_FALSE)
                     && (*instance->data_or.input[1] == LIB_PDM_FUNCTION_FALSE))
                     ||((*instance->data_or.input[0] != LIB_PDM_FUNCTION_FALSE)
                     && (*instance->data_or.input[1] != LIB_PDM_FUNCTION_FALSE)))
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
+            break;
 
         default:
             break;
     }
 
-    return LIB_PDM_FUNCTION_FALSE;
+    return ret;
 }
