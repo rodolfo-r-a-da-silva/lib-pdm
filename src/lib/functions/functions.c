@@ -306,19 +306,10 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
             break;
 
         case kFunctionTypeAND:
-            ret = instance->data_and.input[input_nbr];
-            break;
-
         case kFunctionTypeOR:
-            ret = instance->data_or.input[input_nbr];
-            break;
-
         case kFunctionTypeXOR:
-            ret = instance->data_xor.input[input_nbr];
-            break;
-
         case kFunctionTypeMask:
-            ret = instance->data_mask.input[input_nbr];
+            ret = instance->data_two_inputs.input[input_nbr];
             break;
 
         default:
@@ -342,19 +333,10 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
             break;
 
         case kFunctionTypeAND:
-            instance->data_and.input[input_nbr] = input;
-            break;
-
         case kFunctionTypeOR:
-            instance->data_or.input[input_nbr] = input;
-            break;
-
         case kFunctionTypeXOR:
-            instance->data_xor.input[input_nbr] = input;
-            break;
-
         case kFunctionTypeMask:
-            instance->data_mask.input[input_nbr] = input;
+            instance->data_two_inputs.input[input_nbr] = input;
             break;
 
         default:
@@ -381,42 +363,12 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
             break;
         }
         
-        case kFunctionTypeAND: {
-            for (size_t i = 0U; i < LIB_PDM_FUNCTION_AND_INPUTS; ++i) {
-                if (instance->data_and.input[i] == NULL) {
-                    ret = false;
-                    break;
-                }
-            }
-
-            break;
-        }
-
-        case kFunctionTypeOR: {
-            for (size_t i = 0U; i < LIB_PDM_FUNCTION_OR_INPUTS; ++i) {
-                if (instance->data_or.input[i] == NULL) {
-                    ret = false;
-                    break;
-                }
-            }
-
-            break;
-        }
-
-        case kFunctionTypeXOR: {
-            for (size_t i = 0U; i < LIB_PDM_FUNCTION_XOR_INPUTS; ++i) {
-                if (instance->data_xor.input[i] == NULL) {
-                    ret = false;
-                    break;
-                }
-            }
-
-            break;
-        }
-
+        case kFunctionTypeAND:
+        case kFunctionTypeOR:
+        case kFunctionTypeXOR:
         case kFunctionTypeMask: {
-            for (size_t i = 0U; i < LIB_PDM_FUNCTION_MASK_INPUTS; ++i) {
-                if (instance->data_mask.input[i] == NULL) {
+            for (size_t i = 0U; i < LIB_PDM_FUNCTION_TWO_INPUTS; ++i) {
+                if (instance->data_two_inputs.input[i] == NULL) {
                     ret = false;
                     break;
                 }
@@ -462,19 +414,10 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
             break;
 
         case kFunctionTypeAND:
-            ret = instance->data_and.invert;
-            break;
-
         case kFunctionTypeOR:
-            ret = instance->data_or.invert;
-            break;
-
         case kFunctionTypeXOR:
-            ret = instance->data_xor.invert;
-            break;
-
         case kFunctionTypeMask:
-            ret = instance->data_mask.invert;
+            ret = instance->data_two_inputs.invert;
             break;
 
         default:
@@ -497,19 +440,10 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
             break;
 
         case kFunctionTypeAND:
-            instance->data_and.invert = invert;
-            break;
-
         case kFunctionTypeOR:
-            instance->data_or.invert = invert;
-            break;
-
         case kFunctionTypeXOR:
-            instance->data_xor.invert = invert;
-            break;
-
         case kFunctionTypeMask:
-            instance->data_mask.invert = invert;
+            instance->data_two_inputs.invert = invert;
             break;
 
         default:
