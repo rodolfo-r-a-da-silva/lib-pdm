@@ -170,27 +170,33 @@
 - [ ] Function logic
 
 ### "Equals to" functions tests
-- [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher
-    - [ ] Can set input 0
-    - [ ] Can set input 1
-    - [ ] Can't get input 2 or higher
-    - [ ] Can get input 0
-    - [ ] Can get input 1
-    - [ ] Can get a set input
-    - [ ] Can't set input edges
-    - [ ] Can't get input edges
-    - [ ] Can set inverted result logic
-    - [ ] Can get inverted result logic
-    - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can initialize with two inputs
-    - [ ] Can't run when not initialized
-    - [ ] Can run when initialized
-- [ ] Function logic
-    - [ ] Input 0 lesser than input 1 results in false
-    - [ ] Input 0 greater than input 1 results in false
-    - [ ] Input 0 equals to input 1 results in true
+- [x] Initialization with correct parameters
+    - [x] Can't set input 2 or higher - test_whenEqFunctionSetInput2_thenReturnWrongParamError
+    - [x] Can set input 0 - test_whenEqFunctionSetInput0_thenReturnNoError
+    - [x] Can set input 1 - test_whenEqFunctionSetInput1_thenReturnNoError
+    - [x] Can't get input 2 or higher - test_whenEqFunctionGetInput2_thenReturnWrongParamError
+    - [x] Can get input 0 - test_whenEqFunctionGetInput0_thenReturnNoError
+    - [x] Can get input 1 - test_whenEqFunctionGetInput1_thenReturnNoError
+    - [x] Can get a set input - test_whenEqFunctionSetInput_thenGetInputRetrievesAddress
+    - [x] Can't set input edges - test_whenEqFunctionSetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can't get input edges - test_whenEqFunctionGetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can set inverted result logic - test_whenEqFunctionSetInvertedResultWithTrue_thenReturnErrorNone
+    - [x] Can get inverted result logic - test_whenEqFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
+    - [x] Can't initialize without inputs - test_whenEqFunctionInitWithoutInputs_thenReturnInputError
+    - [x] Can't initialize without input 0 - test_whenEqFunctionInitWithoutInput0_thenReturnInputError
+    - [x] Can't initialize without input 1 - test_whenEqFunctionInitWithoutInput1_thenReturnInputError
+    - [x] Can initialize with two inputs - test_whenEqFunctionInitWithBothInputs_thenReturnNoError
+    - [x] Can't run when not initialized - test_whenEqFunctionRunWithoutInit_thenReturnInitError
+    - [x] Can run when initialized - test_whenEqFunctionRun_thenReturnNoError
+- [x] Function logic
+    - [x] Input 0 and 1 are "0" results in true - test_whenEqFunctionInput0And1Are0_thenResultIsTrue
+    - [x] Input 0 is "0" and 1 is "1" results in false - test_whenEqFunctionInput0Is0And1Is1_thenResultIsFalse
+    - [x] Input 0 is "1" and 1 is "0" results in false - test_whenEqFunctionInput0Is1And1Is0_thenResultIsFalse
+    - [x] Input 0 and 1 are "1" results in true - test_whenEqFunctionInput0And1Are1_thenResultIsTrue
+    - [x] Input 0 is "1" and 1 is "2" results in false - test_whenEqFunctionInput0Is1And1Is2_thenResultIsFalse
+    - [x] Input 0 is "1" and 1 is "-1" results in false - test_whenEqFunctionInput0Is1And1IsMinus1_thenResultIsFalse
+    - [x] Input 0 and 1 are "2" results in true - test_whenEqFunctionInput0And1Are2_thenResultIsTrue
+    - [x] Input 0 and 1 are "-1" results in true - test_whenEqFunctionInput0And1AreMinus1_thenResultIsTrue
 
 ### "Less than" functions tests
 - [ ] Initialization with correct parameters
