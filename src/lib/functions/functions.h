@@ -23,10 +23,9 @@ typedef enum {
     kFunctionTypeOR,
     kFunctionTypeXOR,
     kFunctionTypeMask,
-    kFunctionTypeEquals,
-    kFunctionTypeLess,
-    kFunctionTypeMore,
-    kFunctionTypeSum,
+    kFunctionTypeEq,
+    kFunctionTypeLt,
+    kFunctionTypeMt,
     kFunctionTypeHysteresis,
     kFunctionTypeBlink,
     kFunctionTypePulse,
@@ -63,6 +62,7 @@ typedef FunctionDataTwoInputs_t FunctionDataAND_t;
 typedef FunctionDataTwoInputs_t FunctionDataOR_t;
 typedef FunctionDataTwoInputs_t FunctionDataXOR_t;
 typedef FunctionDataTwoInputs_t FunctionDataMask_t;
+typedef FunctionDataTwoInputs_t FunctionDataEq_t;
 
 typedef struct {
     int32_t output;
@@ -76,6 +76,7 @@ typedef struct {
         FunctionDataOR_t data_or;
         FunctionDataXOR_t data_xor;
         FunctionDataMask_t data_mask;
+        FunctionDataEq_t data_eq;
     };
 } FunctionHandle_t;
 
