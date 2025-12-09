@@ -197,3 +197,78 @@ void test_whenMaskFunctionRun_thenReturnNoError(void) {
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
+
+void test_whenMaskFunctionInput0Is0x00AndInput1Is0xff_thenResultIs0x00(void) {
+    FunctionHandle_t function = { 0 };
+    uint32_t inputs[2] = { 0x00, 0xFF };
+    uint32_t output = 0x00;
+
+    function_set_type(&function, kFunctionTypeMask);
+    function_set_input(&function, 0U, (int32_t*) &inputs[0]);
+    function_set_input(&function, 1U, (int32_t*) &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(0x00, output);
+}
+
+void test_whenMaskFunctionInput0Is0xffAndInput1Is0x00_thenResultIs0x00(void) {
+    FunctionHandle_t function = { 0 };
+    uint32_t inputs[2] = { 0x00, 0xFF };
+    uint32_t output = 0xFF;
+
+    function_set_type(&function, kFunctionTypeMask);
+    function_set_input(&function, 0U, (int32_t*) &inputs[0]);
+    function_set_input(&function, 1U, (int32_t*) &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(0x00, output);
+}
+
+void test_whenMaskFunctionInput0Is0x11AndInput1Is0xff_thenResultIs0x11(void) {
+    FunctionHandle_t function = { 0 };
+    uint32_t inputs[2] = { 0x11, 0xFF };
+    uint32_t output = 0xFF;
+
+    function_set_type(&function, kFunctionTypeMask);
+    function_set_input(&function, 0U, (int32_t*) &inputs[0]);
+    function_set_input(&function, 1U, (int32_t*) &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(0x11, output);
+}
+
+void test_whenMaskFunctionInput0Is0xffAndInput1Is0x11_thenResultIs0x11(void) {
+    FunctionHandle_t function = { 0 };
+    uint32_t inputs[2] = { 0xFF, 0x11 };
+    uint32_t output = 0xFF;
+
+    function_set_type(&function, kFunctionTypeMask);
+    function_set_input(&function, 0U, (int32_t*) &inputs[0]);
+    function_set_input(&function, 1U, (int32_t*) &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(0x11, output);
+}
+
+void test_whenMaskFunctionInput0Is0xffffffffAndInput1Is0x0000ffff_thenResultIs0x0000ffff(void) {
+    FunctionHandle_t function = { 0 };
+    uint32_t inputs[2] = { 0xFFFFFFFF, 0x0000FFFF };
+    uint32_t output = 0xFF;
+
+    function_set_type(&function, kFunctionTypeMask);
+    function_set_input(&function, 0U, (int32_t*) &inputs[0]);
+    function_set_input(&function, 1U, (int32_t*) &inputs[1]);
+    function_init(&function);
+    function_run(&function);
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(0x0000FFFF, output);
+}

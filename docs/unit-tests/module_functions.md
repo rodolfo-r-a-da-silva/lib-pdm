@@ -167,7 +167,12 @@
     - [x] Can initialize with two inputs - test_whenMaskFunctionInitWithBothInputs_thenReturnNoError
     - [x] Can't run when not initialized - test_whenMaskFunctionRunWithoutInit_thenReturnInitError
     - [x] Can run when initialized - test_whenMaskFunctionRun_thenReturnNoError
-- [ ] Function logic
+- [x] Function logic
+    - [x] Input 0 is "0x00" and input 1 is "0xFF" results in "0x00" - test_whenMaskFunctionInput0Is0x00AndInput1Is0xff_thenResultIs0x00
+    - [x] Input 0 is "0xFF" and input 1 is "0x00" results in "0x00" - test_whenMaskFunctionInput0Is0xffAndInput1Is0x00_thenResultIs0x00
+    - [x] Input 0 is "0x11" and input 1 is "0xFF" results in "0x11" - test_whenMaskFunctionInput0Is0x11AndInput1Is0xff_thenResultIs0x11
+    - [x] Input 0 is "0xFF" and input 1 is "0x11" results in "0x11" - test_whenMaskFunctionInput0Is0xffAndInput1Is0x11_thenResultIs0x11
+    - [x] Input 0 is "0xFFFFFFFF" and input 1 is "0x0000FFFF" results in "0x0000FFFF" - test_whenMaskFunctionInput0Is0xffffffffAndInput1Is0x0000ffff_thenResultIs0x0000ffff
 
 ### "Equals to" functions tests
 - [x] Initialization with correct parameters

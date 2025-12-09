@@ -492,6 +492,11 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
             break;
 
+        case kFunctionTypeMask:
+            ret = (int32_t) (((uint32_t) *instance->data_mask.input[0])
+                    & ((uint32_t) *instance->data_mask.input[1]));
+            break;
+
         case kFunctionTypeEq:
             ret = (*instance->data_eq.input[0] == *instance->data_eq.input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
