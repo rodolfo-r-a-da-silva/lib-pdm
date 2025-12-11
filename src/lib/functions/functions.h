@@ -64,6 +64,7 @@ typedef FunctionDataTwoInputs_t FunctionDataXOR_t;
 typedef FunctionDataTwoInputs_t FunctionDataMask_t;
 typedef FunctionDataTwoInputs_t FunctionDataEq_t;
 typedef FunctionDataTwoInputs_t FunctionDataLt_t;
+typedef FunctionDataTwoInputs_t FunctionDataMt_t;
 
 typedef struct {
     int32_t output;
@@ -79,6 +80,7 @@ typedef struct {
         FunctionDataMask_t data_mask;
         FunctionDataEq_t data_eq;
         FunctionDataLt_t data_lt;
+        FunctionDataLt_t data_mt;
     };
 } FunctionHandle_t;
 
