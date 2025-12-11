@@ -280,6 +280,7 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
         case kFunctionTypeXOR:
         case kFunctionTypeMask:
         case kFunctionTypeEq:
+        case kFunctionTypeLt:
             ret = (input_nbr < 2U);
             break;
 
@@ -311,6 +312,7 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
         case kFunctionTypeXOR:
         case kFunctionTypeMask:
         case kFunctionTypeEq:
+        case kFunctionTypeLt:
             ret = instance->data_two_inputs.input[input_nbr];
             break;
 
@@ -339,6 +341,7 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
         case kFunctionTypeXOR:
         case kFunctionTypeMask:
         case kFunctionTypeEq:
+        case kFunctionTypeLt:
             instance->data_two_inputs.input[input_nbr] = input;
             break;
 
@@ -367,7 +370,8 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
         case kFunctionTypeOR:
         case kFunctionTypeXOR:
         case kFunctionTypeMask:
-        case kFunctionTypeEq: {
+        case kFunctionTypeEq:
+        case kFunctionTypeLt: {
             for (size_t i = 0U; i < LIB_PDM_FUNCTION_TWO_INPUTS; ++i) {
                 if (instance->data_two_inputs.input[i] == NULL) {
                     ret = false;
@@ -419,6 +423,7 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
         case kFunctionTypeXOR:
         case kFunctionTypeMask:
         case kFunctionTypeEq:
+        case kFunctionTypeLt:
             ret = instance->data_two_inputs.invert;
             break;
 
@@ -446,6 +451,7 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
         case kFunctionTypeXOR:
         case kFunctionTypeMask:
         case kFunctionTypeEq:
+        case kFunctionTypeLt:
             instance->data_two_inputs.invert = invert;
             break;
 
@@ -500,6 +506,12 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
         case kFunctionTypeEq:
             ret = (*instance->data_eq.input[0] == *instance->data_eq.input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            break;
+
+        case kFunctionTypeLt:
+            ret = (*instance->data_eq.input[0] < *instance->data_eq.input[1])
+                ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            break;
 
         default:
             break;

@@ -204,27 +204,35 @@
     - [x] Input 0 and 1 are "-1" results in true - test_whenEqFunctionInput0And1AreMinus1_thenResultIsTrue
 
 ### "Less than" functions tests
-- [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher
-    - [ ] Can set input 0
-    - [ ] Can set input 1
-    - [ ] Can't get input 2 or higher
-    - [ ] Can get input 0
-    - [ ] Can get input 1
-    - [ ] Can get a set input
-    - [ ] Can't set input edges
-    - [ ] Can't get input edges
-    - [ ] Can set inverted result logic
-    - [ ] Can get inverted result logic
-    - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can initialize with two inputs
-    - [ ] Can't run when not initialized
-    - [ ] Can run when initialized
-- [ ] Function logic
-    - [ ] Input 0 lesser than input 1 results in true
-    - [ ] Input 0 greater than input 1 results in false
-    - [ ] Input 0 equals to input 1 results in false
+- [x] Initialization with correct parameters
+    - [x] Can't set input 2 or higher - test_whenLtFunctionSetInput2_thenReturnWrongParamError
+    - [x] Can set input 0 - test_whenLtFunctionSetInput0_thenReturnNoError
+    - [x] Can set input 1 - test_whenLtFunctionSetInput1_thenReturnNoError
+    - [x] Can't get input 2 or higher - test_whenLtFunctionGetInput2_thenReturnWrongParamError
+    - [x] Can get input 0 - test_whenLtFunctionGetInput0_thenReturnNoError
+    - [x] Can get input 1 - test_whenLtFunctionGetInput1_thenReturnNoError
+    - [x] Can get a set input - test_whenLtFunctionSetInput_thenGetInputRetrievesAddress
+    - [x] Can't set input edges - test_whenLtFunctionSetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can't get input edges - test_whenLtFunctionGetInpuEdge0_thenReturnFunctionTypeError
+    - [x] Can set inverted result logic - test_whenLtFunctionSetInvertedResultWithTrue_thenReturnErrorNone
+    - [x] Can get inverted result logic - test_whenLtFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGetInversion
+    - [x] Can't initialize without inputs - test_whenLtFunctionInitWithoutInputs_thenReturnInputError
+    - [x] Can't initialize without input 0 - test_whenLtFunctionInitWithoutInput0_thenReturnInputError
+    - [x] Can't initialize without input 1 - test_whenLtFunctionInitWithoutInput1_thenReturnInputError
+    - [x] Can initialize with two inputs - test_whenLtFunctionInitWithBothInputs_thenReturnNoError
+    - [x] Can't run when not initialized - test_whenLtFunctionRunWithoutInit_thenReturnInitError
+    - [x] Can run when initialized - test_whenLtFunctionRun_thenReturnNoError
+- [x] Function logic
+    - [x] Input 0 and 1 are "0" results in false - test_whenLtFunctionInput0And1Are0_thenResultIsFalse
+    - [x] Input 0 is "0" and 1 is "1" results in true - test_whenLtFunctionInput0Is0And1Is1_thenResultIsTrue
+    - [x] Input 0 is "1" and 1 is "0" results in false - test_whenLtFunctionInput0Is1And1Is0_thenResultIsFalse
+    - [x] Input 0 and 1 are "1" results in false - test_whenLtFunctionInput0And1Are1_thenResultIsFalse
+    - [x] Input 0 is "1" and 1 is "2" results in true - test_whenLtFunctionInput0Is1And1Is2_thenResultIsTrue
+    - [x] Input 0 is "2" and 1 is "1" results in false - test_whenLtFunctionInput0Is2And1Is1_thenResultIsFalse
+    - [x] Input 0 and 1 are "2" results in false - test_whenLtFunctionInput0And1Are2_thenResultIsFalse
+    - [x] Input 0 is "0" and 1 is "-1" results in false - test_whenLtFunctionInput0Is0And1IsMinus1_thenResultIsFalse
+    - [x] Input 0 is "-1" and 1 is "0" results in true - test_whenLtFunctionInput0IsMinus1And1Is0_thenResultIsTrue
+    - [x] Input 0 and 1 are "-1" results in false - test_whenLtFunctionInput0And1AreMinus1_thenResultIsFalse
 
 ### "More than" functions tests
 - [ ] Initialization with correct parameters
