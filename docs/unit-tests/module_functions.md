@@ -267,12 +267,12 @@
 
 ### "Hysteresis" functions tests
 - [ ] Initialization with correct parameters
-    - [ ] Can't set input 2 or higher
+    - [ ] Can't set input 3 or higher
     - [ ] Can set input 0
-    - [ ] Can set input 1
-    - [ ] Can't get input 2 or higher
+    - [ ] Can set input 2
+    - [ ] Can't get input 3 or higher
     - [ ] Can get input 0
-    - [ ] Can get input 1
+    - [ ] Can get input 2
     - [ ] Can get a set input
     - [ ] Can't set input edges
     - [ ] Can't get input edges
@@ -281,7 +281,8 @@
     - [ ] Can't initialize without inputs
     - [ ] Can't initialize without input 0
     - [ ] Can't initialize without input 1
-    - [ ] Can initialize with two inputs
+    - [ ] Can't initialize without input 2
+    - [ ] Can initialize with three inputs
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic
@@ -311,8 +312,8 @@
     - [ ] Can get input 0
     - [ ] Can get a set input
     - [ ] Can't set input 1 edge or higher
+    - [ ] Can't set "none" as input edge
     - [ ] Can set input 0 edge
-    - [ ] Can't set "none" as edge
     - [ ] Can't get input 1 edge or higher
     - [ ] Can get input 0 edge
     - [ ] Can get a set input edge
@@ -329,21 +330,28 @@
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 2 or higher
     - [ ] Can set input 0
+    - [ ] Can set input 1
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
+    - [ ] Can get input 1
     - [ ] Can get a set input
     - [ ] Can't set input 2 edge or higher
+    - [ ] Can't set "none" as input edge
     - [ ] Can set input 0 edge
-    - [ ] Can't set "none" as edge
+    - [ ] Can set input 1 edge
     - [ ] Can't get input 2 edge or higher
     - [ ] Can get input 0 edge
+    - [ ] Can get input 1 edge
     - [ ] Can get a set input edge
     - [ ] Can set inverted result logic
     - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can't initialize without input edges configured
-    - [ ] Can initialize with two inputs and edges configured
+    - [ ] Can't initialize without input 0
+    - [ ] Can't initialize without input 1
+    - [ ] Can't initialize without input edges
+    - [ ] Can't initialize without input 0 edge
+    - [ ] Can't initialize without input 1 edge
+    - [ ] Can initialize with two inputs and input edges
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic
@@ -352,21 +360,28 @@
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 2 or higher
     - [ ] Can set input 0
+    - [ ] Can set input 1
     - [ ] Can't get input 2 or higher
     - [ ] Can get input 0
+    - [ ] Can get input 1
     - [ ] Can get a set input
     - [ ] Can't set input 2 edge or higher
+    - [ ] Can't set "none" as input edge
     - [ ] Can set input 0 edge
-    - [ ] Can't set "none" as edge
+    - [ ] Can set input 1 edge
     - [ ] Can't get input 2 edge or higher
     - [ ] Can get input 0 edge
+    - [ ] Can get input 2 edge
     - [ ] Can get a set input edge
     - [ ] Can set inverted result logic
     - [ ] Can get inverted result logic
     - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can't initialize without input edges configured
-    - [ ] Can initialize with 2 inputs and edges configured
+    - [ ] Can't initialize without input 0
+    - [ ] Can't initialize without input 1
+    - [ ] Can't initialize without input edges
+    - [ ] Can't initialize without input 0 edge
+    - [ ] Can't initialize without input 1 edge
+    - [ ] Can initialize with two inputs and input edges
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic
@@ -375,21 +390,32 @@
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 4 or higher
     - [ ] Can set input 0
+    - [ ] Can set input 3
     - [ ] Can't get input 4 or higher
     - [ ] Can get input 0
+    - [ ] Can get input 3
     - [ ] Can get a set input
     - [ ] Can't set input 4 edge or higher
+    - [ ] Can't set "none" as input edge
     - [ ] Can set input 0 edge
-    - [ ] Can't set "none" as edge
+    - [ ] Can set input 3 edge
     - [ ] Can't get input 4 edge or higher
     - [ ] Can get input 0 edge
+    - [ ] Can get input 3 edge
     - [ ] Can get a set input edge
     - [ ] Can't set inverted result logic
     - [ ] Can't get inverted result logic
     - [ ] Can't initialize without inputs
-    - [ ] Can't initialize with only one input
-    - [ ] Can't initialize without input edges configured
-    - [ ] Can initialize with four inputs and edges configured
+    - [ ] Can't initialize without input edges
+    - [ ] Can't initialize without input 0 edge
+    - [ ] Can't initialize without input 1 edge
+    - [ ] Can't initialize with input 0 without it's edge
+    - [ ] Can't initialize with input 1 without it's edge
+    - [ ] Can't initialize with input 2 without it's edge, if present
+    - [ ] Can't initialize with input 3 without it's edge, if present
+    - [ ] Can initialize with input 0 and without 1
+    - [ ] Can initialize with input 1 and without 0
+    - [ ] Can initialize without inputs 2 and 3
     - [ ] Can't run when not initialized
     - [ ] Can run when initialized
 - [ ] Function logic
