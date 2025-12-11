@@ -305,7 +305,7 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
 
     switch (instance->type) {
         case kFunctionTypeNOT:
-            ret = instance->data_not.input;
+            ret = instance->data_one_in.input;
             break;
 
         case kFunctionTypeAND:
@@ -315,7 +315,7 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
         case kFunctionTypeEq:
         case kFunctionTypeLt:
         case kFunctionTypeMt:
-            ret = instance->data_two_inputs.input[input_nbr];
+            ret = instance->data_two_in.input[input_nbr];
             break;
 
         default:
@@ -335,7 +335,7 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
 static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input) {
     switch (instance->type) {
         case kFunctionTypeNOT:
-            instance->data_not.input = input;
+            instance->data_one_in.input = input;
             break;
 
         case kFunctionTypeAND:
@@ -345,7 +345,7 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
         case kFunctionTypeEq:
         case kFunctionTypeLt:
         case kFunctionTypeMt:
-            instance->data_two_inputs.input[input_nbr] = input;
+            instance->data_two_in.input[input_nbr] = input;
             break;
 
         default:
@@ -365,7 +365,7 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
 
     switch (instance->type) {
         case kFunctionTypeNOT: {
-            if (instance->data_not.input == NULL) { ret = false; }
+            if (instance->data_one_in.input == NULL) { ret = false; }
             break;
         }
         
@@ -377,7 +377,7 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
         case kFunctionTypeLt:
         case kFunctionTypeMt: {
             for (size_t i = 0U; i < LIB_PDM_FUNCTION_TWO_INPUTS; ++i) {
-                if (instance->data_two_inputs.input[i] == NULL) {
+                if (instance->data_two_in.input[i] == NULL) {
                     ret = false;
                     break;
                 }
@@ -419,7 +419,7 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
 
     switch (instance->type) {
         case kFunctionTypeNOT:
-            ret = instance->data_not.invert;
+            ret = instance->data_one_in.invert;
             break;
 
         case kFunctionTypeAND:
@@ -429,7 +429,7 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
         case kFunctionTypeEq:
         case kFunctionTypeLt:
         case kFunctionTypeMt:
-            ret = instance->data_two_inputs.invert;
+            ret = instance->data_two_in.invert;
             break;
 
         default:
@@ -448,7 +448,7 @@ static bool get_result_inversion(FunctionHandle_t* instance) {
 static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
     switch (instance->type) {
         case kFunctionTypeNOT:
-            instance->data_not.invert = invert;
+            instance->data_one_in.invert = invert;
             break;
 
         case kFunctionTypeAND:
@@ -458,7 +458,7 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
         case kFunctionTypeEq:
         case kFunctionTypeLt:
         case kFunctionTypeMt:
-            instance->data_two_inputs.invert = invert;
+            instance->data_two_in.invert = invert;
             break;
 
         default:
@@ -480,47 +480,47 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
 
     switch (instance->type) {
         case kFunctionTypeNOT:
-            ret = (*instance->data_not.input != LIB_PDM_FUNCTION_FALSE) 
+            ret = (*instance->data_one_in.input != LIB_PDM_FUNCTION_FALSE) 
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
             break;
 
         case kFunctionTypeAND:
-            ret = ((*instance->data_and.input[0] != LIB_PDM_FUNCTION_FALSE)
-                    && (*instance->data_and.input[1] != LIB_PDM_FUNCTION_FALSE))
+            ret = ((*instance->data_two_in.input[0] != LIB_PDM_FUNCTION_FALSE)
+                    && (*instance->data_two_in.input[1] != LIB_PDM_FUNCTION_FALSE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
             break;
 
         case kFunctionTypeOR:
-            ret = ((*instance->data_or.input[0] != LIB_PDM_FUNCTION_FALSE)
-                    || (*instance->data_or.input[1] != LIB_PDM_FUNCTION_FALSE))
+            ret = ((*instance->data_two_in.input[0] != LIB_PDM_FUNCTION_FALSE)
+                    || (*instance->data_two_in.input[1] != LIB_PDM_FUNCTION_FALSE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
             break;
 
         case kFunctionTypeXOR:
-            ret = (((*instance->data_or.input[0] == LIB_PDM_FUNCTION_FALSE)
-                    && (*instance->data_or.input[1] == LIB_PDM_FUNCTION_FALSE))
-                    ||((*instance->data_or.input[0] != LIB_PDM_FUNCTION_FALSE)
-                    && (*instance->data_or.input[1] != LIB_PDM_FUNCTION_FALSE)))
+            ret = (((*instance->data_two_in.input[0] == LIB_PDM_FUNCTION_FALSE)
+                    && (*instance->data_two_in.input[1] == LIB_PDM_FUNCTION_FALSE))
+                    ||((*instance->data_two_in.input[0] != LIB_PDM_FUNCTION_FALSE)
+                    && (*instance->data_two_in.input[1] != LIB_PDM_FUNCTION_FALSE)))
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
             break;
 
         case kFunctionTypeMask:
-            ret = (int32_t) (((uint32_t) *instance->data_mask.input[0])
-                    & ((uint32_t) *instance->data_mask.input[1]));
+            ret = (int32_t) (((uint32_t) *instance->data_two_in.input[0])
+                    & ((uint32_t) *instance->data_two_in.input[1]));
             break;
 
         case kFunctionTypeEq:
-            ret = (*instance->data_eq.input[0] == *instance->data_eq.input[1])
+            ret = (*instance->data_two_in.input[0] == *instance->data_two_in.input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
             break;
 
         case kFunctionTypeLt:
-            ret = (*instance->data_lt.input[0] < *instance->data_lt.input[1])
+            ret = (*instance->data_two_in.input[0] < *instance->data_two_in.input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
             break;
 
         case kFunctionTypeMt:
-            ret = (*instance->data_mt.input[0] > *instance->data_mt.input[1])
+            ret = (*instance->data_two_in.input[0] > *instance->data_two_in.input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
             break;
 

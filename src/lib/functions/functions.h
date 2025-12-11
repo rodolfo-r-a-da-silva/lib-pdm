@@ -51,20 +51,12 @@ typedef uint8_t FunctionInputNbr_t;
 typedef struct {
     int32_t* input;
     bool invert;
-} FunctionDataNOT_t;
+} FunctionDataOneInput_t;
 
 typedef struct {
     int32_t* input[2];
     bool invert;
 } FunctionDataTwoInputs_t;
-
-typedef FunctionDataTwoInputs_t FunctionDataAND_t;
-typedef FunctionDataTwoInputs_t FunctionDataOR_t;
-typedef FunctionDataTwoInputs_t FunctionDataXOR_t;
-typedef FunctionDataTwoInputs_t FunctionDataMask_t;
-typedef FunctionDataTwoInputs_t FunctionDataEq_t;
-typedef FunctionDataTwoInputs_t FunctionDataLt_t;
-typedef FunctionDataTwoInputs_t FunctionDataMt_t;
 
 typedef struct {
     int32_t output;
@@ -72,15 +64,8 @@ typedef struct {
     bool is_init;
 
     union {
-        FunctionDataNOT_t data_not;
-        FunctionDataTwoInputs_t data_two_inputs;
-        FunctionDataAND_t data_and;
-        FunctionDataOR_t data_or;
-        FunctionDataXOR_t data_xor;
-        FunctionDataMask_t data_mask;
-        FunctionDataEq_t data_eq;
-        FunctionDataLt_t data_lt;
-        FunctionDataLt_t data_mt;
+        FunctionDataOneInput_t data_one_in;
+        FunctionDataTwoInputs_t data_two_in;
     };
 } FunctionHandle_t;
 
