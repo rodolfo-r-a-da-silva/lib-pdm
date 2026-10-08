@@ -49,24 +49,12 @@ typedef enum {
 typedef uint8_t FunctionInputNbr_t;
 
 typedef struct {
-    int32_t* input;
-    bool invert;
-} FunctionDataOneInput_t;
-
-typedef struct {
-    int32_t* input[2];
-    bool invert;
-} FunctionDataTwoInputs_t;
-
-typedef struct {
     int32_t output;
     FunctionType_t type;
     bool is_init;
 
-    union {
-        FunctionDataOneInput_t data_one_in;
-        FunctionDataTwoInputs_t data_two_in;
-    };
+    bool invert;
+    int32_t* input[2];
 } FunctionHandle_t;
 
 int32_t function_init(FunctionHandle_t* instance);
