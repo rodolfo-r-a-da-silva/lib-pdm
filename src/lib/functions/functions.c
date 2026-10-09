@@ -27,23 +27,26 @@
  */
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
     bool ret = false;
-    switch (instance->type) {
-        case kFunctionTypeNOT:
-            ret = (input_nbr == 0U);
-            break;
 
-        case kFunctionTypeAND:
-        case kFunctionTypeOR:
-        case kFunctionTypeXOR:
-        case kFunctionTypeMask:
-        case kFunctionTypeEq:
-        case kFunctionTypeLt:
-        case kFunctionTypeMt:
-            ret = (input_nbr < 2U);
-            break;
+    if (instance != NULL) {
+        switch (instance->type) {
+            case kFunctionTypeNOT:
+                ret = (input_nbr == 0U);
+                break;
 
-        default:
-            break;
+            case kFunctionTypeAND:
+            case kFunctionTypeOR:
+            case kFunctionTypeXOR:
+            case kFunctionTypeMask:
+            case kFunctionTypeEq:
+            case kFunctionTypeLt:
+            case kFunctionTypeMt:
+                ret = (input_nbr < 2U);
+                break;
+
+            default:
+                break;
+        }
     }
 
     return ret;
@@ -168,69 +171,6 @@ static bool has_input_edges(FunctionHandle_t* instance) {
 }
 
 /**
- * @brief Get the function's result invertion from the specific struct
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * 
- * @return Result inversion variable value
- * @retval true The function's result is inverted
- * @retval false The function's result is not inverted
- */
-static bool get_result_inversion(FunctionHandle_t* instance) {
-    bool ret = false;
-
-    switch (instance->type) {
-        case kFunctionTypeNOT:
-            ret = instance->invert;
-            break;
-
-        case kFunctionTypeAND:
-        case kFunctionTypeOR:
-        case kFunctionTypeXOR:
-        case kFunctionTypeMask:
-        case kFunctionTypeEq:
-        case kFunctionTypeLt:
-        case kFunctionTypeMt:
-            ret = instance->invert;
-            break;
-
-        default:
-            break;
-    }
-
-    return ret;
-}
-
-/**
- * @brief Set the function's result invertion in the specific struct
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] invert The function's result invertion value
- */
-static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
-    switch (instance->type) {
-        case kFunctionTypeNOT:
-            instance->invert = invert;
-            break;
-
-        case kFunctionTypeAND:
-        case kFunctionTypeOR:
-        case kFunctionTypeXOR:
-        case kFunctionTypeMask:
-        case kFunctionTypeEq:
-        case kFunctionTypeLt:
-        case kFunctionTypeMt:
-            instance->invert = invert;
-            break;
-
-        default:
-            break;
-    }
-
-    return;
-}
-
-/**
  * @brief Calculate the function's result based on its type and inputs
  * 
  * @param[in] instance A pointer to the struct containing the function's data
@@ -298,7 +238,9 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
  */
 
 int32_t function_init(FunctionHandle_t* instance) {
-    if (instance->type == kFunctionTypeNone) {
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
         return LIB_PDM_ERROR_FUNCTION_TYPE;
     } else if (!are_inputs_set(instance)) {
         return LIB_PDM_ERROR_NO_INPUT;
@@ -311,7 +253,9 @@ int32_t function_init(FunctionHandle_t* instance) {
 }
 
 int32_t function_deinit(FunctionHandle_t* instance) {
-    if (instance->type == kFunctionTypeNone) {
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
         return LIB_PDM_ERROR_FUNCTION_TYPE;
     }
 
@@ -321,6 +265,10 @@ int32_t function_deinit(FunctionHandle_t* instance) {
 }
 
 bool function_is_init(FunctionHandle_t* instance) {
+    if (instance == NULL) {
+        return false;
+    }
+
     return instance->is_init;
 }
 
@@ -348,7 +296,7 @@ int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
     return LIB_PDM_ERROR_NONE;
 }
 
-int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) {
+int32_t function_get_result_inversion(FunctionHandle_t* instance, bool* invert) {
     if ((instance == NULL) || (invert == NULL)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     } else if (instance->type == kFunctionTypeNone) {
@@ -357,12 +305,12 @@ int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) 
         // Do nothing
     }
 
-    *invert = get_result_inversion(instance);
+    *invert = instance->invert;
 
     return LIB_PDM_ERROR_NONE;
 }
 
-int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
+int32_t function_set_result_inversion(FunctionHandle_t* instance, bool invert) {
     if (instance == NULL) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     } else if (instance->type == kFunctionTypeNone) {
@@ -371,7 +319,7 @@ int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
         // Do nothing
     }
 
-    set_output_inversion(instance, invert);
+    instance->invert = invert;
 
     return LIB_PDM_ERROR_NONE;
 }

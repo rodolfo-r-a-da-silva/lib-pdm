@@ -73,7 +73,7 @@ void test_whenNotFunctionSetInvertedResultWithTrue_thenReturnErrorNone(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
 
     function_set_type(&function, kFunctionTypeNOT);
-    ret = function_set_result_invertion(&function, true);
+    ret = function_set_result_inversion(&function, true);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
@@ -84,8 +84,8 @@ void test_whenNotFunctionGetInvertedResultAfterSetting_thenReturnErrorNoneAndGet
     int32_t ret = LIB_PDM_ERROR_NONE;
 
     function_set_type(&function, kFunctionTypeNOT);
-    function_set_result_invertion(&function, true);
-    ret = function_get_result_invertion(&function, &invert);
+    function_set_result_inversion(&function, true);
+    ret = function_get_result_inversion(&function, &invert);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
     TEST_ASSERT_EQUAL(true, invert);

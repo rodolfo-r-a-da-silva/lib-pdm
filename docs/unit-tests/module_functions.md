@@ -1,24 +1,37 @@
 ### General tests
-- [ ] Function instance argument is NULL
-    - [ ] Init returns wrong param error
-    - [ ] Deinit returns wrong param error
-    - [ ] Is init returns false
-    - [x] Set type returns wrong param error - test_whenSetTypeWithNullInstance_thenReturnWrontParamError
+- [x] Function instance argument is NULL
+    - [x] Init returns wrong param error - test_whenInitWithNullInstance_thenReturnWrongParamError
+    - [x] Deinit returns wrong param error - test_whenDeInitWithNullInstance_thenReturnWrongParamError
+    - [x] Is init returns false - test_whenGetIsInitWithNullInstance_thenReturnFalse
+    - [x] Run returns wrong param error - test_whenRunWithNullInstance_thenReturnWrongParamError
+    - [x] Get result returns wrong param error - test_whenGetResultWithNullInstance_thenReturnWrongParamError
     - [x] Get type returns wrong param error - test_whenGetTypeWithNullInstance_thenReturnWrontParamError
-    - [ ] Set input returns wrong param error
-    - [ ] Get input returns wrong param error
-    - [ ] Get result inversion returns wrong param error
-    - [ ] Get result returns wrong param error
-    - [ ] Run returns wrong param error
+    - [x] Set type returns wrong param error - test_whenSetTypeWithNullInstance_thenReturnWrontParamError
+    - [x] Get input returns wrong param error - test_whenGetInputWithNullInstance_thenReturnWrongParamError
+    - [x] Set input returns wrong param error - test_whenSetInputWithNullInstance_thenReturnWrongParamError
+    - [x] Get result inversion returns wrong param error - test_whenGetResultinversionWithNullInstance_thenReturnWrongParamError
+    - [x] Set result inversion returns wrong param error - test_whenSetResultinversionWithNullInstance_thenReturnWrongParamError
 
-- [ ] Secondary pointer is NULL
+- [x] Secondary pointer is NULL
     - [x] Get type returns wrong param error - test_whenGetTypeWithNullType_thenReturnWrongParamError
-    - [ ] Set input returns wrong param error
-    - [ ] Get input returns wrong param error
-    - [ ] Get result returns wrong param error
+    - [x] Get input returns wrong param error - test_whenGetInputWithNullInput_thenReturnWrongParamError
+    - [x] Set input returns wrong param error - test_whenSetInputWithNullInput_thenReturnWrongParamError
+    - [x] Get result inversion returns wrong param error - test_whenGetResultinversionWithNullinversion_thenReturnWrongParamError
+    - [x] Get result returns wrong param error - test_whenGetResultWithNullResult_thenReturnWrongParamError
+    - [x] Get input edge returns wrong param error - 
+
+- [ ] Function is of none type
+    - [ ] Get result inversion returns error function type
+    - [ ] Set result inversion returns error function type
+    - [ ] Get input inversion returns error function type
+    - [ ] Set input inversion returns error function type
+    - [ ] Get input edge inversion returns error function type
+    - [ ] Set input edge inversion returns error function type
 
 - [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit
 - [ ] Can't change function type when initialized
+- [x] Can set and the the instance's input - test_whenSetAndGetInput_thenReturnNoErrorWhenNotInit
+- [x] Can set and get the instance's result inversion - test_whenSetAndGetResultInvertion_thenReturnNoErrorWhenNotInit
 - [ ] Function type is not changed on initialization
 - [ ] Function type is not changed on on deinitialization
 - [ ] Initialization sets the initialized state to true

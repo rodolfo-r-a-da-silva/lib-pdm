@@ -138,7 +138,7 @@ int32_t function_get_result(FunctionHandle_t* instance, int32_t* result);
  * @retval LIB_PDM_ERROR_WRONG_PARAM Any parameter is NULL
  * @retval LIB_PDM_ERROR_FUNCTION_TYPE The function type is not set
  */
-int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert);
+int32_t function_get_result_inversion(FunctionHandle_t* instance, bool* invert);
 
 /**
  * @brief Set the function's logic inversion
@@ -152,7 +152,7 @@ int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert);
  * @retval LIB_PDM_ERROR_WRONG_PARAM The function instance is NULL
  * @retval LIB_PDM_ERROR_FUNCTION_TYPE The function type is not set
  */
-int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert);
+int32_t function_set_result_inversion(FunctionHandle_t* instance, bool invert);
 
 /**
  * @brief Get the function's logic type
