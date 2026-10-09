@@ -1,263 +1,19 @@
-#include <stddef.h>
-
-#include <stdio.h>
+/**
+ * @file functions.c
+ * @brief Implementation of the functions library
+ * 
+ * @author Rodolfo R. A. da Silva
+ * @date 2024-06-12
+ */
 
 #include "functions.h"
 
-static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
-static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr);
-static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input);
-static bool are_inputs_set(FunctionHandle_t* instance);
-static bool has_input_edges(FunctionHandle_t* instance);
-static bool get_result_inversion(FunctionHandle_t* instance);
-static void set_output_inversion(FunctionHandle_t* instance, bool invert);
-static int32_t calculate_output(FunctionHandle_t* instance);
+#include <stddef.h>
+#include <stdio.h>
 
 /**
- * @brief Initializes the function instance
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * 
- * @return An error code if negative
+ * @section Private Functions
  */
-int32_t function_init(FunctionHandle_t* instance) {
-    if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
-    } else if (!are_inputs_set(instance)) {
-        return LIB_PDM_ERROR_NO_INPUT;
-    }
-
-    instance->output = 0;
-    instance->is_init = true;
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Deinitializes the function instance
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * 
- * @return An error code if negative
- */
-int32_t function_deinit(FunctionHandle_t* instance) {
-    if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
-    }
-
-    instance->is_init = false;
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Check if the function instance is initialized
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * 
- * @return True if the function is initialized, false if not initialized
- */
-bool function_is_init(FunctionHandle_t* instance) {
-    return instance->is_init;
-}
-
-/**
- * @brief Process the function's logic
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * 
- * @return An error code if negative
- */
-int32_t function_run(FunctionHandle_t* instance) {
-    if (instance == NULL) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    } else if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
-    } else if (!function_is_init(instance)) {
-        return LIB_PDM_ERROR_NO_INIT;
-    }
-
-    instance->output = calculate_output(instance);
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Get the function's result from the last process execution
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[out] result A pointer to the variable that stores the function's result
- * 
- * @return An error code if negative
- */
-int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
-    if ((instance == NULL) || (result == NULL)) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    }
-
-    *result = instance->output;
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Check if the function's output logic is inverted
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[out] invert A pointer to the variable that stores the functoin logic
- * inversion
- * 
- * @return An error code if negative
- */
-int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) {
-    if ((instance == NULL) || (invert == NULL)) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    } else if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
-    } else {
-        // Do nothing
-    }
-
-    *invert = get_result_inversion(instance);
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Set the function's logic inversion
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] invert False if the function's result must stay as is, false if the
- * function's result must be inverted. When inverted, any result different from
- * 0 will turn to false and 0 will turn to true
- * 
- * @return An error code if negative
- */
-int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
-    if (instance == NULL) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    } else if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
-    } else {
-        // Do nothing
-    }
-
-    set_output_inversion(instance, invert);
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Get the function's logic type
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[out] type A pointer to the variable that stores the function's logic type
- * 
- * @return An error code if negative
- */
-int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
-    if ((instance == NULL) || (type == NULL)) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    }
-
-    *type = instance->type;
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Set the function's logic type
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] type The function type to be set
- * 
- * @return An error code if negative
- */
-int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
-    if (instance == NULL) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    }
-
-    instance->type = type;
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Get the function's input memory address
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] input_nbr The number of the input address to be retrived
- * @param[out] p_input A pointer to store the address of the retrieved input channel
- * 
- * @return An error code if negative
- */
-int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t** p_input) {
-    if (!is_input_valid(instance, input_nbr)) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    }
-
-    *p_input = get_input(instance, input_nbr);
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Set the function's input memory address
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] input_nbr The number of the input address to be set
- * @param[in] p_input A pointer with the address of the input channel
- * 
- * @return An error code if negative
- */
-int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input) {
-    if (!is_input_valid(instance, input_nbr)) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    }
-
-    set_input(instance, input_nbr, p_input);
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Get the function's input edge type
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] input_nbr The number of the input edge type to be retrieved
- * @param[out] p_input A pointer to store the retrieved input edge type
- * 
- * @return An error code if negative
- */
-int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge) {
-    if (!is_input_valid(instance, input_nbr)) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    } else if (!has_input_edges(instance)) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
-    }
-
-    return LIB_PDM_ERROR_NONE;
-}
-
-/**
- * @brief Set the function's input edge type
- * 
- * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] input_nbr The number of the input edge type to be set
- * @param[in] p_input The input edge type to be set
- * 
- * @return An error code if negative
- */
-int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge) {
-    if (!is_input_valid(instance, input_nbr)) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
-    } else if (!has_input_edges(instance)) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
-    }
-
-    return LIB_PDM_ERROR_NONE;
-}
 
 /**
  * @brief Check if the input number is valid for the configured function type
@@ -265,8 +21,9 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
  * @param[in] instance A pointer to the struct containing the function's data
  * @param[in] input_nbr The number of the input to be validated
  * 
- * @return True if the input number is valid for the current function type,
- * false if invalid
+ * @return The validity of the input number for the current function type
+ * @retval true The input number is valid for the current function type
+ * @retval false The input number is invalid for the current function type
  */
 static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
     bool ret = false;
@@ -358,7 +115,9 @@ static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, 
  * 
  * @param[in] instance A pointer to the struct containing the function's data
  * 
- * @return True if the required inputs are set, false if aren't set
+ * @return Inform if the inputs are all set for the current function type
+ * @retval true The required inputs are set for the current function type
+ * @retval false The required inputs are not set for the current function type
  */
 static bool are_inputs_set(FunctionHandle_t* instance) {
     bool ret = true;
@@ -399,8 +158,9 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
  * 
  * @param[in] instance A pointer to the struct containing the function's data
  * 
- * @return True if the current function type can have input edges configured,
- * false if it can't
+ * @return The validity of the input edges for the current function type
+ * @retval true The current function type can have input edges configured
+ * @retval false The current function type can't have input edges configured
  */
 static bool has_input_edges(FunctionHandle_t* instance) {
     return ((instance->type >= kFunctionTypeBlink)
@@ -413,6 +173,8 @@ static bool has_input_edges(FunctionHandle_t* instance) {
  * @param[in] instance A pointer to the struct containing the function's data
  * 
  * @return Result inversion variable value
+ * @retval true The function's result is inverted
+ * @retval false The function's result is not inverted
  */
 static bool get_result_inversion(FunctionHandle_t* instance) {
     bool ret = false;
@@ -473,7 +235,7 @@ static void set_output_inversion(FunctionHandle_t* instance, bool invert) {
  * 
  * @param[in] instance A pointer to the struct containing the function's data
  * 
- * @return Result
+ * @return The result of the function's calculation
  */
 static int32_t calculate_output(FunctionHandle_t* instance) {
     int32_t ret = LIB_PDM_FUNCTION_FALSE;
@@ -529,4 +291,147 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
     }
 
     return ret;
+}
+
+/** 
+ * @section Public Functions 
+ */
+
+int32_t function_init(FunctionHandle_t* instance) {
+    if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else if (!are_inputs_set(instance)) {
+        return LIB_PDM_ERROR_NO_INPUT;
+    }
+
+    instance->output = 0;
+    instance->is_init = true;
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_deinit(FunctionHandle_t* instance) {
+    if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    }
+
+    instance->is_init = false;
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+bool function_is_init(FunctionHandle_t* instance) {
+    return instance->is_init;
+}
+
+int32_t function_run(FunctionHandle_t* instance) {
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else if (!function_is_init(instance)) {
+        return LIB_PDM_ERROR_NO_INIT;
+    }
+
+    instance->output = calculate_output(instance);
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
+    if ((instance == NULL) || (result == NULL)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
+    *result = instance->output;
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_get_result_invertion(FunctionHandle_t* instance, bool* invert) {
+    if ((instance == NULL) || (invert == NULL)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else {
+        // Do nothing
+    }
+
+    *invert = get_result_inversion(instance);
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_set_result_invertion(FunctionHandle_t* instance, bool invert) {
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else {
+        // Do nothing
+    }
+
+    set_output_inversion(instance, invert);
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
+    if ((instance == NULL) || (type == NULL)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
+    *type = instance->type;
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
+    if (instance == NULL) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
+    instance->type = type;
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t** p_input) {
+    if (!is_input_valid(instance, input_nbr)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
+    *p_input = get_input(instance, input_nbr);
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input) {
+    if (!is_input_valid(instance, input_nbr)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    }
+
+    set_input(instance, input_nbr, p_input);
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge) {
+    if (!is_input_valid(instance, input_nbr)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (!has_input_edges(instance)) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    }
+
+    return LIB_PDM_ERROR_NONE;
+}
+
+int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge) {
+    if (!is_input_valid(instance, input_nbr)) {
+        return LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (!has_input_edges(instance)) {
+        return LIB_PDM_ERROR_FUNCTION_TYPE;
+    }
+
+    return LIB_PDM_ERROR_NONE;
 }
