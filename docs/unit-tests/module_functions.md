@@ -47,10 +47,10 @@
 ## Debounced output tests
 
 ## "None" function tests
-- [x] Can't set inputs - test_whenNoneFunctionSetInput0_thenReturnWrongParamError
-- [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnWrongParamError
-- [x] Can't set input edges - test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError
-- [x] Can't get input edges - test_whenNoneFunctionGetInput0Edge_thenReturnWrongParamError
+- [x] Can't set inputs - test_whenNoneFunctionSetInput0_thenReturnFunctionTypeError
+- [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnFunctionTypeError
+- [x] Can't set input edges - test_whenNoneFunctionSetInput0Edge_thenReturnFunctionTypeError
+- [x] Can't get input edges - test_whenNoneFunctionGetInput0Edge_thenReturnFunctionTypeError
 - [x] Can't set inverted result logic - test_whenNoneFunctionSetInvertedResult_thenReturnFunctionTypeError
 - [x] Can't get inverted result logic - test_whenNoneFunctionGetInvertedResult_thenReturnFunctionTypeError
 - [x] Can't initialize - test_whenNoneFunctionInit_thenReturnTypeError
