@@ -31,6 +31,7 @@ static bool is_input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_
     if (instance != NULL) {
         switch (instance->type) {
             case kFunctionTypeNOT:
+            case kFunctionTypePulse:
                 ret = (input_nbr == 0U);
                 break;
 
@@ -65,6 +66,7 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
 
     switch (instance->type) {
         case kFunctionTypeNOT:
+        case kFunctionTypePulse:
             ret = instance->input[0];
             break;
 
@@ -95,6 +97,7 @@ static int32_t* get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_n
 static void set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* input) {
     switch (instance->type) {
         case kFunctionTypeNOT:
+        case kFunctionTypePulse:
             instance->input[0] = input;
             break;
 
@@ -126,7 +129,8 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
     bool ret = true;
 
     switch (instance->type) {
-        case kFunctionTypeNOT: {
+        case kFunctionTypeNOT:
+        case kFunctionTypePulse: {
             if (instance->input[0] == NULL) { ret = false; }
             break;
         }
@@ -166,7 +170,7 @@ static bool are_inputs_set(FunctionHandle_t* instance) {
  * @retval false The current function type can't have input edges configured
  */
 static bool has_input_edges(FunctionHandle_t* instance) {
-    return ((instance->type >= kFunctionTypeBlink)
+    return ((instance->type >= kFunctionTypePulse)
             && (instance->type < kFunctionTypeMax));
 }
 
@@ -365,11 +369,13 @@ int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
 }
 
 int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t* p_edge) {
-    if (!is_input_valid(instance, input_nbr)) {
+    if ((p_edge == NULL) || !is_input_valid(instance, input_nbr)) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     } else if (!has_input_edges(instance)) {
         return LIB_PDM_ERROR_FUNCTION_TYPE;
     }
+
+    *p_edge = instance->edge;
 
     return LIB_PDM_ERROR_NONE;
 }
@@ -380,6 +386,8 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
     } else if (!has_input_edges(instance)) {
         return LIB_PDM_ERROR_FUNCTION_TYPE;
     }
+
+    instance->edge = edge;
 
     return LIB_PDM_ERROR_NONE;
 }

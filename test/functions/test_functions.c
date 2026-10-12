@@ -136,6 +136,46 @@ void test_whenSetAndGetInput_thenReturnNoErrorWhenNotInit(void) {
     TEST_ASSERT_EQUAL(&input, p_input);
 }
 
+void test_whenGetInputEdgeWithNullInstance_thenReturnWrongParamError(void) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+    FunctionInputEdge_t edge = kFunctionInputEdgeNone;
+
+    ret = function_get_input_edge(NULL, 0, &edge);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenGetInputEdgeWithNullEdge_thenReturnWrongParamError(void) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+    FunctionHandle_t function = { .type = kFunctionTypeBlink };
+
+    ret = function_get_input_edge(&function, 0, NULL);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenSetInputEdgeWithNullInstance_thenReturnWrongParamError(void) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    ret = function_set_input_edge(NULL, 0, kFunctionInputEdgeBoth);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenSetAndGetInputEdge_thenReturnNoErrorWhenNotInit(void) {
+    int32_t ret_get = LIB_PDM_ERROR_NONE;
+    int32_t ret_set = LIB_PDM_ERROR_NONE;
+    FunctionHandle_t function = { .type = kFunctionTypePulse };
+    FunctionInputEdge_t edge = kFunctionInputEdgeNone;
+
+    ret_set = function_set_input_edge(&function, 0, kFunctionInputEdgeBoth);
+    ret_get = function_get_input_edge(&function, 0, &edge);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret_set);
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret_get);
+    TEST_ASSERT_EQUAL(kFunctionInputEdgeBoth, edge);
+}
+
 void test_whenGetResultinversionWithNullInstance_thenReturnWrongParamError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
     bool inverted = false;

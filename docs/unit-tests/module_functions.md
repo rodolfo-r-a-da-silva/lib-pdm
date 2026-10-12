@@ -1,4 +1,6 @@
-### General tests
+## General tests
+
+### Error cases
 - [x] Function instance argument is NULL
     - [x] Init returns wrong param error - test_whenInitWithNullInstance_thenReturnWrongParamError
     - [x] Deinit returns wrong param error - test_whenDeInitWithNullInstance_thenReturnWrongParamError
@@ -9,6 +11,8 @@
     - [x] Set type returns wrong param error - test_whenSetTypeWithNullInstance_thenReturnWrontParamError
     - [x] Get input returns wrong param error - test_whenGetInputWithNullInstance_thenReturnWrongParamError
     - [x] Set input returns wrong param error - test_whenSetInputWithNullInstance_thenReturnWrongParamError
+    - [x] Get input edge returns wrong param error - test_whenGetInputEdgeWithNullInstance_thenReturnWrongParamError
+    - [x] Set input edge returns wrong param error - test_whenSetInputEdgeWithNullInstance_thenReturnWrongParamError
     - [x] Get result inversion returns wrong param error - test_whenGetResultinversionWithNullInstance_thenReturnWrongParamError
     - [x] Set result inversion returns wrong param error - test_whenSetResultinversionWithNullInstance_thenReturnWrongParamError
 
@@ -16,21 +20,15 @@
     - [x] Get type returns wrong param error - test_whenGetTypeWithNullType_thenReturnWrongParamError
     - [x] Get input returns wrong param error - test_whenGetInputWithNullInput_thenReturnWrongParamError
     - [x] Set input returns wrong param error - test_whenSetInputWithNullInput_thenReturnWrongParamError
+    - [x] Get input edge returns worng param error - test_whenGetInputEdgeWithNullEdge_thenReturnWrongParamError
     - [x] Get result inversion returns wrong param error - test_whenGetResultinversionWithNullinversion_thenReturnWrongParamError
     - [x] Get result returns wrong param error - test_whenGetResultWithNullResult_thenReturnWrongParamError
-    - [x] Get input edge returns wrong param error - 
 
-- [ ] Function is of none type
-    - [ ] Get result inversion returns error function type
-    - [ ] Set result inversion returns error function type
-    - [ ] Get input inversion returns error function type
-    - [ ] Set input inversion returns error function type
-    - [ ] Get input edge inversion returns error function type
-    - [ ] Set input edge inversion returns error function type
-
+### Success cases
 - [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit
 - [ ] Can't change function type when initialized
 - [x] Can set and the the instance's input - test_whenSetAndGetInput_thenReturnNoErrorWhenNotInit
+- [x] Can set and get the instance's input edge - test_whenSetAndGetInputEdge_thenReturnNoErrorWhenNotInit
 - [x] Can set and get the instance's result inversion - test_whenSetAndGetResultInvertion_thenReturnNoErrorWhenNotInit
 - [ ] Function type is not changed on initialization
 - [ ] Function type is not changed on on deinitialization
@@ -41,14 +39,14 @@
 - [x] "is_init" function returns false when not initialized - test_whenNotInitialized_thenIsInitReturnsFalse
 - [x] "is_init" function returns true when not initialized - test_whenInitialized_thenIsInitReturnsTrue
 
-### Boolean from integers
+## Boolean from integers
 - [ ] 0 is false
 - [ ] 1 is true
 - [ ] -1 is true
 
-### Debounced output tests
+## Debounced output tests
 
-### "None" function tests
+## "None" function tests
 - [x] Can't set inputs - test_whenNoneFunctionSetInput0_thenReturnWrongParamError
 - [x] Can't get inputs - test_whenNoneFunctionGetInput0_thenReturnWrongParamError
 - [x] Can't set input edges - test_whenNoneFunctionSetInput0Edge_thenReturnWrongParamError
@@ -59,7 +57,7 @@
 - [x] Can't deinitialize - test_whenNoneFunctionDeinit_thenReturnTypeError
 - [x] Can't run - test_whenNoneFunctionRun_thenReturnTypeError
 
-### "NOT" function tests
+## "NOT" function tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 1 or higher - test_whenNotFunctionSetInput1_thenReturnsWrongParamError
     - [x] Can set input 0 - test_whenNotSetFunctionInput0_thenReturnsNoError
@@ -80,7 +78,7 @@
     - [x] "2" input results in false - test_whenNotFunctionInputIs2_thenResultIsFalse
     - [x] "-1" input results in false - test_whenNotFunctionInputIsMinus1_thenResultIsFalse
 
-### "AND" function tests
+## "AND" function tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenAndFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenAndFunctionSetInput0_thenReturnNoError
@@ -106,7 +104,7 @@
     - [x] Input 0 is "1" and 1 is "2" results in true - test_whenAndFunctionInput0Is1And1Is2_thenResultIsTrue
     - [x] Input 0 is "1" and 1 is "-1" results in true - test_whenAndFunctionInput0Is1And1IsMinus1_thenResultIsTrue
 
-### "OR" function tests
+## "OR" function tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenOrFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenOrFunctionSetInput0_thenReturnNoError
@@ -133,7 +131,7 @@
     - [x] Input 0 is "0" and 1 is "2" results in true - test_whenOrFunctionInput0Is0And1Is2_thenResultIsTrue
     - [x] Input 0 is "0" and 1 is "-1" results in true - test_whenOrFunctionInput0Is0And1IsMinus1_thenResultIsTrue
 
-### "XOR" function tests
+## "XOR" function tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenXorFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenXorFunctionSetInput0_thenReturnNoError
@@ -161,7 +159,7 @@
     - [x] Input 0 is "0" and 1 is "-1" results in true - test_whenXorFunctionInput0Is0And1IsMinus1_thenResultIsTrue
     - [x] Input 0 is "-1" and 1 is "2" results in false - test_whenXorFunctionInput0IsMinus1And2Is2_thenResultIsFalse
 
-### "Mask" function tests
+## "Mask" function tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenMaskFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenMaskFunctionSetInput0_thenReturnNoError
@@ -187,7 +185,7 @@
     - [x] Input 0 is "0xFF" and input 1 is "0x11" results in "0x11" - test_whenMaskFunctionInput0Is0xffAndInput1Is0x11_thenResultIs0x11
     - [x] Input 0 is "0xFFFFFFFF" and input 1 is "0x0000FFFF" results in "0x0000FFFF" - test_whenMaskFunctionInput0Is0xffffffffAndInput1Is0x0000ffff_thenResultIs0x0000ffff
 
-### "Equals to" functions tests
+## "Equals to" functions tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenEqFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenEqFunctionSetInput0_thenReturnNoError
@@ -216,7 +214,7 @@
     - [x] Input 0 and 1 are "2" results in true - test_whenEqFunctionInput0And1Are2_thenResultIsTrue
     - [x] Input 0 and 1 are "-1" results in true - test_whenEqFunctionInput0And1AreMinus1_thenResultIsTrue
 
-### "Less than" functions tests
+## "Less than" functions tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenLtFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenLtFunctionSetInput0_thenReturnNoError
@@ -247,7 +245,7 @@
     - [x] Input 0 is "-1" and 1 is "0" results in true - test_whenLtFunctionInput0IsMinus1And1Is0_thenResultIsTrue
     - [x] Input 0 and 1 are "-1" results in false - test_whenLtFunctionInput0And1AreMinus1_thenResultIsFalse
 
-### "More than" functions tests
+## "More than" functions tests
 - [x] Initialization with correct parameters
     - [x] Can't set input 2 or higher - test_whenMtFunctionSetInput2_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenMtFunctionSetInput0_thenReturnNoError
@@ -278,7 +276,7 @@
     - [x] Input 0 is "-1" and 1 is "0" results in false - test_whenMtFunctionInput0IsMinus1And1Is0_thenResultIsFalse
     - [x] Input 0 and 1 are "-1" results in false - test_whenMtFunctionInput0And1AreMinus1_thenResultIsFalse
 
-### "Hysteresis" functions tests
+## "Hysteresis" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 3 or higher
     - [ ] Can set input 0
@@ -300,7 +298,7 @@
     - [ ] Can run when initialized
 - [ ] Function logic
 
-### "Blink" functions tests
+## "Blink" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 1 or higher
     - [ ] Can set input 0
@@ -317,7 +315,7 @@
     - [ ] Can run when initialized
 - [ ] Function logic
 
-### "Pulse" functions tests
+## "Pulse" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 1 or higher
     - [ ] Can set input 0
@@ -339,7 +337,7 @@
     - [ ] Can run when initialized
 - [ ] Function logic
 
-### "Set Reset" functions tests
+## "Set Reset" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 2 or higher
     - [ ] Can set input 0
@@ -369,7 +367,7 @@
     - [ ] Can run when initialized
 - [ ] Function logic
 
-### "Toggle" functions tests
+## "Toggle" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 2 or higher
     - [ ] Can set input 0
@@ -399,7 +397,7 @@
     - [ ] Can run when initialized
 - [ ] Function logic
 
-### "Counter" functions tests
+## "Counter" functions tests
 - [ ] Initialization with correct parameters
     - [ ] Can't set input 4 or higher
     - [ ] Can set input 0
