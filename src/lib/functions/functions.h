@@ -49,6 +49,14 @@ typedef enum {
 } FunctionType_t;
 
 typedef enum {
+    kFunctionOutPrevious = 0U,
+    kFunctionOutCurrent,
+    kFunctionOutNext,
+
+    kFunctionOutMax
+} FunctionOutput_t;
+
+typedef enum {
     kFunctionInputEdgeNone = 0U,
     kFunctionInputEdgeFalling,
     kFunctionInputEdgeRising,
@@ -60,7 +68,7 @@ typedef enum {
 typedef uint8_t FunctionInputNbr_t;
 
 typedef struct {
-    int32_t output;
+    int32_t output[kFunctionOutMax];
     FunctionType_t type;
     FunctionInputEdge_t edge;
     bool is_init;

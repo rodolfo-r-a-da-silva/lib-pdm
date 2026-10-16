@@ -256,7 +256,9 @@ int32_t function_init(FunctionHandle_t* instance) {
         return LIB_PDM_ERROR_NO_INPUT;
     }
 
-    instance->output = 0;
+    instance->output[kFunctionOutPrevious] = 0;
+    instance->output[kFunctionOutCurrent] = 0;
+    instance->output[kFunctionOutNext] = 0;
     instance->is_init = true;
 
     return LIB_PDM_ERROR_NONE;
@@ -291,7 +293,9 @@ int32_t function_run(FunctionHandle_t* instance) {
         return LIB_PDM_ERROR_NO_INIT;
     }
 
-    instance->output = calculate_output(instance);
+    instance->output[kFunctionOutPrevious] = instance->output[kFunctionOutCurrent];
+    instance->output[kFunctionOutNext] = calculate_output(instance);
+    instance->output[kFunctionOutCurrent] = instance->output[kFunctionOutNext];
 
     return LIB_PDM_ERROR_NONE;
 }
@@ -301,7 +305,7 @@ int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
         return LIB_PDM_ERROR_WRONG_PARAM;
     }
 
-    *result = instance->output;
+    *result = instance->output[kFunctionOutCurrent];
 
     return LIB_PDM_ERROR_NONE;
 }
