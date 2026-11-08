@@ -160,6 +160,7 @@ int32_t function_get_result_inversion(FunctionHandle_t* instance, bool* invert);
  * @retval LIB_PDM_ERROR_NONE The function's output inversion was set successfully
  * @retval LIB_PDM_ERROR_WRONG_PARAM The function instance is NULL
  * @retval LIB_PDM_ERROR_FUNCTION_TYPE The function type is not set
+ * @retval LIB_PDM_ERROR_INITIALIZED The function is already initialized
  */
 int32_t function_set_result_inversion(FunctionHandle_t* instance, bool invert);
 
@@ -184,6 +185,7 @@ int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type);
  * @return An error code if negative
  * @retval LIB_PDM_ERROR_NONE The function's logic type was set successfully
  * @retval LIB_PDM_ERROR_WRONG_PARAM The function instance is NULL
+ * @retval LIB_PDM_ERROR_INITIALIZED The function is already initialized
  */
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type);
 
@@ -210,6 +212,7 @@ int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
  * @return An error code if negative
  * @retval LIB_PDM_ERROR_NONE The function's input address was set successfully
  * @retval LIB_PDM_ERROR_WRONG_PARAM Any parameter is NULL or the input number is invalid for the current function type
+ * @retval LIB_PDM_ERROR_INITIALIZED The function is already initialized
  */
 int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t* p_input);
 
@@ -238,6 +241,7 @@ int32_t function_get_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
  * @retval LIB_PDM_ERROR_NONE The function's input edge type was set successfully
  * @retval LIB_PDM_ERROR_WRONG_PARAM Any parameter is NULL or the input number is invalid for the current function type
  * @retval LIB_PDM_ERROR_FUNCTION_TYPE The current function type can't have input edges configured
+ * @retval LIB_PDM_ERROR_INITIALIZED The function is already initialized
  */
 int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, FunctionInputEdge_t edge);
 
