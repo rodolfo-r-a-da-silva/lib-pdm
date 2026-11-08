@@ -54,7 +54,9 @@
 - [x] 1 is true - test_whenInputIsPositive_thenItIsConsideredTrue
 - [x] -1 is true - test_whenInputIsNegative_thenItIsConsideredTrue
 
-## Debounced output tests
+### Result state processing
+- [x] Result unchanged on run returns no error - test_whenResultIsUnchanged_thenReturnNoError
+- [x] Result changed on run returns status code - test_whenResultIsUnchanged_thenReturnNoError
 
 ## "None" function tests
 - [x] Can't set inputs - test_whenNoneFunctionSetInput0_thenReturnFunctionTypeError

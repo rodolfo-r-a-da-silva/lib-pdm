@@ -27,6 +27,8 @@
 #define LIB_PDM_FUNCTION_XOR_INPUTS  LIB_PDM_FUNCTION_TWO_INPUTS
 #define LIB_PDM_FUNCTION_MASK_INPUTS  LIB_PDM_FUNCTION_TWO_INPUTS
 
+#define LIB_PDM_FUNCTION_RESULT_UPDATE  1
+
 typedef enum {
     kFunctionTypeNone = 0U,
     kFunctionTypeNOT,
@@ -120,7 +122,8 @@ bool function_is_init(FunctionHandle_t* instance);
  * 
  * @param[in] instance A pointer to the struct containing the function's data
  * 
- * @return An error code if negative
+ * @return An error code if negative, result change if positive
+ * @retval LIB_PDM_FUNCTION_RESULT_UPDATE The resut has changed
  * @retval LIB_PDM_ERROR_NONE The function was processed successfully
  * @retval LIB_PDM_ERROR_WRONG_PARAM The function instance is NULL
  * @retval LIB_PDM_ERROR_NO_INIT The function instance is not initialized

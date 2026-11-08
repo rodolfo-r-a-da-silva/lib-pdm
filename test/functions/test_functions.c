@@ -358,3 +358,32 @@ void test_whenInputIsNegative_thenItIsConsideredTrue(void) {
 
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
 }
+
+void test_whenResultIsUnchanged_thenReturnNoError(void) {
+    FunctionHandle_t function = { .type = kFunctionTypeNOT };
+    int32_t input = LIB_PDM_FUNCTION_FALSE;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_input(&function, 0, &input);
+    function_set_result_inversion(&function, true);
+    function_init(&function);
+    function_run(&function);
+    ret = function_run(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+}
+
+void test_whenResultChanged_thenReturnResultUpdateCode(void) {
+    FunctionHandle_t function = { .type = kFunctionTypeNOT };
+    int32_t input = LIB_PDM_FUNCTION_FALSE;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_input(&function, 0, &input);
+    function_set_result_inversion(&function, true);
+    function_init(&function);
+    function_run(&function);
+    input = LIB_PDM_FUNCTION_TRUE;
+    ret = function_run(&function);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_RESULT_UPDATE, ret);
+}

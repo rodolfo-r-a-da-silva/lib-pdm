@@ -313,19 +313,26 @@ bool function_is_init(FunctionHandle_t* instance) {
 }
 
 int32_t function_run(FunctionHandle_t* instance) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
     if (instance == NULL) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
+        ret = LIB_PDM_ERROR_WRONG_PARAM;
     } else if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
+        ret = LIB_PDM_ERROR_FUNCTION_TYPE;
     } else if (!function_is_init(instance)) {
-        return LIB_PDM_ERROR_NO_INIT;
+        ret = LIB_PDM_ERROR_NO_INIT;
+    } else {
+        instance->output[kFunctionOutNext] = calculate_output(instance);
+        instance->output[kFunctionOutCurrent] = instance->output[kFunctionOutNext];
+
+        if (instance->output[kFunctionOutPrevious] != instance->output[kFunctionOutCurrent]) {
+            ret = LIB_PDM_FUNCTION_RESULT_UPDATE;
+        }
+
+        instance->output[kFunctionOutPrevious] = instance->output[kFunctionOutCurrent];
     }
 
-    instance->output[kFunctionOutPrevious] = instance->output[kFunctionOutCurrent];
-    instance->output[kFunctionOutNext] = calculate_output(instance);
-    instance->output[kFunctionOutCurrent] = instance->output[kFunctionOutNext];
-
-    return LIB_PDM_ERROR_NONE;
+    return ret;
 }
 
 int32_t function_get_result(FunctionHandle_t* instance, int32_t* result) {
