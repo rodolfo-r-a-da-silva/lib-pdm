@@ -223,3 +223,31 @@ void test_whenNotFunctionInputIsMinus1_thenResultIsFalse(void) {
 
     TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
 }
+
+void test_whenNotFunctionIsInvertedWithFalseInput_thenResultIsFalse(void) {
+    FunctionHandle_t function = { .type = kFunctionTypeNOT };
+    int32_t input = LIB_PDM_FUNCTION_FALSE;
+    int32_t output = LIB_PDM_FUNCTION_TRUE;
+    
+    function_set_input(&function, 0, &input);
+    function_set_result_inversion(&function, true);
+    function_init(&function);
+    function_run(&function);
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_FALSE, output);
+}
+
+void test_whenNotFunctionIsInvertedWithTrueInput_thenResultIsTrue(void) {
+    FunctionHandle_t function = { .type = kFunctionTypeNOT };
+    int32_t input = LIB_PDM_FUNCTION_TRUE;
+    int32_t output = LIB_PDM_FUNCTION_FALSE;
+    
+    function_set_input(&function, 0, &input);
+    function_set_result_inversion(&function, true);
+    function_init(&function);
+    function_run(&function);
+    function_get_result(&function, &output);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_FUNCTION_TRUE, output);
+}

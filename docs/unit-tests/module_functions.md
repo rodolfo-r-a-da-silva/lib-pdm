@@ -40,9 +40,9 @@
 - [x] "is_init" function returns true when not initialized - test_whenInitialized_thenIsInitReturnsTrue
 
 ## Boolean from integers
-- [ ] 0 is false
-- [ ] 1 is true
-- [ ] -1 is true
+- [x] 0 is false - test_whenInputIsZero_thenItIsConsideredFalse
+- [x] 1 is true - test_whenInputIsPositive_thenItIsConsideredTrue
+- [x] -1 is true - test_whenInputIsNegative_thenItIsConsideredTrue
 
 ## Debounced output tests
 
@@ -77,6 +77,8 @@
     - [x] "1" input results in false - test_whenNotFunctionInputIs1_thenResultIsFalse
     - [x] "2" input results in false - test_whenNotFunctionInputIs2_thenResultIsFalse
     - [x] "-1" input results in false - test_whenNotFunctionInputIsMinus1_thenResultIsFalse
+    - [x] False input with invertion results in False result - test_whenNotFunctionIsInvertedWithFalseInput_thenResultIsFalse
+    - [x] True input with invertion results in True result - test_whenNotFunctionIsInvertedWithTrueInput_thenResultIsTrue
 
 ## "AND" function tests
 - [x] Initialization with correct parameters
@@ -213,6 +215,7 @@
     - [x] Input 0 is "1" and 1 is "-1" results in false - test_whenEqFunctionInput0Is1And1IsMinus1_thenResultIsFalse
     - [x] Input 0 and 1 are "2" results in true - test_whenEqFunctionInput0And1Are2_thenResultIsTrue
     - [x] Input 0 and 1 are "-1" results in true - test_whenEqFunctionInput0And1AreMinus1_thenResultIsTrue
+
 
 ## "Less than" functions tests
 - [x] Initialization with correct parameters

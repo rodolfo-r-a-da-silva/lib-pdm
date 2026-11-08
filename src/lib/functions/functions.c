@@ -181,6 +181,30 @@ static bool has_input_edges(FunctionHandle_t* instance) {
 }
 
 /**
+ * @brief Invert the function's preliminary result if configured
+ * 
+ * @param[in] instance A pointer to the struct containing the function's data
+ * @param[in] result   The pre-calculated result
+ * 
+ * @return The kept result if inversion is disabled, the inverted value if
+ *         enabled
+ * @retval result                 Inversion is disabled
+ * @retval LIB_PDM_FUNCTION_FALSE When result is LIB_PDM_FUNCTION_TRUE and
+ *                                inversion is enabled
+ * @retval LIB_PDM_FUNCTION_TRUE  When result is LIB_PDM_FUNCTION_FALSE and
+ *                                inversion is enabled
+ */
+static int32_t invert_logic(const FunctionHandle_t* instance, int32_t result) {
+    int32_t ret = result;
+
+    if (instance->invert) {
+        ret = (result == LIB_PDM_FUNCTION_FALSE) ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+    }
+
+    return ret;
+}
+
+/**
  * @brief Calculate the function's result based on its type and inputs
  * 
  * @param[in] instance A pointer to the struct containing the function's data
@@ -194,18 +218,21 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
         case kFunctionTypeNOT:
             ret = (*instance->input[0] != LIB_PDM_FUNCTION_FALSE) 
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
+            ret = invert_logic(instance, ret);
             break;
 
         case kFunctionTypeAND:
             ret = ((*instance->input[0] != LIB_PDM_FUNCTION_FALSE)
                     && (*instance->input[1] != LIB_PDM_FUNCTION_FALSE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            ret = invert_logic(instance, ret);
             break;
 
         case kFunctionTypeOR:
             ret = ((*instance->input[0] != LIB_PDM_FUNCTION_FALSE)
                     || (*instance->input[1] != LIB_PDM_FUNCTION_FALSE))
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            ret = invert_logic(instance, ret);
             break;
 
         case kFunctionTypeXOR:
@@ -214,6 +241,7 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
                     ||((*instance->input[0] != LIB_PDM_FUNCTION_FALSE)
                     && (*instance->input[1] != LIB_PDM_FUNCTION_FALSE)))
                 ? LIB_PDM_FUNCTION_FALSE : LIB_PDM_FUNCTION_TRUE;
+            ret = invert_logic(instance, ret);
             break;
 
         case kFunctionTypeMask:
@@ -224,16 +252,19 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
         case kFunctionTypeEq:
             ret = (*instance->input[0] == *instance->input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            ret = invert_logic(instance, ret);
             break;
 
         case kFunctionTypeLt:
             ret = (*instance->input[0] < *instance->input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            ret = invert_logic(instance, ret);
             break;
 
         case kFunctionTypeMt:
             ret = (*instance->input[0] > *instance->input[1])
                 ? LIB_PDM_FUNCTION_TRUE : LIB_PDM_FUNCTION_FALSE;
+            ret = invert_logic(instance, ret);
             break;
 
         default:
