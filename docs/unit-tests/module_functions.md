@@ -24,12 +24,17 @@
     - [x] Get result inversion returns wrong param error - test_whenGetResultinversionWithNullinversion_thenReturnWrongParamError
     - [x] Get result returns wrong param error - test_whenGetResultWithNullResult_thenReturnWrongParamError
 
+- [x] Set parameters post Initialization
+    - [x] Can't set the instance's function type when initialized - test_whenSetTypeAfterInit_thenReturnInitializedError
+    - [x] Can't set the instance's input - when initialized - test_whenSetInputAfterInit_thenReturnInitializedError
+    - [x] Can't set the instance's input edge - when initialized - test_whenSetInputEdgeAfterInit_thenReturnInitializedError
+    - [x] Can't set the instance's result inversion - when initialized - test_whenSetResultInversionInit_thenReturnInitializedError
+
 ### Success cases
 - [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnNoErrorWhenNotInit
-- [ ] Can't change function type when initialized
 - [x] Can set and the the instance's input - test_whenSetAndGetInput_thenReturnNoErrorWhenNotInit
 - [x] Can set and get the instance's input edge - test_whenSetAndGetInputEdge_thenReturnNoErrorWhenNotInit
-- [x] Can set and get the instance's result inversion - test_whenSetAndGetResultInvertion_thenReturnNoErrorWhenNotInit
+- [x] Can set and get the instance's result inversion - test_whenSetAndGetResultInversion_thenReturnNoErrorWhenNotInit
 - [ ] Function type is not changed on initialization
 - [ ] Function type is not changed on on deinitialization
 - [ ] Initialization sets the initialized state to true

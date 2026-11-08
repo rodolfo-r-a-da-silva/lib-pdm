@@ -24,7 +24,7 @@
  * @return Zero if valid, an error code if negative
  * @retval LIB_PDM_ERROR_NONE The input number is valid
  * @retval LIB_PDM_ERROR_WRONG_PARAM The function instance is NULL or the input number is invalid
- * @retval LIB_PDM_ERROR_FUNCTION_TYPE The instanc's function tyoe is not supported
+ * @retval LIB_PDM_ERROR_FUNCTION_TYPE The instanc's function type is not supported
  */
 static int32_t input_valid(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr) {
     int32_t ret = LIB_PDM_ERROR_WRONG_PARAM;
@@ -356,17 +356,19 @@ int32_t function_get_result_inversion(FunctionHandle_t* instance, bool* invert) 
 }
 
 int32_t function_set_result_inversion(FunctionHandle_t* instance, bool invert) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
     if (instance == NULL) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
+        ret = LIB_PDM_ERROR_WRONG_PARAM;
     } else if (instance->type == kFunctionTypeNone) {
-        return LIB_PDM_ERROR_FUNCTION_TYPE;
+        ret = LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else if (instance->is_init) {
+        ret = LIB_PDM_ERROR_INITIALIZED;
     } else {
-        // Do nothing
+        instance->invert = invert;
     }
 
-    instance->invert = invert;
-
-    return LIB_PDM_ERROR_NONE;
+    return ret;
 }
 
 int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
@@ -380,13 +382,17 @@ int32_t function_get_type(FunctionHandle_t* instance, FunctionType_t* type) {
 }
 
 int32_t function_set_type(FunctionHandle_t* instance, FunctionType_t type) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
     if (instance == NULL) {
-        return LIB_PDM_ERROR_WRONG_PARAM;
+        ret = LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->is_init) {
+        ret = LIB_PDM_ERROR_INITIALIZED;
+    } else {
+        instance->type = type;
     }
 
-    instance->type = type;
-
-    return LIB_PDM_ERROR_NONE;
+    return ret;
 }
 
 int32_t function_get_input(FunctionHandle_t* instance, FunctionInputNbr_t input_nbr, int32_t** p_input) {
@@ -408,6 +414,10 @@ int32_t function_set_input(FunctionHandle_t* instance, FunctionInputNbr_t input_
 
     if (p_input == NULL) {
         ret = LIB_PDM_ERROR_WRONG_PARAM;
+    } else if ((ret == LIB_PDM_ERROR_NONE) && instance->is_init) {
+        ret = LIB_PDM_ERROR_INITIALIZED;
+    } else {
+        // Do nothing
     }
 
     if (ret == LIB_PDM_ERROR_NONE) {
@@ -442,12 +452,14 @@ int32_t function_set_input_edge(FunctionHandle_t* instance, FunctionInputNbr_t i
         ret = LIB_PDM_ERROR_FUNCTION_TYPE;
     }
 
-    if ((ret == LIB_PDM_ERROR_NONE) && (edge >= kFunctionInputEdgeMax)) {
-        ret = LIB_PDM_ERROR_WRONG_PARAM;
-    }
-
     if (ret == LIB_PDM_ERROR_NONE) {
-        instance->edge = edge;
+        if (edge >= kFunctionInputEdgeMax) {
+            ret = LIB_PDM_ERROR_WRONG_PARAM;
+        } else if (instance->is_init) {
+            ret = LIB_PDM_ERROR_INITIALIZED;
+        } else {
+            instance->edge = edge;
+        }
     }
 
     return ret;

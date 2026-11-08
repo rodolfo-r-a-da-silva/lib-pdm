@@ -88,6 +88,19 @@ void test_whenSetAndGetType_thenReturnNoErrorWhenNotInit(void) {
     TEST_ASSERT_EQUAL(kFunctionTypeNOT, type);
 }
 
+void test_whenSetTypeAfterInit_thenReturnInitializedError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    function_init(&function);
+    ret = function_set_type(&function, kFunctionTypeAND);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
+}
+
 void test_whenGetInputWithNullInstance_thenReturnWrongParamError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
     int32_t input = 0;
@@ -136,6 +149,20 @@ void test_whenSetAndGetInput_thenReturnNoErrorWhenNotInit(void) {
     TEST_ASSERT_EQUAL(&input, p_input);
 }
 
+void test_whenSetInputAfterInit_thenReturnInitializedError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t input_dud = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    function_init(&function);
+    ret = function_set_input(&function, 0U, &input_dud);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
+}
+
 void test_whenGetInputEdgeWithNullInstance_thenReturnWrongParamError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
     FunctionInputEdge_t edge = kFunctionInputEdgeNone;
@@ -176,6 +203,20 @@ void test_whenSetAndGetInputEdge_thenReturnNoErrorWhenNotInit(void) {
     TEST_ASSERT_EQUAL(kFunctionInputEdgeBoth, edge);
 }
 
+void test_whenSetInputEdgeAfterInit_thenReturnInitializedError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypePulse);
+    function_set_input(&function, 0U, &input);
+    function_set_input_edge(&function, 0U, kFunctionInputEdgeFalling);
+    function_init(&function);
+    ret = function_set_input_edge(&function, 0U, kFunctionInputEdgeRising);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
+}
+
 void test_whenGetResultinversionWithNullInstance_thenReturnWrongParamError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
     bool inverted = false;
@@ -210,6 +251,20 @@ void test_whenSetAndGetResultinversion_thenReturnNoErrorWhenNotInit(void) {
     function_get_result_inversion(&function, &inverted);
 
     TEST_ASSERT_EQUAL(true, inverted);
+}
+
+void test_whenSetResultInversionInit_thenReturnInitializedError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    function_set_result_inversion(&function, true);
+    function_init(&function);
+    ret = function_set_result_inversion(&function, true);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
 }
 
 void test_whenInputIsZero_thenItIsConsideredFalse(void) {
