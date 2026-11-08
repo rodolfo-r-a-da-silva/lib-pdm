@@ -25,7 +25,7 @@
     - [x] Get result returns wrong param error - test_whenGetResultWithNullResult_thenReturnWrongParamError
 
 ### Success cases
-- [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnsNoErrorWhenNotInit
+- [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnNoErrorWhenNotInit
 - [ ] Can't change function type when initialized
 - [x] Can set and the the instance's input - test_whenSetAndGetInput_thenReturnNoErrorWhenNotInit
 - [x] Can set and get the instance's input edge - test_whenSetAndGetInputEdge_thenReturnNoErrorWhenNotInit
@@ -59,7 +59,7 @@
 
 ## "NOT" function tests
 - [x] Initialization with correct parameters
-    - [x] Can't set input 1 or higher - test_whenNotFunctionSetInput1_thenReturnsWrongParamError
+    - [x] Can't set input 1 or higher - test_whenNotFunctionSetInput1_thenReturnWrongParamError
     - [x] Can set input 0 - test_whenNotSetFunctionInput0_thenReturnsNoError
     - [x] Can't get input 1 or higher - test_whenNotFunctionGetInput1_thenReturnWrongParamError
     - [x] Can get input 0 - test_whenNotFunctionGetInput0_thenReturnNoError

@@ -2,6 +2,17 @@
 
 #include "functions.h"
 
+void test_whenNotFunctionSetInput1_thenReturnWrongParamError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    ret = function_set_input(&function, 1U, &input);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
 void test_whenNotFunctionSetInput0_thenReturnNoError(void) {
     FunctionHandle_t function = { 0 };
     int32_t input = 0;
