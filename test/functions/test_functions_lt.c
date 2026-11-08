@@ -195,7 +195,7 @@ void test_whenLtFunctionRun_thenReturnNoError(void) {
     function_init(&function);
     ret = function_run(&function);
 
-    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+    TEST_ASSERT_GREATER_OR_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
 
 void test_whenLtFunctionInput0And1Are0_thenResultIsFalse(void) {

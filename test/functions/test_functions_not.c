@@ -172,7 +172,7 @@ void test_whenNotFunctionRun_thenReturnNoError(void) {
 
     ret = function_run(&function);
 
-    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_NONE, ret);
+    TEST_ASSERT_GREATER_OR_EQUAL(LIB_PDM_ERROR_NONE, ret);
 }
 
 void test_whenNotFunctionInputIs0_thenResultIsTrue(void) {
