@@ -271,6 +271,20 @@ static int32_t calculate_output(FunctionHandle_t* instance) {
     return ret;
 }
 
+static int32_t process_result(FunctionHandle_t* instance) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    instance->output[kFunctionOutCurrent] = instance->output[kFunctionOutNext];
+
+    if (instance->output[kFunctionOutPrevious] != instance->output[kFunctionOutCurrent]) {
+        ret = LIB_PDM_FUNCTION_RESULT_UPDATE;
+    }
+
+    instance->output[kFunctionOutPrevious] = instance->output[kFunctionOutCurrent];
+
+    return ret;
+}
+
 /** 
  * @section Public Functions 
  */
@@ -323,13 +337,31 @@ int32_t function_run(FunctionHandle_t* instance) {
         ret = LIB_PDM_ERROR_NO_INIT;
     } else {
         instance->output[kFunctionOutNext] = calculate_output(instance);
-        instance->output[kFunctionOutCurrent] = instance->output[kFunctionOutNext];
-
-        if (instance->output[kFunctionOutPrevious] != instance->output[kFunctionOutCurrent]) {
-            ret = LIB_PDM_FUNCTION_RESULT_UPDATE;
+        
+        if (!instance->delayed) {
+            ret = process_result(instance);
+        } else {
+            instance->output[kFunctionOutPrevious] = instance->output[kFunctionOutCurrent];
+            if (instance->output[kFunctionOutNext] != instance->output[kFunctionOutCurrent]) {
+                ret = LIB_PDM_FUNCTION_RESULT_DELAY;
+            }
         }
+    }
 
-        instance->output[kFunctionOutPrevious] = instance->output[kFunctionOutCurrent];
+    return ret;
+}
+
+int32_t function_update_result(FunctionHandle_t* instance) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    if (instance == NULL) {
+        ret = LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->type == kFunctionTypeNone) {
+        ret = LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else if (!function_is_init(instance)) {
+        ret = LIB_PDM_ERROR_NO_INIT;
+    } else {
+        ret = process_result(instance);
     }
 
     return ret;

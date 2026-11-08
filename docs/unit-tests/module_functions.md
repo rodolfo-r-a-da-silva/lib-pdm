@@ -55,8 +55,11 @@
 - [x] -1 is true - test_whenInputIsNegative_thenItIsConsideredTrue
 
 ### Result state processing
-- [x] Result unchanged on run returns no error - test_whenResultIsUnchanged_thenReturnNoError
-- [x] Result changed on run returns status code - test_whenResultIsUnchanged_thenReturnNoError
+- [x] Result unchanged on run returns no error - test_whenResultIsUnchangedOnRun_thenReturnNoError
+- [x] Result changed on run returns status code - test_whenResultIsUnchangedOnRun_thenReturnNoError
+- [x] Result changed on run with delayed result returns status code - test_whenResultChangedOnRunWithDelayedOutput_thenReturnResultDelayCode
+- [x] Result unchanged on update returns no error - test_whenResultIsUnchangedOnUpdate_thenReturnNoError
+- [x] Result changed on update returns status code - test_whenResultChangedOnUpdate_thenReturnResultUpdateCode
 
 ## "None" function tests
 - [x] Can't set inputs - test_whenNoneFunctionSetInput0_thenReturnFunctionTypeError

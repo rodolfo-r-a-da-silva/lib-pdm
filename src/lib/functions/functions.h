@@ -28,6 +28,7 @@
 #define LIB_PDM_FUNCTION_MASK_INPUTS  LIB_PDM_FUNCTION_TWO_INPUTS
 
 #define LIB_PDM_FUNCTION_RESULT_UPDATE  1
+#define LIB_PDM_FUNCTION_RESULT_DELAY   2
 
 typedef enum {
     kFunctionTypeNone = 0U,
@@ -124,12 +125,27 @@ bool function_is_init(FunctionHandle_t* instance);
  * 
  * @return An error code if negative, result change if positive
  * @retval LIB_PDM_FUNCTION_RESULT_UPDATE The resut has changed
+ * @retval LIB_PDM_FUNCTION_RESULT_DELAY The function has the result set as delayed
  * @retval LIB_PDM_ERROR_NONE The function was processed successfully
  * @retval LIB_PDM_ERROR_WRONG_PARAM The function instance is NULL
  * @retval LIB_PDM_ERROR_NO_INIT The function instance is not initialized
  * @retval LIB_PDM_ERROR_FUNCTION_TYPE The function type is not set
  */
 int32_t function_run(FunctionHandle_t* instance);
+
+/**
+ * @brief Update the current function's result. To be called when the result is processed after a delay
+ * 
+ * @param[in] instance A pointer to the struct containing the function's data
+ * 
+ * @return An error code if negative, result change if positive
+ * @retval LIB_PDM_FUNCTION_RESULT_UPDATE The resut has changed
+ * @retval LIB_PDM_ERROR_NONE The function was processed successfully
+ * @retval LIB_PDM_ERROR_WRONG_PARAM The function instance is NULL
+ * @retval LIB_PDM_ERROR_NO_INIT The function instance is not initialized
+ * @retval LIB_PDM_ERROR_FUNCTION_TYPE The function type is not set
+ */
+int32_t function_update_result(FunctionHandle_t* instance);
 
 /**
  * @brief Get the function's result
