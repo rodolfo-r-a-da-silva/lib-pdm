@@ -13,15 +13,18 @@
     - [x] Set input returns wrong param error - test_whenSetInputWithNullInstance_thenReturnWrongParamError
     - [x] Get input edge returns wrong param error - test_whenGetInputEdgeWithNullInstance_thenReturnWrongParamError
     - [x] Set input edge returns wrong param error - test_whenSetInputEdgeWithNullInstance_thenReturnWrongParamError
-    - [x] Get result inversion returns wrong param error - test_whenGetResultinversionWithNullInstance_thenReturnWrongParamError
-    - [x] Set result inversion returns wrong param error - test_whenSetResultinversionWithNullInstance_thenReturnWrongParamError
+    - [x] Get result inversion returns wrong param error - test_whenGetResultInversionWithNullInstance_thenReturnWrongParamError
+    - [x] Set result inversion returns wrong param error - test_whenSetResultInversionWithNullInstance_thenReturnWrongParamError
+    - [x] Get result delayed returns wrong param error - test_whenGetResultDelayedWithNullInstance_thenReturnWrongParamError
+    - [x] Set result delayed returns wrong param error - test_whenSetResultDelayedWithNullInstance_thenReturnWrongParamError
 
 - [x] Secondary pointer is NULL
     - [x] Get type returns wrong param error - test_whenGetTypeWithNullType_thenReturnWrongParamError
     - [x] Get input returns wrong param error - test_whenGetInputWithNullInput_thenReturnWrongParamError
     - [x] Set input returns wrong param error - test_whenSetInputWithNullInput_thenReturnWrongParamError
     - [x] Get input edge returns worng param error - test_whenGetInputEdgeWithNullEdge_thenReturnWrongParamError
-    - [x] Get result inversion returns wrong param error - test_whenGetResultinversionWithNullinversion_thenReturnWrongParamError
+    - [x] Get result inversion returns wrong param error - test_whenGetResultInversionWithNullInversion_thenReturnWrongParamError
+    - [x] Get result delayed returns wrong param error - test_whenGetResultDelayedWithNullDelayed_thenReturnWrongParamError
     - [x] Get result returns wrong param error - test_whenGetResultWithNullResult_thenReturnWrongParamError
 
 - [x] Set parameters post Initialization
@@ -29,12 +32,14 @@
     - [x] Can't set the instance's input - when initialized - test_whenSetInputAfterInit_thenReturnInitializedError
     - [x] Can't set the instance's input edge - when initialized - test_whenSetInputEdgeAfterInit_thenReturnInitializedError
     - [x] Can't set the instance's result inversion - when initialized - test_whenSetResultInversionInit_thenReturnInitializedError
+    - [x] Can't set the instance's result delayed - test_whenSetResultDelayedInit_thenReturnInitializedError
 
 ### Success cases
 - [x] Can set and get the instance's function type - test_whenSetAndGetType_thenReturnNoErrorWhenNotInit
 - [x] Can set and the the instance's input - test_whenSetAndGetInput_thenReturnNoErrorWhenNotInit
 - [x] Can set and get the instance's input edge - test_whenSetAndGetInputEdge_thenReturnNoErrorWhenNotInit
 - [x] Can set and get the instance's result inversion - test_whenSetAndGetResultInversion_thenReturnNoErrorWhenNotInit
+- [x] Can set and get the instance's result delayed - test_whenSetAndGetResultDelayed_thenReturnNoErrorWhenNotInit
 - [ ] Function type is not changed on initialization
 - [ ] Function type is not changed on on deinitialization
 - [ ] Initialization sets the initialized state to true
@@ -44,7 +49,7 @@
 - [x] "is_init" function returns false when not initialized - test_whenNotInitialized_thenIsInitReturnsFalse
 - [x] "is_init" function returns true when not initialized - test_whenInitialized_thenIsInitReturnsTrue
 
-## Boolean from integers
+### Boolean from integers
 - [x] 0 is false - test_whenInputIsZero_thenItIsConsideredFalse
 - [x] 1 is true - test_whenInputIsPositive_thenItIsConsideredTrue
 - [x] -1 is true - test_whenInputIsNegative_thenItIsConsideredTrue

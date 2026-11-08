@@ -217,7 +217,7 @@ void test_whenSetInputEdgeAfterInit_thenReturnInitializedError(void) {
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
 }
 
-void test_whenGetResultinversionWithNullInstance_thenReturnWrongParamError(void) {
+void test_whenGetResultInversionWithNullInstance_thenReturnWrongParamError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
     bool inverted = false;
 
@@ -226,7 +226,7 @@ void test_whenGetResultinversionWithNullInstance_thenReturnWrongParamError(void)
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
 }
 
-void test_whenGetResultinversionWithNullinversion_thenReturnWrongParamError(void) {
+void test_whenGetResultInversionWithNullInversion_thenReturnWrongParamError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
     FunctionHandle_t function = { 0 };
 
@@ -235,7 +235,7 @@ void test_whenGetResultinversionWithNullinversion_thenReturnWrongParamError(void
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
 }
 
-void test_whenSetResultinversionWithNullInstance_thenReturnWrongParamError(void) {
+void test_whenSetResultInversionWithNullInstance_thenReturnWrongParamError(void) {
     int32_t ret = LIB_PDM_ERROR_NONE;
 
     ret = function_set_result_inversion(NULL, true);
@@ -243,7 +243,7 @@ void test_whenSetResultinversionWithNullInstance_thenReturnWrongParamError(void)
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
 }
 
-void test_whenSetAndGetResultinversion_thenReturnNoErrorWhenNotInit(void) {
+void test_whenSetAndGetResultInversion_thenReturnNoErrorWhenNotInit(void) {
     FunctionHandle_t function = { .type = kFunctionTypeNOT };
     bool inverted = false;
 
@@ -263,6 +263,56 @@ void test_whenSetResultInversionInit_thenReturnInitializedError(void) {
     function_set_result_inversion(&function, true);
     function_init(&function);
     ret = function_set_result_inversion(&function, true);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
+}
+
+void test_whenGetResultDelayedWithNullInstance_thenReturnWrongParamError(void) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+    bool delayed = false;
+
+    ret = function_get_result_delayed(NULL, &delayed);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenGetResultDelayedWithNullDelayed_thenReturnWrongParamError(void) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+    FunctionHandle_t function = { 0 };
+
+    ret = function_get_result_delayed(&function, NULL);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenSetResultDelayedWithNullInstance_thenReturnWrongParamError(void) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    ret = function_set_result_delayed(NULL, true);
+
+    TEST_ASSERT_EQUAL(LIB_PDM_ERROR_WRONG_PARAM, ret);
+}
+
+void test_whenSetAndGetResultDelayed_thenReturnNoErrorWhenNotInit(void) {
+    FunctionHandle_t function = { .type = kFunctionTypeNOT };
+    bool delayed = false;
+
+    function_set_result_delayed(&function, true);
+    function_get_result_delayed(&function, &delayed);
+
+    TEST_ASSERT_EQUAL(true, delayed);
+}
+
+void test_whenSetResultDelayedInit_thenReturnInitializedError(void) {
+    FunctionHandle_t function = { 0 };
+    int32_t input = 0;
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    function_set_type(&function, kFunctionTypeNOT);
+    function_set_input(&function, 0U, &input);
+    function_set_result_delayed(&function, true);
+    function_init(&function);
+    ret = function_set_result_delayed(&function, true);
 
     TEST_ASSERT_EQUAL(LIB_PDM_ERROR_INITIALIZED, ret);
 }

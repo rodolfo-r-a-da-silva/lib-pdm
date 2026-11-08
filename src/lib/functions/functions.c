@@ -184,15 +184,12 @@ static bool has_input_edges(FunctionHandle_t* instance) {
  * @brief Invert the function's preliminary result if configured
  * 
  * @param[in] instance A pointer to the struct containing the function's data
- * @param[in] result   The pre-calculated result
+ * @param[in] result The pre-calculated result
  * 
- * @return The kept result if inversion is disabled, the inverted value if
- *         enabled
- * @retval result                 Inversion is disabled
- * @retval LIB_PDM_FUNCTION_FALSE When result is LIB_PDM_FUNCTION_TRUE and
- *                                inversion is enabled
- * @retval LIB_PDM_FUNCTION_TRUE  When result is LIB_PDM_FUNCTION_FALSE and
- *                                inversion is enabled
+ * @return The kept result if inversion is disabled, the inverted value if enabled
+ * @retval result Inversion is disabled
+ * @retval LIB_PDM_FUNCTION_FALSE When result is LIB_PDM_FUNCTION_TRUE and inversion is enabled
+ * @retval LIB_PDM_FUNCTION_TRUE When result is LIB_PDM_FUNCTION_FALSE and inversion is enabled
  */
 static int32_t invert_logic(const FunctionHandle_t* instance, int32_t result) {
     int32_t ret = result;
@@ -366,6 +363,36 @@ int32_t function_set_result_inversion(FunctionHandle_t* instance, bool invert) {
         ret = LIB_PDM_ERROR_INITIALIZED;
     } else {
         instance->invert = invert;
+    }
+
+    return ret;
+}
+
+int32_t function_get_result_delayed(FunctionHandle_t* instance, bool* delayed) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    if ((instance == NULL) || (delayed == NULL)) {
+        ret = LIB_PDM_ERROR_WRONG_PARAM;
+    } else if (instance->is_init) {
+        ret = LIB_PDM_ERROR_INITIALIZED;
+    } else {
+        *delayed = instance->delayed;
+    }
+
+    return ret;
+}
+
+int32_t function_set_result_delayed(FunctionHandle_t* instance, bool delayed) {
+    int32_t ret = LIB_PDM_ERROR_NONE;
+
+    if ((instance == NULL) || (delayed == NULL)) {
+        ret = LIB_PDM_ERROR_WRONG_PARAM;
+    } else if ((instance->type <= kFunctionTypeNone) || (instance->type >= kFunctionTypeTimed)) {
+        ret = LIB_PDM_ERROR_FUNCTION_TYPE;
+    } else if (instance->is_init) {
+        ret = LIB_PDM_ERROR_INITIALIZED;
+    } else {
+        instance->delayed = delayed;
     }
 
     return ret;

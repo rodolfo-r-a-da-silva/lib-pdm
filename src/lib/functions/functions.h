@@ -38,7 +38,10 @@ typedef enum {
     kFunctionTypeLt,
     kFunctionTypeMt,
     kFunctionTypeHysteresis,
-    kFunctionTypePulse,
+
+    kFunctionTypeTimed,
+
+    kFunctionTypePulse = kFunctionTypeTimed,
     kFunctionTypeBlink,
     kFunctionTypeSet,
     kFunctionTypeReset,
@@ -74,6 +77,7 @@ typedef struct {
     bool is_init;
 
     bool invert;
+    bool delayed;
     int32_t* input[2];
 } FunctionHandle_t;
 
@@ -163,6 +167,33 @@ int32_t function_get_result_inversion(FunctionHandle_t* instance, bool* invert);
  * @retval LIB_PDM_ERROR_INITIALIZED The function is already initialized
  */
 int32_t function_set_result_inversion(FunctionHandle_t* instance, bool invert);
+
+/**
+ * @brief Get the function's result delayed flag
+ * 
+ * @param[in]  instance A pointer to the struct containing the function's data
+ * @param[out] delayed A pointer to store the retrieved delayed flag
+ * 
+ * @return An error code if negative
+ * @retval LIB_PDM_ERROR_NONE The function's reslt delayed flag was retrieved successfully
+ * @retval LIB_PDM_ERROR_WRONG_PARAM Any parameter is NULL or the input number is invalid for the current function type
+ * @retval LIB_PDM_ERROR_FUNCTION_TYPE The current function type can't have delayed result configured
+ */
+int32_t function_get_result_delayed(FunctionHandle_t* instance, bool* delayed);
+
+/**
+ * @brief Set the function's result delayed flag
+ * 
+ * @param[in]  instance A pointer to the struct containing the function's data
+ * @param[out] delayed False if the result should be immediately updated, false if the result is updated after a delay
+ * 
+ * @return An error code if negative
+ * @retval LIB_PDM_ERROR_NONE The function's reslt delayed flag was retrieved successfully
+ * @retval LIB_PDM_ERROR_WRONG_PARAM Any parameter is NULL or the input number is invalid for the current function type
+ * @retval LIB_PDM_ERROR_FUNCTION_TYPE The current function type can't have delayed result configured
+ * @retval LIB_PDM_ERROR_INITIALIZED The function is already initialized
+ */
+int32_t function_set_result_delayed(FunctionHandle_t* instance, bool delayed);
 
 /**
  * @brief Get the function's logic type
